@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class scenariosValues {
     private static scenariosValues values;
     public static Stage primaryStage;
-    public static Group root;
+    //public static Group root;
     public static scenariosValues getInstance(){
         return values;
     }
@@ -21,7 +21,5 @@ public class scenariosValues {
         primaryStage.setScene(scene);
 
     }
-    public static void setRoot(Group roots){
-        root=roots;
-    }
+   // public static void setRoot(Group roots){root=roots;}
 }

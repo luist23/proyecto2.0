@@ -30,6 +30,7 @@ public class Player1  extends Application implements Players <PlayerValuesRick> 
 
     private ImageView imageView2;
 
+
     //private playScene scene;
 
 
@@ -45,7 +46,7 @@ public class Player1  extends Application implements Players <PlayerValuesRick> 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("JavaFx");
 
-        Group root = new Group();// nuevo grupo
+        //Group root = new Group();// nuevo grupo
 
         //escena
         //colocarFondo(root,"Rick_salto_1.png");
@@ -59,11 +60,14 @@ public class Player1  extends Application implements Players <PlayerValuesRick> 
 
         //escenari
         scenariosValues values=scenariosValues.getInstance();
-
-
         values.setPrimaryStage(primaryStage);
-        values.setRoot(root);
-        System.out.println("set scenarios values");
+        //values.setRoot(root);
+        Scene scene=sceneFactory.getScene(ScenesType.PLAYSCENE,primaryStage);
+
+
+
+
+        //System.out.println("set scenarios values");
 
         Button button = new Button("play");
         button.setDefaultButton(true);

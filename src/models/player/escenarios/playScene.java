@@ -9,6 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.PlayerValuesRick;
@@ -17,12 +19,16 @@ public class playScene extends Scene {
     private ImageView imageView;
     private PlayerValuesRick values;
     private Gravedad g;
+    private Pane root;
 
-    public playScene(Parent root, double width, double height) {
+    public playScene(Pane root, double width, double height, Stage primaryStage) {
+
         super(root, width, height);
+        this.root=root;
+        primaryStage.setScene(this);
         values=PlayerValuesRick.getInstance();
         imageView=new ImageView();
-        //root.getChildren().addAll(imageView);
+        content();
 
     }
 
@@ -30,7 +36,7 @@ public class playScene extends Scene {
         return imageView;
     }
 
-    public Scene getScene(){
+    public void content(){
         imageView.setImage(new Image(values.getClass().getResource(PlayerValuesRick.derecha[0]).toExternalForm()));
         imageView.setFitHeight(PlayerValuesRick.sizePlayer[0]);
         imageView.setFitWidth(PlayerValuesRick.sizePlayer[1]);
@@ -38,18 +44,22 @@ public class playScene extends Scene {
         //AnchorPane.
         imageView.setLayoutX(10);
         imageView.setLayoutY(103);
-        System.out.println("getScene");
+        //System.out.println("getScene");
+        root.getChildren().addAll(imageView);
 
         this.addEventFilter(KeyEvent.KEY_PRESSED,new EventHandler<KeyEvent>(){
 
                     public void handle(KeyEvent ke){
                         if (ke.getCode()==KeyCode.A){
+                            pasoIzquierda(values.pasoIzquierda,values.izquierda);
 
-                            avanzarJugador(values.pasoIzquierda,-1,values.izquierda);
+                            //avanzarJugador(values.pasoIzquierda,-1,values.izquierda);
                         }
                         else if(ke.getCode()==KeyCode.D){
                             //imageView.setImage(new Image(getClass().getResource(PlayerValuesRick.derecha[1]).toExternalForm()));
-                            avanzarJugador(values.pasoDerecha,1,values.derecha);
+                            //avanzarJugador(values.pasoDerecha,1,values.derecha);
+                            pasoderecha(values.pasoDerecha,values.derecha);
+
                             //overlaping();
                             //imageView.setLayoutX(imageView.getLayoutX()+10);
 
@@ -92,10 +102,10 @@ public class playScene extends Scene {
                 }
 
         );
-        scenariosValues.primaryStage.setScene(this);
-        scenariosValues.root.getChildren().addAll(imageView);
+
+        //scenariosValues.root.getChildren().addAll(imageView);
         setGravedad();
-        return this;
+        //return this;
     }
 
     private void salto(String[] pasos, int discriminante, String[] posicionFinal) {
@@ -131,27 +141,8 @@ public class playScene extends Scene {
 
 
 
-    public void rotateImage(){
-        float[] mirrorX={1,0,0,0,-1,0,0,0,1};
-        //Matrix matrixMirror =new Matrix();
-        //BitMap bitMap=BitmapFactory.de
-
-    }
-
-    public void strint()
-    {
-        System.out.println(":v");
-    }
-    public void colocarFondo(Group root, String image){
-        root.setStyle(
-                "-fx-background-image: url('"+image+"'); "+
-                        "-fx-background-position: center center; "+
-                        "-fx-background-repeat: stretch;"
-        );
-        System.out.println(":v");
-    }
-
     public void avanzarJugador(String[] pasos, int discriminante, String[] posicionfinal) {
+
         if (PlayerValuesRick.action) { PlayerValuesRick.action=false;
             Thread thread2 = new Thread(() -> {
                 for (int j = 0; j < PlayerValuesRick.pasosTotales; j++) {
@@ -193,6 +184,32 @@ public class playScene extends Scene {
                         (PlayerValuesRick.distanciaPaso*discriminante)));
             }
         }
+    }
+
+    public void pasoderecha(String[] pasos, String[] posicionfinal){
+        imageView.setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
+
+        if(imageView.getLayoutX()>GameValues.dimension[0]-values.sizePlayer[0]){
+            Platform.runLater(() -> imageView.setLayoutX(GameValues.dimension[0]-values.sizePlayer[0]));
+        }else{
+            Platform.runLater(() -> imageView.setLayoutX(imageView.getLayoutX() +
+                    values.distanciaPaso));
+        }
+        g.setPosicionFinal(posicionfinal);
+
+    }
+
+    public void pasoIzquierda(String[] pasos, String[] posicionfinal){
+        imageView.setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
+
+        if(imageView.getLayoutX()<0){
+            Platform.runLater(() -> imageView.setLayoutX(0));
+        }else{
+            Platform.runLater(() -> imageView.setLayoutX(imageView.getLayoutX() -
+                    values.distanciaPaso));
+        }
+        g.setPosicionFinal(posicionfinal);
+
     }
 
 
