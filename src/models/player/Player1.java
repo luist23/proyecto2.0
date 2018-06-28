@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.player.PlayerRick.Gravedad;
+import models.player.PlayerRick.Player;
 import models.player.PlayerRick.PlayerValuesRick;
 import models.player.escenarios.ScenesType;
 import models.player.escenarios.playScene;
@@ -45,6 +46,7 @@ public class Player1  extends Application implements Players <PlayerValuesRick> 
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("JavaFx");
+        Player player= Player.getInstance();
 
         //Group root = new Group();// nuevo grupo
 
@@ -59,6 +61,8 @@ public class Player1  extends Application implements Players <PlayerValuesRick> 
 
 
         //escenari
+
+
         scenariosValues values=scenariosValues.getInstance();
         values.setPrimaryStage(primaryStage);
         //values.setRoot(root);

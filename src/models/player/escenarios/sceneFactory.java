@@ -14,7 +14,7 @@ public class sceneFactory {
     public static Scene getScene(ScenesType type, Stage primaryStage){
         switch (type){
             case PLAYSCENE:
-                playScene a= new playScene(new Pane(), GameValues.dimension[0],GameValues.dimension[1],primaryStage);
+                playScene a= new playScene(GameValues.dimension[0],GameValues.dimension[1],primaryStage);
                 //root.getChildren().addAll((a.getImageView()));
                 return a;
 
