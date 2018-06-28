@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import models.player.GameValues;
+import models.player.escenarios.playScene;
+import models.player.peldannos.Peldanno;
 
 
 import java.util.ArrayList;
@@ -64,14 +66,14 @@ public class Gravedad <PlayerValuesRick>extends Thread {
         int i=1;
         while(true){
 
-        while(GameValues.gravedad){
+        while(efectoGravedad()){
 
             if((GameValues.dimension[1] - models.player.PlayerRick.PlayerValuesRick.sizePlayer[1]) > player.getLayoutY()){
             Platform.runLater(() -> player.setLayoutY(player.getLayoutY() +
                    5));
 
         }else {
-                GameValues.gravedad=false;
+                break;
             }
 
 
@@ -81,7 +83,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
 
         }
             i++;
-            sleeping(50);
+            sleeping(100);
             if(i>15 && !GameValues.gravedad){
                 i=1;
                 models.player.PlayerRick.PlayerValuesRick.action=true;
@@ -90,5 +92,24 @@ public class Gravedad <PlayerValuesRick>extends Thread {
 
 
         }
+    }
+
+    public boolean efectoGravedad(){
+        //boolean efecto=true;
+        for (Peldanno p: playScene.getPeldannos()){
+            if(overlaping(p))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean overlaping(Peldanno p){
+        if(p.getPeldanno().getBoundsInParent().intersects(Player.getPlayer().getBoundsInParent())){
+            GameValues.gravedad=false;
+            return true;
+
+        }
+            return false;
+
     }
 }

@@ -15,17 +15,22 @@ import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
 import models.player.PlayerRick.PlayerValuesRick;
+import models.player.peldannos.Peldanno;
+
+import java.util.ArrayList;
 
 public class playScene extends Scene {
     //private ImageView player.getPlayer();
     private Player player;
     private PlayerValuesRick values;
     private Gravedad g;
+    private static ArrayList<Peldanno> peldannos;
     //private Pane root;
 
     public playScene( double width, double height, Stage primaryStage) {
 
         super(Player.getRoot(), width, height);
+        peldannos=new ArrayList<>();
 
         player=Player.getInstance();
         //this.root=root;
@@ -55,6 +60,8 @@ public class playScene extends Scene {
         a.setLayoutX(0);a.setLayoutY(0);
 
         player.getRoot().getChildren().addAll(a,player.getPlayer());
+        peldannos.add(new Peldanno(0,300));
+        peldannos.add(new Peldanno(0,GameValues.dimension[1]-25));
 
 
         this.addEventFilter(KeyEvent.KEY_PRESSED,new EventHandler<KeyEvent>(){
@@ -238,5 +245,8 @@ public class playScene extends Scene {
         }
     }
 
+    public static ArrayList<Peldanno> getPeldannos(){
+        return peldannos;
+    }
 }
 
