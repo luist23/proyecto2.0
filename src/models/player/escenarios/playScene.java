@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -61,6 +62,7 @@ public class playScene extends Scene {
 
         player.getRoot().getChildren().addAll(a,player.getPlayer());
         peldannos.add(new Peldanno(0,300));
+        peldannos.add(new Peldanno(190,500));
         peldannos.add(new Peldanno(0,GameValues.dimension[1]-25));
 
 
@@ -93,11 +95,6 @@ public class playScene extends Scene {
 
                             salto(values.saltoDerecha,1,values.derecha);
 
-                            try {
-                                //new Granade(root).start(primaryStage);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
                             //Granade!!!!
                             //imageView.setLayoutY(imageView.getLayoutY()+10);
                         }
@@ -105,14 +102,15 @@ public class playScene extends Scene {
                         else if(ke.getCode()==KeyCode.N){
 
                             salto(values.saltoIzquierda,-1,values.izquierda);
+                        }
+                        else if(ke.getCode()==KeyCode.E){
+                            //if(PlayerValuesRick.action) {
+                                salto(values.saltoDerecha, 1, values.derecha);
+                                //PlayerValuesRick.action=false;
+                            //}
+                            pasoderecha(values.pasoDerecha,values.derecha);
 
-                            try {
-                                //new Granade(root).start(primaryStage);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            //Granade!!!!
-                            //imageView.setLayoutY(imageView.getLayoutY()+10);
+                            //salto(values.saltoIzquierda,-1,values.izquierda);
                         }
                     }
 
@@ -127,22 +125,20 @@ public class playScene extends Scene {
 
     private void salto(String[] pasos, int discriminante, String[] posicionFinal) {
         if (PlayerValuesRick.action){
-
             PlayerValuesRick.action=false;
-
 
             player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
 
-            for (int i=1;i<2;i++){
-
+            //for (int i=1;i<2;i++){
 
                 //Movimiento en Y
                 Thread thread2 = new Thread(()->{
                     for (int j =1;j<13;j++){
+
+                        Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
                         Gravedad.sleeping(25);
-                        Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 10));
                         //}
-                    }GameValues.gravedad=true;
+                    }//GameValues.gravedad=true;
                     g.setPosicionFinal(posicionFinal);
 
 
@@ -153,7 +149,7 @@ public class playScene extends Scene {
                 //thread.start();
                 thread2.start();
 
-            }}
+            }
     }
 
 

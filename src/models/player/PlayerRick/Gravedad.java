@@ -68,6 +68,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
 
         while(efectoGravedad()){
 
+
             if((GameValues.dimension[1] - models.player.PlayerRick.PlayerValuesRick.sizePlayer[1]) > player.getLayoutY()){
             Platform.runLater(() -> player.setLayoutY(player.getLayoutY() +
                    5));
@@ -86,7 +87,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
             sleeping(100);
             if(i>15 && !GameValues.gravedad){
                 i=1;
-                models.player.PlayerRick.PlayerValuesRick.action=true;
+                //models.player.PlayerRick.PlayerValuesRick.action=true;
                 player.setImage(new Image(values.getClass().getResource(posicionFinal[0]).toExternalForm()));
             }
 
@@ -95,10 +96,12 @@ public class Gravedad <PlayerValuesRick>extends Thread {
     }
 
     public boolean efectoGravedad(){
+        //sleeping(25);
         //boolean efecto=true;
         for (Peldanno p: playScene.getPeldannos()){
-            if(overlaping(p))
-                return false;
+            if(overlaping(p)){
+                models.player.PlayerRick.PlayerValuesRick.action=true;
+                return false;}
         }
         return true;
     }
@@ -109,6 +112,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
             return true;
 
         }
+        GameValues.gravedad=true;
             return false;
 
     }
