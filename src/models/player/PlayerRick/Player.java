@@ -1,5 +1,6 @@
 package models.player.PlayerRick;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -19,6 +20,8 @@ public class Player {
             player.setFitWidth(PlayerValuesRick.sizePlayer[1]);
             player.setPreserveRatio(true);
             root=new Pane();
+            jugador();
+
 
         }
         return ourInstance;
@@ -33,4 +36,10 @@ public class Player {
     public static Pane getRoot() { return root;}
 
     public static void setRoot(Pane root) { root = root;}
+
+    private static void jugador(){
+        player.setImage(new Image(PlayerValuesRick.getInstance().getClass().getResource(PlayerValuesRick.derecha[0]).toExternalForm()));
+        player.setLayoutX(10);
+        player.setLayoutY(103);
+    }
 }

@@ -48,28 +48,12 @@ public class Player1  extends Application implements Players <PlayerValuesRick> 
         this.primaryStage.setTitle("JavaFx");
         Player player= Player.getInstance();
 
-        //Group root = new Group();// nuevo grupo
-
-        //escena
-        //colocarFondo(root,"Rick_salto_1.png");
-
-        //scene = new Scene(root, GameValues.dimension[0],GameValues.dimension[1]);//nueva scene
-        //scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
-        //Background background=new Background();
-
-        //BackgroundImage image=new BackgroundImage(new Image(getClass().getResource("fondoPrueba.jpg").toExternalForm()));
-
-
-        //escenari
 
 
         scenariosValues values=scenariosValues.getInstance();
         values.setPrimaryStage(primaryStage);
         //values.setRoot(root);
         Scene scene=sceneFactory.getScene(ScenesType.PLAYSCENE,primaryStage);
-
-
-
 
         //System.out.println("set scenarios values");
 
@@ -94,11 +78,7 @@ public class Player1  extends Application implements Players <PlayerValuesRick> 
 
 
         imageView2 = new ImageView();
-
-        //personaje pocicion inicial
-        //imageView2.setImage(new Image(values.getClass().getResource(PlayerValuesRick.derecha[0]).toExternalForm()));
         imageView2.setPreserveRatio(true);
-
         imageView2.setLayoutX(300);
         imageView2.setLayoutY(103);
         //root.getChildren().addAll();

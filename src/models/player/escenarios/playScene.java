@@ -17,42 +17,31 @@ import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
 import models.player.PlayerRick.PlayerValuesRick;
 import models.player.peldannos.Peldanno;
+import sun.awt.GlobalCursorManager;
 
 import java.util.ArrayList;
 
 public class playScene extends Scene {
-    //private ImageView player.getPlayer();
     private Player player;
     private PlayerValuesRick values;
     private Gravedad g;
     private static ArrayList<Peldanno> peldannos;
-    //private Pane root;
+
 
     public playScene( double width, double height, Stage primaryStage) {
 
         super(Player.getRoot(), width, height);
         peldannos=new ArrayList<>();
-
         player=Player.getInstance();
-        //this.root=root;
-        //player.setRoot(root);
-        primaryStage.setScene(this);
         values=PlayerValuesRick.getInstance();
-
-
+        primaryStage.setScene(this);
         content();
 
     }
 
-    //public ImageView getImageView() { return player.getPlayer();}
-
     public void content(){
-        player.getPlayer().setImage(new Image(values.getClass().getResource(PlayerValuesRick.derecha[0]).toExternalForm()));
 
-        //AnchorPane.
-        player.getPlayer().setLayoutX(10);
-        player.getPlayer().setLayoutY(103);
-        //System.out.println("getScene");
+        //probando un fondo
         ImageView a=new ImageView();
         a.setImage(new Image(GameValues.getInstance().getClass().getResource("fondoPrueba.jpg").toExternalForm()));
         a.setFitHeight(GameValues.dimension[1]);
@@ -61,84 +50,64 @@ public class playScene extends Scene {
         a.setLayoutX(0);a.setLayoutY(0);
 
         player.getRoot().getChildren().addAll(a,player.getPlayer());
+
+
         peldannos.add(new Peldanno(0,300));
         peldannos.add(new Peldanno(190,500));
         peldannos.add(new Peldanno(0,GameValues.dimension[1]-25));
 
 
+        //----------------------Definiendo eventos-----------------------
         this.addEventFilter(KeyEvent.KEY_PRESSED,new EventHandler<KeyEvent>(){
-
-                    public void handle(KeyEvent ke){
-                        if (ke.getCode()==KeyCode.A){
-                            pasoIzquierda(values.pasoIzquierda,values.izquierda);
-
-                            //avanzarJugador(values.pasoIzquierda,-1,values.izquierda);
-                        }
-                        else if(ke.getCode()==KeyCode.D){
-                            //imageView.setImage(new Image(getClass().getResource(PlayerValuesRick.derecha[1]).toExternalForm()));
-                            //avanzarJugador(values.pasoDerecha,1,values.derecha);
-                            pasoderecha(values.pasoDerecha,values.derecha);
-
-                            //overlaping();
-                            //imageView.setLayoutX(imageView.getLayoutX()+10);
-
-                        }
-                        else if(ke.getCode()==KeyCode.W){
-                            player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()-10);
-                        }
-                        else if(ke.getCode()==KeyCode.S){
-
-                            player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()+10);}
-
-
-                        else if(ke.getCode()==KeyCode.M){
-
-                            salto(values.saltoDerecha,1,values.derecha);
-
-                            //Granade!!!!
-                            //imageView.setLayoutY(imageView.getLayoutY()+10);
-                        }
-
-                        else if(ke.getCode()==KeyCode.N){
-
-                            salto(values.saltoIzquierda,-1,values.izquierda);
-                        }
-                        else if(ke.getCode()==KeyCode.E){
-                            //if(PlayerValuesRick.action) {
-                                salto(values.saltoDerecha, 1, values.derecha);
-                                //PlayerValuesRick.action=false;
-                            //}
-                            pasoderecha(values.pasoDerecha,values.derecha);
-
-                            //salto(values.saltoIzquierda,-1,values.izquierda);
-                        }
-                    }
-
+            public void handle(KeyEvent ke){
+                if (ke.getCode()==KeyCode.A){
+                    pasoIzquierda(values.pasoIzquierda,values.izquierda);
+                }
+                else if(ke.getCode()==KeyCode.D) {
+                    pasoderecha(values.pasoDerecha, values.derecha);
+                }
+                else if(ke.getCode()==KeyCode.W){
+                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()-10);
+                }
+                else if(ke.getCode()==KeyCode.S) {
+                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
+                }
+                else if(ke.getCode()==KeyCode.M) {
+                    salto(values.saltoDerecha, 1, values.derecha);
                 }
 
-        );
+                else if(ke.getCode()==KeyCode.N){
+                    salto(values.saltoIzquierda,-1,values.izquierda);
+                }
+                else if(ke.getCode()==KeyCode.E) {
+                    salto(values.saltoDerecha, 1, values.derecha);
+                    pasoderecha(values.pasoDerecha, values.derecha);
+                }
+            }
 
-        //scenariosValues.root.getChildren().addAll(imageView);
-        setGravedad();
-        //return this;
+        });setGravedad();//------------inicienado efecto de gravedad------------
+
     }
 
+
+
     private void salto(String[] pasos, int discriminante, String[] posicionFinal) {
-        if (PlayerValuesRick.action){
-            PlayerValuesRick.action=false;
+        if (GameValues.permitirSalto){
+            Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
+            GameValues.permitirSalto=false;
 
             player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
-
-            //for (int i=1;i<2;i++){
 
                 //Movimiento en Y
                 Thread thread2 = new Thread(()->{
                     for (int j =1;j<13;j++){
+                        GameValues.permitirSalto=false;
 
                         Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
                         Gravedad.sleeping(25);
                         //}
                     }//GameValues.gravedad=true;
+
                     g.setPosicionFinal(posicionFinal);
 
 

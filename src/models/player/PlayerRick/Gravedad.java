@@ -100,7 +100,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
         //boolean efecto=true;
         for (Peldanno p: playScene.getPeldannos()){
             if(overlaping(p)){
-                models.player.PlayerRick.PlayerValuesRick.action=true;
+                GameValues.permitirSalto=true;
                 return false;}
         }
         return true;
