@@ -11,8 +11,8 @@ public class Peldanno {
     public Peldanno(int a, int b){
 
         peldanno=new ImageView();
-        peldanno.setFitHeight(50);
-        peldanno.setFitWidth(800);
+        peldanno.setFitHeight(10);
+        peldanno.setFitWidth(900);
         peldanno.setPreserveRatio(true);
         peldanno.setImage(new Image(GameValues.getInstance().getClass().getResource("peldanno.png").toExternalForm()));
         peldanno.setLayoutX(a);

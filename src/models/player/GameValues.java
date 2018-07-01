@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class GameValues {
 
-    public static int[] dimension={1048,720};
+    public static int[] dimension={1280,720};
     public static boolean gravedad=true;
     public static boolean permitirSalto =true;
 

@@ -1,6 +1,7 @@
 package models.player.escenarios;
 
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -11,7 +12,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
@@ -49,10 +52,28 @@ public class playScene extends Scene {
         a.setPreserveRatio(true);
         a.setLayoutX(0);a.setLayoutY(0);
 
-        player.getRoot().getChildren().addAll(a,player.getPlayer());
+
+        //VideoTrack videoprueba;
+        Media media=new Media(this.getClass().getResource("videoPrueba.mp4").toExternalForm());
+        media.setOnError(()-> System.out.println("error video"));//ReadOnlyObjectProperty<Duration> durationReadOnlyObjectProperty = media.durationProperty();
+        MediaPlayer playering = new MediaPlayer(media);
+        playering.setOnError(()-> System.out.println("no play video"));
+        MediaView view =new MediaView(playering);
+        view.setPreserveRatio(true);
+        view.setFitHeight(GameValues.dimension[1]);
+        view.setFitWidth(GameValues.dimension[0]);
+        view.setLayoutX(0);
+        view.setLayoutY(0);
+        playering.play();//--reproducir
+
+
+
+
+        player.getRoot().getChildren().addAll(view,player.getPlayer());
 
 
         peldannos.add(new Peldanno(0,300));
+        peldannos.add(new Peldanno(600,400));
         peldannos.add(new Peldanno(190,500));
         peldannos.add(new Peldanno(0,GameValues.dimension[1]-25));
 
@@ -93,7 +114,7 @@ public class playScene extends Scene {
 
     private void salto(String[] pasos, int discriminante, String[] posicionFinal) {
         if (GameValues.permitirSalto){
-            Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
+            //Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
             GameValues.permitirSalto=false;
 
             player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));

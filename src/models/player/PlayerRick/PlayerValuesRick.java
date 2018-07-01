@@ -2,7 +2,7 @@ package models.player.PlayerRick;
 
 public class PlayerValuesRick {
 
-    public static int[] sizePlayer= {50,50};
+    public static int[] sizePlayer= {40,40};
     public static String[] derecha={"Rick_derecha.png"};
     public static String[] izquierda={"Rick.png"};
     public static int distanciaPaso=20;
