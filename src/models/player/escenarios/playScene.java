@@ -24,6 +24,8 @@ import sun.awt.GlobalCursorManager;
 
 import java.util.ArrayList;
 
+import static javafx.scene.media.MediaPlayer.Status.PLAYING;
+
 public class playScene extends Scene {
     private Player player;
     private PlayerValuesRick values;
@@ -46,6 +48,8 @@ public class playScene extends Scene {
 
         //probando un fondo
         ImageView a=new ImageView();
+
+
         a.setImage(new Image(GameValues.getInstance().getClass().getResource("fondoPrueba.jpg").toExternalForm()));
         a.setFitHeight(GameValues.dimension[1]);
         a.setFitWidth(GameValues.dimension[0]);
@@ -65,6 +69,7 @@ public class playScene extends Scene {
         view.setLayoutX(0);
         view.setLayoutY(0);
         playering.play();//--reproducir
+
 
 
 
@@ -103,6 +108,13 @@ public class playScene extends Scene {
                 else if(ke.getCode()==KeyCode.E) {
                     salto(values.saltoDerecha, 1, values.derecha);
                     pasoderecha(values.pasoDerecha, values.derecha);
+                }
+                else if(ke.getCode()==KeyCode.SPACE) {
+                    if (playering.getStatus().equals(PLAYING))
+                    playering.pause();
+                    else
+                        playering.play();
+
                 }
             }
 
