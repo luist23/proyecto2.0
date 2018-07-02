@@ -19,6 +19,7 @@ import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
 import models.player.PlayerRick.PlayerValuesRick;
+import models.player.escenarios.granadas.granada1;
 import models.player.peldannos.Peldanno;
 import sun.awt.GlobalCursorManager;
 
@@ -68,7 +69,7 @@ public class playScene extends Scene {
         view.setFitWidth(GameValues.dimension[0]);
         view.setLayoutX(0);
         view.setLayoutY(0);
-        playering.play();//--reproducir
+        //playering.play();//--reproducir
 
 
 
@@ -115,6 +116,9 @@ public class playScene extends Scene {
                     else
                         playering.play();
 
+                }
+                else if(ke.getCode()==KeyCode.Z) {
+                    new granada1();
                 }
             }
 
