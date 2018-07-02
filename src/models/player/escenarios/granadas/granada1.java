@@ -30,12 +30,13 @@ public class granada1 implements granada <granadaUno>{
         granada.setImage(new Image(this.getClass().getResource(granadaEfecto[0]).toExternalForm()));
         Player.getRoot().getChildren().addAll(granada);
         Thread uno = new Thread(()->{
+            int direccion=GameValues.direccion;
 
             for (int i=1 ; i<15;i++){
                 //GameValues.permitirSalto=false;
 
                 Platform.runLater(() -> granada.setLayoutY(granada.getLayoutY() - 10));
-                Platform.runLater(() -> granada.setLayoutX(granada.getLayoutX() + 5));
+                Platform.runLater(() -> granada.setLayoutX(granada.getLayoutX() + (5*direccion)));
                 Gravedad.sleeping(25);
                 //}
             }
@@ -49,7 +50,7 @@ public class granada1 implements granada <granadaUno>{
 
                     if (GameValues.dimension[0] - granadaUno.dimension[0] > granada.getLayoutX()){
                         Platform.runLater(() -> granada.setLayoutX(granada.getLayoutX() +
-                                5));
+                                (5*direccion)));
                     }
                     Platform.runLater(() -> granada.setLayoutY(granada.getLayoutY() +
                             5));
@@ -72,9 +73,14 @@ public class granada1 implements granada <granadaUno>{
         }
 
 
-            Gravedad.sleeping(2500);
-            if (explosion)
-            explosion();
+            while (explosion) {
+                Gravedad.sleeping(25);
+                tiempoExplosion++;
+                if (tiempoExplosion>40){
+                    explosion();
+                    break;}
+
+            }
 
 
             //g.setPosicionFinal(posicionFinal);
@@ -96,7 +102,7 @@ public class granada1 implements granada <granadaUno>{
     public void explosion(){
 
         granada.setImage(new Image(this.getClass().getResource(granadaEfecto[1]).toExternalForm()));
-        Gravedad.sleeping(200);
+        Gravedad.sleeping(2000);
 
         //granada.relocate(-25,-25);
 

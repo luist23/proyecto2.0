@@ -206,6 +206,7 @@ public class playScene extends Scene {
     }
 
     public void pasoderecha(String[] pasos, String[] posicionfinal){
+        GameValues.direccion=1;
         player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
 
         if(player.getPlayer().getLayoutX()>GameValues.dimension[0]-values.sizePlayer[0]){
@@ -219,6 +220,7 @@ public class playScene extends Scene {
     }
 
     public void pasoIzquierda(String[] pasos, String[] posicionfinal){
+        GameValues.direccion=-1;
         player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
 
         if(player.getPlayer().getLayoutX()<0){
