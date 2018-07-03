@@ -1,5 +1,6 @@
 package models.player.escenarios;
 
+import input.Keyboard;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -30,6 +31,7 @@ public class playScene extends Scene {
     private static ArrayList<rocaGigante> rocas;
     private gravedadAumentada g2;
     private hiloRocas rocashilo;
+    private Keyboard input;
 
 
     public playScene( double width, double height, Stage primaryStage) {
@@ -39,6 +41,7 @@ public class playScene extends Scene {
         rocas =new ArrayList<>();
         player=Player.getInstance();
         values=PlayerValuesRick.getInstance();
+
         primaryStage.setScene(this);
         content();
 

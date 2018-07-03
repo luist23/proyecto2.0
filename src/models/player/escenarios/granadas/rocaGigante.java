@@ -3,6 +3,8 @@ package models.player.escenarios.granadas;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
@@ -16,6 +18,8 @@ public class rocaGigante {
     private ImageView roca = new ImageView();
     private Thread uno;
     private boolean vida = true;
+    Media implosionFinal=new Media(this.getClass().getResource("explosion3.WAV").toExternalForm());
+    MediaPlayer playerFinal=new MediaPlayer(implosionFinal);
 
 
     public rocaGigante(){
@@ -133,7 +137,8 @@ public class rocaGigante {
        // Gravedad.sleeping(3500);
 
         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[1]).toExternalForm()));
-        System.out.println("implosion");
+        //System.out.println("implosion");
+            playerFinal.play();
 
         Gravedad.sleeping(1400);
 

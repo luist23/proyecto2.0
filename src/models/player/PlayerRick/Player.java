@@ -11,6 +11,7 @@ public class Player {
     private static ImageView player;
     private static Pane root;
     public static boolean salto=true;
+    private static int vida;
 
 
 
@@ -22,6 +23,7 @@ public class Player {
             player.setFitWidth(PlayerValuesRick.sizePlayer[1]);
             player.setPreserveRatio(true);
             root=new Pane();
+            vida=23;
             /*ScrollPane scrollPane = new ScrollPane();
             scrollPane.setPannable(true);
             scrollPane.setContent(player);
@@ -49,5 +51,14 @@ public class Player {
         player.setImage(new Image(PlayerValuesRick.getInstance().getClass().getResource(PlayerValuesRick.derecha[0]).toExternalForm()));
         player.setLayoutX(10);
         player.setLayoutY(103);
+    }
+
+    public static int getVida() {
+        return vida;
+    }
+
+    public static void setDaño(int Daño) {
+        System.out.println("me hirieron :´v");
+        Player.vida -= Daño;
     }
 }

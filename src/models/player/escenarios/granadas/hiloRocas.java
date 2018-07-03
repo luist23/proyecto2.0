@@ -19,11 +19,13 @@ public class hiloRocas extends Thread {
 
                     playScene.getRocas().remove(r);
 
-                    System.out.println("contacto");
+                    //System.out.println("contacto");
                     Gravedad.sleeping(15);
                     //r.getUno().interrupt();
                     r.explosion();
-                    System.out.println("next element");
+                    Player.setDaño(5);
+                    //System.out.println("next element");
+                    System.out.println(Player.getVida());
                     break;
 
 
