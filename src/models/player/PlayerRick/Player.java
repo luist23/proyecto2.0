@@ -1,5 +1,6 @@
 package models.player.PlayerRick;
 
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -9,6 +10,7 @@ public class Player {
     private static Player ourInstance;
     private static ImageView player;
     private static Pane root;
+    public static boolean salto=true;
 
 
 
@@ -20,6 +22,12 @@ public class Player {
             player.setFitWidth(PlayerValuesRick.sizePlayer[1]);
             player.setPreserveRatio(true);
             root=new Pane();
+            /*ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setPannable(true);
+            scrollPane.setContent(player);
+            scrollPane.setVisible(true);
+            scrollPane.
+            root.getChildren().add(scrollPane);*/
             jugador();
 
 

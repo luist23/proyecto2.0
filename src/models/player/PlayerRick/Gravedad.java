@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import models.player.GameValues;
+import models.player.escenarios.granadas.rocaGigante;
 import models.player.escenarios.playScene;
 import models.player.peldannos.Peldanno;
 
@@ -17,6 +18,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
     private boolean efecto;
     private PlayerValuesRick values;
     private String[] posicionFinal;
+    private static boolean stop=true;
 
     public Gravedad(ImageView player,PlayerValuesRick values){
 
@@ -61,9 +63,9 @@ public class Gravedad <PlayerValuesRick>extends Thread {
 
 
         int i=1;
-        while(true){
+        while(stop){
 
-        while(efectoGravedad(Player.getPlayer())){
+        while(efectoGravedad(Player.getPlayer()) && stop){
 
 
             if((GameValues.dimension[1] - models.player.PlayerRick.PlayerValuesRick.sizePlayer[1]) > player.getLayoutY()){
@@ -82,11 +84,12 @@ public class Gravedad <PlayerValuesRick>extends Thread {
         }
             i++;
             sleeping(100);
-            if(i>15 && !GameValues.gravedad){
+            if(i>15 && !GameValues.gravedad && stop){
                 i=1;
                 //models.player.PlayerRick.PlayerValuesRick.action=true;
                 player.setImage(new Image(values.getClass().getResource(posicionFinal[0]).toExternalForm()));
             }
+            //System.out.println("sigo aqui");
 
 
         }
@@ -95,11 +98,13 @@ public class Gravedad <PlayerValuesRick>extends Thread {
     public static boolean efectoGravedad(ImageView elemento){
         //sleeping(25);
         //boolean efecto=true;
+        //buscandoRocas();
         for (Peldanno p: playScene.getPeldannos()){
             if(overlapingPeldanno(p,elemento)){
                 GameValues.permitirSalto=true;
                 return false;}
         }
+
         return true;
     }
 
@@ -118,4 +123,10 @@ public class Gravedad <PlayerValuesRick>extends Thread {
     public static boolean overlapingImageView(ImageView imagen,ImageView elemento){
         return imagen.getBoundsInParent().intersects(elemento.getBoundsInParent());
     }
+
+    public static void setStop(boolean stope){
+        stop=stope;
+    }
+
+
 }

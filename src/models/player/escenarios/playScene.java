@@ -1,27 +1,22 @@
 package models.player.escenarios;
 
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.media.*;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
 import models.player.PlayerRick.PlayerValuesRick;
 import models.player.escenarios.granadas.granada1;
+import models.player.escenarios.granadas.hiloRocas;
+import models.player.escenarios.granadas.rocaGigante;
 import models.player.peldannos.Peldanno;
-import sun.awt.GlobalCursorManager;
 
 import java.util.ArrayList;
 
@@ -32,12 +27,16 @@ public class playScene extends Scene {
     private PlayerValuesRick values;
     private Gravedad g;
     private static ArrayList<Peldanno> peldannos;
+    private static ArrayList<rocaGigante> rocas;
+    private gravedadAumentada g2;
+    private hiloRocas rocashilo;
 
 
     public playScene( double width, double height, Stage primaryStage) {
 
         super(Player.getRoot(), width, height);
         peldannos=new ArrayList<>();
+        rocas =new ArrayList<>();
         player=Player.getInstance();
         values=PlayerValuesRick.getInstance();
         primaryStage.setScene(this);
@@ -120,6 +119,9 @@ public class playScene extends Scene {
                 else if(ke.getCode()==KeyCode.Z) {
                     new granada1();
                 }
+                else if(ke.getCode()==KeyCode.X) {
+                    rocas.add(new rocaGigante());
+                }
             }
 
         });setGravedad();//------------inicienado efecto de gravedad------------
@@ -133,19 +135,25 @@ public class playScene extends Scene {
             //Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
             GameValues.permitirSalto=false;
 
-            player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
+
 
                 //Movimiento en Y
                 Thread thread2 = new Thread(()->{
+                    player.salto=false;
+                    player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
                     for (int j =1;j<13;j++){
                         GameValues.permitirSalto=false;
 
                         Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
+                        Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() + (5*GameValues.direccion)));
                         Gravedad.sleeping(25);
                         //}
                     }//GameValues.gravedad=true;
 
                     g.setPosicionFinal(posicionFinal);
+
+                    player.salto=true;
+
 
 
                     //imageView.setImage(new Image(values.getClass().getResource(posicionFinal[0]).toExternalForm()));
@@ -241,9 +249,15 @@ public class playScene extends Scene {
 
     public void setGravedad(){
         g=new Gravedad(player.getPlayer(),values);
+        GameValues.setGravedadThread(g);
         g.setPosicionFinal(values.derecha);
+        g2=new gravedadAumentada();
+        rocashilo=new hiloRocas();
+        rocashilo.start();
+
         try {
             g.start();
+            //g2.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -251,6 +265,9 @@ public class playScene extends Scene {
 
     public static ArrayList<Peldanno> getPeldannos(){
         return peldannos;
+    }
+    public static ArrayList<rocaGigante> getRocas(){
+        return rocas;
     }
 }
 
