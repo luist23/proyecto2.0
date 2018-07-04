@@ -61,7 +61,7 @@ public class playScene extends Scene {
 
 
         //VideoTrack videoprueba;
-        Media media=new Media(this.getClass().getResource("videoPrueba.mp4").toExternalForm());
+        /*Media media=new Media(this.getClass().getResource("videoPrueba.mp4").toExternalForm());
         media.setOnError(()-> System.out.println("error video"));//ReadOnlyObjectProperty<Duration> durationReadOnlyObjectProperty = media.durationProperty();
         MediaPlayer playering = new MediaPlayer(media);
         playering.setOnError(()-> System.out.println("no play video"));
@@ -70,14 +70,14 @@ public class playScene extends Scene {
         view.setFitHeight(GameValues.dimension[1]);
         view.setFitWidth(GameValues.dimension[0]);
         view.setLayoutX(0);
-        view.setLayoutY(0);
+        view.setLayoutY(0);*/
         //playering.play();//--reproducir
 
 
 
 
 
-        player.getRoot().getChildren().addAll(view,player.getPlayer());
+        player.getRoot().getChildren().addAll(player.getPlayer());
 
 
         peldannos.add(new Peldanno(0,300));
@@ -122,13 +122,13 @@ public class playScene extends Scene {
                     salto(values.saltoDerecha, 1, values.derecha);
                     pasoderecha(values.pasoDerecha, values.derecha);
                 }*/
-                else if(ke.getCode()==KeyCode.SPACE) {
+                /*else if(ke.getCode()==KeyCode.SPACE) {
                     if (playering.getStatus().equals(PLAYING))
                     playering.pause();
                     else
                         playering.play();
 
-                }
+                }*/
                 else if(ke.getCode()==KeyCode.Z) {
                     new granada1();
                 }
