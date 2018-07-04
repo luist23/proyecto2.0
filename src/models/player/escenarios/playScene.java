@@ -8,27 +8,27 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.media.*;
 import javafx.stage.Stage;
 import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
 import models.player.PlayerRick.PlayerValuesRick;
-import models.player.escenarios.granadas.granada1;
-import models.player.escenarios.granadas.hiloRocas;
-import models.player.escenarios.granadas.rocaGigante;
+import models.player.escenarios.explosivos.enemigos.Base.roca;
+import models.player.escenarios.explosivos.enemigos.bombaOMG.bombaOMB;
+import models.player.escenarios.explosivos.enemigos.bombaOMG.rocaUno;
+import models.player.escenarios.explosivos.enemigos.hiloRocas;
+import models.player.escenarios.explosivos.granadas.holyGranade.granadaUno;
+import models.player.escenarios.explosivos.granadas.holyGranade.holyGranade;
 import models.player.peldannos.Peldanno;
 
 import java.util.ArrayList;
-
-import static javafx.scene.media.MediaPlayer.Status.PLAYING;
 
 public class playScene extends Scene {
     private Player player;
     private PlayerValuesRick values;
     private Gravedad g;
     private static ArrayList<Peldanno> peldannos;
-    private static ArrayList<rocaGigante> rocas;
+    private static ArrayList<roca> rocas;
     private gravedadAumentada g2;
     private hiloRocas rocashilo;
     private Keyboard input;
@@ -130,10 +130,10 @@ public class playScene extends Scene {
 
                 }*/
                 else if(ke.getCode()==KeyCode.Z) {
-                    new granada1();
+                    new holyGranade(new granadaUno());
                 }
                 else if(ke.getCode()==KeyCode.X) {
-                    rocas.add(new rocaGigante());
+                    rocas.add(new bombaOMB(new rocaUno()));
                 }
                 else if(ke.getCode()==KeyCode.E) {
 
@@ -288,7 +288,7 @@ public class playScene extends Scene {
     public static ArrayList<Peldanno> getPeldannos(){
         return peldannos;
     }
-    public static ArrayList<rocaGigante> getRocas(){
+    public static ArrayList<roca> getRocas(){
         return rocas;
     }
 

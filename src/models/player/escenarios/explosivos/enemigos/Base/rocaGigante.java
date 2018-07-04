@@ -1,4 +1,4 @@
-package models.player.escenarios.granadas;
+package models.player.escenarios.explosivos.enemigos.Base;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
@@ -8,37 +8,42 @@ import javafx.scene.media.MediaPlayer;
 import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
-import models.player.escenarios.granadas.granadaUno;
 import models.player.escenarios.playScene;
 
 /**
  * Created by LuisT23 on 2/7/2018.
  */
-public class rocaGigante {
+public abstract class rocaGigante <T>implements  roca <T>{
     public static String[] rocaEfecto;
-    private ImageView roca = new ImageView();
-    private Thread uno;
-    private boolean vida = true;
-    private int totalVida=10;
-    Media implosionFinal=new Media(this.getClass().getResource("explosion3.WAV").toExternalForm());
-    MediaPlayer playerFinal=new MediaPlayer(implosionFinal);
-    private int iterador=1;
+
+    protected Thread uno;
+    protected boolean vida = true;
+    protected int totalVida=10;
+    protected T gran;
+    protected ImageView roca;
+    protected int[] dimensione;
+    protected Media implosionFinal=new Media(this.getClass().getResource("explosion3.WAV").toExternalForm());
+    protected MediaPlayer playerFinal=new MediaPlayer(implosionFinal);
+    protected int iterador=1;
 
 
-    public rocaGigante(){
-        rocaEfecto =new String[]{"bombaOmbDerecha.gif","bombaOmb.gif","granadaDivinaExplocion.gif"};
+    protected rocaGigante(){
+
+    }
+
+
+    protected void inicializar(){
+
         roca.setLayoutX(20);
         roca.setLayoutY(23);
-        roca.setFitHeight(50);
+
 
         roca.setPreserveRatio(true);
         activar();
 
-
-
-
     }
-    private  boolean iterando(){
+    protected abstract void inicio();
+    protected   boolean iterando(){
         if (iterador>15){
             iterador=1;
             return true;
@@ -48,7 +53,7 @@ public class rocaGigante {
 
     }
 
-
+    @Override
     public void activar() {
         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[0]).toExternalForm()));
         Player.getRoot().getChildren().addAll(roca);
@@ -60,7 +65,7 @@ public class rocaGigante {
             int direccionRoca= GameValues.direccion;
             int tiempoExplosion=1;
             boolean explosion=true;
-            int dimension=GameValues.dimension[0] - granadaUno.dimension[1];
+            int dimension=GameValues.dimension[0] - dimensione[1];
             int cambiardireccion=1;
 
 
@@ -97,7 +102,7 @@ public class rocaGigante {
 
             if(Gravedad.efectoGravedad(roca) && vida){
 
-                if((GameValues.dimension[1] - granadaUno.dimension[1]) > roca.getLayoutY()){
+                if((GameValues.dimension[1] - dimensione[1]) > roca.getLayoutY()){
 
                     Platform.runLater(() -> roca.setLayoutY(roca.getLayoutY() +
                             5));
@@ -165,11 +170,12 @@ public class rocaGigante {
         uno.start();
     }
 
-
+    @Override
     public ImageView getRoca() {
         return roca;
     }
 
+    @Override
     public void explosion(){
         vida=false;
         Thread explosion= new Thread(()->{
@@ -199,10 +205,12 @@ public class rocaGigante {
     explosion.start();
     }
 
+    @Override
     public Thread getUno() {
         return uno;
     }
 
+    @Override
     public void setDaño(int daño){
         totalVida-=daño;
         if(totalVida<0){
@@ -210,15 +218,21 @@ public class rocaGigante {
 
         }
     }
-    private void desactivar(){
+
+
+    protected void desactivar(){
         vida=false;
-        for (rocaGigante r:playScene.getRocas()){
+        roca.setImage(null);
+        try{
+        for (roca r:playScene.getRocas()){
             if(r==this){
                 playScene.getRocas().remove(this);
                 break;
             }
+        }}catch (Exception e){
+            System.out.println("error en desactivacion");
         }
-        roca.setImage(null);
+
 
     }
 

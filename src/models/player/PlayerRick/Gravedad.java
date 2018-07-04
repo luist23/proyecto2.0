@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import models.player.GameValues;
-import models.player.escenarios.granadas.rocaGigante;
 import models.player.escenarios.playScene;
 import models.player.peldannos.Peldanno;
 

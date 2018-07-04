@@ -1,7 +1,8 @@
-package models.player.escenarios.granadas;
+package models.player.escenarios.explosivos.enemigos;
 
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
+import models.player.escenarios.explosivos.enemigos.Base.roca;
 import models.player.escenarios.playScene;
 
 /**
@@ -14,7 +15,7 @@ public class hiloRocas extends Thread {
     while (true) {
 
         if(true){
-            for (rocaGigante r : playScene.getRocas()) {
+            for (roca r : playScene.getRocas()) {
                 if(r.getRoca()==null){
                     playScene.getRocas().remove(r);
                     System.out.println("removido nullo");
