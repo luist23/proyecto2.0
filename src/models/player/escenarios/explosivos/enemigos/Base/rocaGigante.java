@@ -67,18 +67,11 @@ public abstract class rocaGigante <T>implements  roca <T>{
             boolean explosion=true;
             int dimension=GameValues.dimension[0] - dimensione[1];
             int cambiardireccion=1;
-
-
-
             while(roca!=null && vida){
                 Gravedad.sleeping(15);
 
             if(dimension > roca.getLayoutX() && roca.getLayoutX()>0 && vida ){
                 int direccionRocafinal=direccionRoca;
-                //GameValues.permitirSalto=false;
-
-                /*Platform.runLater(() -> roca.setLayoutY(roca.getLayoutY() - 10));*/
-
                 Platform.runLater(() -> {
                     roca.setLayoutX(roca.getLayoutX() + (direccionRocafinal * 5));
                     if(roca.getLayoutX()<0){roca.setLayoutX(5);}
@@ -108,22 +101,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
                             5));
                     //System.out.println(cambiardireccion);
                     iterador++;
-
-
-
-
                 }
-/*
-                tiempoExplosion++;
-                Gravedad.sleeping(25);
-                System.out.println(tiempoExplosion);
-
-                if (tiempoExplosion>40){
-                    explosion=false;
-                    explosion();
-                    break;
-                }
-*/
 
             }else {
                     if(iterando()){
@@ -141,23 +119,6 @@ public abstract class rocaGigante <T>implements  roca <T>{
 
 
             }
-
-
-            /*while (explosion) {
-                Gravedad.sleeping(25);
-                tiempoExplosion++;
-                if (tiempoExplosion>40){
-                    explosion();
-                    break;}
-
-            }*/
-
-
-            //g.setPosicionFinal(posicionFinal);
-
-
-            //imageView.setImage(new Image(values.getClass().getResource(posicionFinal[0]).toExternalForm()));
-
         });
         Thread dos=new Thread(()->{
 
@@ -179,31 +140,19 @@ public abstract class rocaGigante <T>implements  roca <T>{
     public void explosion(){
         vida=false;
         Thread explosion= new Thread(()->{
-
-
         Gravedad.sleeping(10);
-        //uno.setDaemon(false);
-        //uno.interrupt();
-        //uno.interrupt();
-        //uno.destroy();
-
-       // roca.setImage(new Image(this.getClass().getResource(rocaEfecto[1]).toExternalForm()));
-
-       // Gravedad.sleeping(3500);
-
         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[2]).toExternalForm()));
-        //System.out.println("implosion");
             playerFinal.play();
 
         Gravedad.sleeping(1400);
-
-        //granada.relocate(-25,-25);
 
         roca.setImage(null);
     });
     explosion.setDaemon(true);
     explosion.start();
     }
+
+
 
     @Override
     public Thread getUno() {

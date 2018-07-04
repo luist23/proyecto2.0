@@ -12,13 +12,13 @@ import models.player.escenarios.explosivos.enemigos.Base.roca;
 import models.player.escenarios.playScene;
 
 public abstract class granada1 <T>implements granada <T>{
-    public String[] granadaEfecto;
-    ImageView granada;
-    Media implosion=new Media(this.getClass().getResource("HOLYGRENADE.WAV").toExternalForm());
-    MediaPlayer player=new MediaPlayer(implosion);
-    Media implosionFinal=new Media(this.getClass().getResource("Explosion1.WAV").toExternalForm());
-    MediaPlayer playerFinal=new MediaPlayer(implosionFinal);
-    private int daño=50;
+    protected String[] granadaEfecto;
+    protected ImageView granada;
+    protected Media implosion;
+    protected MediaPlayer player;
+    protected Media implosionFinal;
+    protected MediaPlayer playerFinal;
+    protected int daño=50;
     protected T granadaBase;
     protected int[] dimensione;
 
@@ -120,33 +120,10 @@ public abstract class granada1 <T>implements granada <T>{
     @Override
     public boolean explosion(int i){
         //System.out.println(i);
-        if(i==41){
-        granada.setImage(new Image(this.getClass().getResource(granadaEfecto[1]).toExternalForm()));}
-
-
-        if(i==120)
-        player.play();
-
-        if(i==190){
-            Gravedad.sleeping(300);
-
-            playerFinal.play();
-
-
-        granada.setImage(new Image(this.getClass().getResource(granadaEfecto[2]).toExternalForm()));
-            destruir();
-
-        //Gravedad.sleeping(1100);
-        //destruir();
-            //System.out.println("fatality");
-
-        //granada.relocate(-25,-25);
-
-        //granada.setImage(null);
-        return false;
-        }
-        return true;
+       return explotar(i);
     }
+
+    protected abstract boolean explotar(int i);
 
     @Override
     public void destruir() {
