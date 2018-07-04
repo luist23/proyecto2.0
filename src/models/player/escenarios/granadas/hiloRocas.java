@@ -15,7 +15,13 @@ public class hiloRocas extends Thread {
 
         if(true){
             for (rocaGigante r : playScene.getRocas()) {
+                if(r.getRoca()==null){
+                    playScene.getRocas().remove(r);
+                    System.out.println("removido nullo");
+                    break;
+                }
                 if (Gravedad.overlapingImageView(r.getRoca(), Player.getPlayer())) {
+
 
                     playScene.getRocas().remove(r);
 

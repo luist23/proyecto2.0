@@ -8,6 +8,7 @@ import javafx.scene.media.MediaPlayer;
 import models.player.GameValues;
 import models.player.PlayerRick.Gravedad;
 import models.player.PlayerRick.Player;
+import models.player.escenarios.playScene;
 import models.player.peldannos.Peldanno;
 
 public class granada1 implements granada <granadaUno>{
@@ -15,8 +16,9 @@ public class granada1 implements granada <granadaUno>{
     ImageView granada = new ImageView();
     Media implosion=new Media(this.getClass().getResource("HOLYGRENADE.WAV").toExternalForm());
     MediaPlayer player=new MediaPlayer(implosion);
-    Media implosionFinal=new Media(this.getClass().getResource("explosion1.WAV").toExternalForm());
+    Media implosionFinal=new Media(this.getClass().getResource("Explosion1.WAV").toExternalForm());
     MediaPlayer playerFinal=new MediaPlayer(implosionFinal);
+    private int daño=50;
 
     public granada1(){
         granadaEfecto=new String[]{"granadaDivina.gif","granadaDivinaTiempo.gif","granadaDivinaExplocion.gif"};
@@ -42,6 +44,7 @@ public class granada1 implements granada <granadaUno>{
                 //GameValues.permitirSalto=false;
 
                 Platform.runLater(() -> granada.setLayoutY(granada.getLayoutY() - 10));
+                if((granada.getLayoutX() + (5*direccion))>0 && (granada.getLayoutX() + (5*direccion))< GameValues.dimension[0])
                 Platform.runLater(() -> granada.setLayoutX(granada.getLayoutX() + (5*direccion)));
                 Gravedad.sleeping(25);
                 //}
@@ -50,16 +53,18 @@ public class granada1 implements granada <granadaUno>{
             boolean explosion=true;
             while(Gravedad.efectoGravedad(granada)){
 
-                if((GameValues.dimension[1] - granadaUno.dimension[1]) > granada.getLayoutY() || Gravedad.efectoGravedad(granada)){
+                if((GameValues.dimension[1] - granadaUno.dimension[1]-5) > granada.getLayoutY() || Gravedad.efectoGravedad(granada)){
 
 
-
-                    if (GameValues.dimension[0] - granadaUno.dimension[0] > granada.getLayoutX()){
+                    if((GameValues.dimension[1] - granadaUno.dimension[1]-5) > granada.getLayoutY()){
+                    if((granada.getLayoutX() + (5*direccion))>0 && (granada.getLayoutX() + 15)< GameValues.dimension[0]){
                         Platform.runLater(() -> granada.setLayoutX(granada.getLayoutX() +
                                 (5*direccion)));
                     }
+
+
                     Platform.runLater(() -> granada.setLayoutY(granada.getLayoutY() +
-                            5));
+                            5));}
 
                 }
 
@@ -118,13 +123,16 @@ public class granada1 implements granada <granadaUno>{
 
         if(i==190){
             Gravedad.sleeping(300);
+
             playerFinal.play();
 
 
         granada.setImage(new Image(this.getClass().getResource(granadaEfecto[2]).toExternalForm()));
+            destruir();
 
         Gravedad.sleeping(1100);
-            System.out.println("fatality");
+        //destruir();
+            //System.out.println("fatality");
 
         //granada.relocate(-25,-25);
 
@@ -132,6 +140,17 @@ public class granada1 implements granada <granadaUno>{
         return false;
         }
         return true;
+    }
+
+    public void destruir(){
+        for(rocaGigante r: playScene.getRocas()){
+            if(Gravedad.overlapingImageView(r.getRoca(),granada)){
+                r.setDaño(daño);
+            }
+        }
+        if(Gravedad.overlapingImageView(granada,Player.getPlayer())){
+            Player.setDaño(daño);
+        }
     }
 
 

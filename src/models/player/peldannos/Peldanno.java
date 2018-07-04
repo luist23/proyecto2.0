@@ -8,15 +8,15 @@ import models.player.PlayerRick.Player;
 
 public class Peldanno {
     private ImageView peldanno;
-    public Peldanno(int a, int b){
+    public Peldanno(int X, int Y){
 
         peldanno=new ImageView();
         peldanno.setFitHeight(10);
         peldanno.setFitWidth(900);
         peldanno.setPreserveRatio(true);
         peldanno.setImage(new Image(GameValues.getInstance().getClass().getResource("peldanno.png").toExternalForm()));
-        peldanno.setLayoutX(a);
-        peldanno.setLayoutY(b);
+        peldanno.setLayoutX(X);
+        peldanno.setLayoutY(Y);
         Player.getRoot().getChildren().addAll(peldanno);
 
     }

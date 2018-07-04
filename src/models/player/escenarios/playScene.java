@@ -82,8 +82,16 @@ public class playScene extends Scene {
 
         peldannos.add(new Peldanno(0,300));
         peldannos.add(new Peldanno(600,400));
-        peldannos.add(new Peldanno(190,500));
+        peldannos.add(new Peldanno(230,500));
+        peldannos.add(new Peldanno(190,900));
+        peldannos.add(new Peldanno(700,600));
+        peldannos.add(new Peldanno(80,600));
+        peldannos.add(new Peldanno(290,500));
+        peldannos.add(new Peldanno(700,250));
+        peldannos.add(new Peldanno(600,200));
         peldannos.add(new Peldanno(0,GameValues.dimension[1]-25));
+        input=new Keyboard();
+        input.update();
 
 
         //----------------------Definiendo eventos-----------------------
@@ -93,6 +101,7 @@ public class playScene extends Scene {
                     pasoIzquierda(values.pasoIzquierda,values.izquierda);
                 }
                 else if(ke.getCode()==KeyCode.D) {
+                    input.update();
                     pasoderecha(values.pasoDerecha, values.derecha);
                 }
                 else if(ke.getCode()==KeyCode.W){
@@ -102,16 +111,17 @@ public class playScene extends Scene {
                     player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
                 }
                 else if(ke.getCode()==KeyCode.M) {
+                    input.update();
                     salto(values.saltoDerecha, 1, values.derecha);
                 }
 
                 else if(ke.getCode()==KeyCode.N){
                     salto(values.saltoIzquierda,-1,values.izquierda);
                 }
-                else if(ke.getCode()==KeyCode.E) {
+                /*else if(ke.getCode()==KeyCode.E) {
                     salto(values.saltoDerecha, 1, values.derecha);
                     pasoderecha(values.pasoDerecha, values.derecha);
-                }
+                }*/
                 else if(ke.getCode()==KeyCode.SPACE) {
                     if (playering.getStatus().equals(PLAYING))
                     playering.pause();
@@ -124,6 +134,14 @@ public class playScene extends Scene {
                 }
                 else if(ke.getCode()==KeyCode.X) {
                     rocas.add(new rocaGigante());
+                }
+                else if(ke.getCode()==KeyCode.E) {
+
+                    slash(1);
+                }
+                else if(ke.getCode()==KeyCode.Q) {
+
+                    slash(-1);
                 }
             }
 
@@ -254,6 +272,7 @@ public class playScene extends Scene {
         g=new Gravedad(player.getPlayer(),values);
         GameValues.setGravedadThread(g);
         g.setPosicionFinal(values.derecha);
+
         g2=new gravedadAumentada();
         rocashilo=new hiloRocas();
         rocashilo.start();
@@ -271,6 +290,28 @@ public class playScene extends Scene {
     }
     public static ArrayList<rocaGigante> getRocas(){
         return rocas;
+    }
+
+    public void slash(int direccion){
+        GameValues.direccion=1;
+        //player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
+        for (int i=1;i<25;i++) {
+            {
+                Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() +
+                        5*direccion));
+            }
+            if (player.getPlayer().getLayoutX() < 0 ) {
+                player.getPlayer().setLayoutX(0);
+                break;
+            } else if (player.getPlayer().getLayoutX()>GameValues.dimension[0]-values.sizePlayer[0] ){
+                player.getPlayer().setLayoutX(GameValues.dimension[0]-values.sizePlayer[0]);
+                break;
+
+            }
+
+        }
+        //g.setPosicionFinal(posicionfinal);
+
     }
 }
 
