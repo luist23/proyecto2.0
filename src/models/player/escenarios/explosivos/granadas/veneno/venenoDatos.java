@@ -1,12 +1,12 @@
-package models.player.escenarios.explosivos.granadas.holyGranade;
+package models.player.escenarios.explosivos.granadas.veneno;
 
-public class granadaUno {
+public class venenoDatos {
     public static String[] fases;
     private int[] dimension={50,50};
     private String[] visual={"granadaDivina.gif","granadaDivinaTiempo.gif","granadaDivinaExplocion.gif"};
-    private String [] audio={"HOLYGRENADE.WAV","Explosion1.WAV"};
-    private int daño=50;
+    private int daño=15;
 
+    private String [] audio={"HOLYGRENADE.WAV","Explosion1.WAV"};
     public String[] getVisual() {
         return visual;
     }
@@ -14,7 +14,6 @@ public class granadaUno {
     public int[] getDimension() {
         return dimension;
     }
-
     public String[] getAudio() {
         return audio;
     }
