@@ -78,7 +78,7 @@ public class playScene extends Scene {
 
 
 
-        player.getRoot().getChildren().addAll(player.getPlayer());
+        player.getRoot().getChildren().addAll(a,player.getPlayer());
 
 
         peldannos.add(new Peldanno(0,300));
