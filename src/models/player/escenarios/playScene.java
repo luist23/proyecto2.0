@@ -1,6 +1,7 @@
 package models.player.escenarios;
 
 import input.Keyboard;
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -90,10 +91,71 @@ public class playScene extends Scene {
         peldannos.add(new Peldanno(700,250));
         peldannos.add(new Peldanno(600,200));
         peldannos.add(new Peldanno(0,GameValues.dimension[1]-25));
-        input=new Keyboard();
-        input.update();
+
+        //input.update();
+
+        AnimationTimer timer = new AnimationTimer() {
+
+            @Override
+            public void handle(long timestamp) {
+                if (input.isaPressed()){
+                    pasoIzquierda(values.pasoIzquierda,values.izquierda);
+                }
+                if(input.isdPressed()) {
+                    //input.update();
+                    pasoderecha(values.pasoDerecha, values.derecha);
+                }
+                if(input.iswPressed()){
+                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()-10);
+                }
+                if(input.issPressed()) {
+                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
+                }
+                if(input.isSpacePressed()) {
+                    //input.update();
+                    salto(values.saltoDerecha, 1, values.derecha);
+                    Gravedad.sleeping(15);
+                }
+
+                /*else if(ke.getCode()==KeyCode.N){
+                    salto(values.saltoIzquierda,-1,values.izquierda);
+                }*/
+
+                if(input.iszPressed()) {
+                    Gravedad.sleeping(25);
+                    new holyGranade(new granadaUno());
+
+                }
+                if(input.isxPressed()) {
+                    Gravedad.sleeping(50);
+                    rocas.add(new bombaOMB(new rocaUno()));
+
+                }
+                /*
+                else if(ke.getCode()==KeyCode.E) {
+
+                    slash(1);
+                }
+                else if(ke.getCode()==KeyCode.Q) {
+
+                    slash(-1);
+                }*/
 
 
+            }
+        };
+
+        input=new Keyboard(timer);
+
+        setOnKeyReleased(event -> {
+            input.keyRealssed(event);
+        });
+
+        setOnKeyPressed(event -> {
+            input.keyPressed(event);
+        });
+
+        if(false){
         //----------------------Definiendo eventos-----------------------
         this.addEventFilter(KeyEvent.KEY_PRESSED,new EventHandler<KeyEvent>(){
             public void handle(KeyEvent ke){
@@ -101,7 +163,7 @@ public class playScene extends Scene {
                     pasoIzquierda(values.pasoIzquierda,values.izquierda);
                 }
                 else if(ke.getCode()==KeyCode.D) {
-                    input.update();
+                    //input.update();
                     pasoderecha(values.pasoDerecha, values.derecha);
                 }
                 else if(ke.getCode()==KeyCode.W){
@@ -111,7 +173,7 @@ public class playScene extends Scene {
                     player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
                 }
                 else if(ke.getCode()==KeyCode.M) {
-                    input.update();
+                    //input.update();
                     salto(values.saltoDerecha, 1, values.derecha);
                 }
 
@@ -145,7 +207,8 @@ public class playScene extends Scene {
                 }
             }
 
-        });setGravedad();//------------inicienado efecto de gravedad------------
+        });}
+        setGravedad();//------------inicienado efecto de gravedad------------
 
     }
 

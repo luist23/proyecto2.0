@@ -25,6 +25,12 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected Media implosionFinal=new Media(this.getClass().getResource("explosion3.WAV").toExternalForm());
     protected MediaPlayer playerFinal=new MediaPlayer(implosionFinal);
     protected int iterador=1;
+    private int[] azar={1,-1,1,-1,-1};
+
+
+    public int aleatorio(){
+        return azar[(int)(Math.random()*4)];
+    }
 
 
     protected rocaGigante(){
@@ -82,6 +88,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
             }else
                 if (vida){
                 direccionRoca=direccionRoca*-1;
+                    //System.out.println(direccionRoca);
                     if(direccionRoca==1){
                         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[0]).toExternalForm()));
                     }
@@ -106,7 +113,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
             }else {
                     if(iterando()){
                         //cambiardireccion=1;
-                        direccionRoca*=-1;
+                        direccionRoca*=aleatorio();
                         if(direccionRoca==1){
                             roca.setImage(new Image(this.getClass().getResource(rocaEfecto[0]).toExternalForm()));
                         }

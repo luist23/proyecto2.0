@@ -5,7 +5,7 @@ public class PlayerValuesRick {
     public static int[] sizePlayer= {40,40};
     public static String[] derecha={"Rick_derecha.png"};
     public static String[] izquierda={"Rick.png"};
-    public static int distanciaPaso=20;
+    public static int distanciaPaso=5;
     public static String[] pasoDerecha={"Rick_corriendo_derecha.png","Rick_corriendo_3_derecha.png",
             "Rick_corriendo_2_derecha.png","Rick_corriendo_1_derecha.png"};
     public static String[] saltoDerecha={"Rick_salto_1_derecha.png"};
