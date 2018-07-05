@@ -26,6 +26,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected MediaPlayer playerFinal;
     protected int iterador=1;
     private int[] azar={1,-1,1,-1,-1};
+    private  Boolean stop=true;
 
 
     public int aleatorio(){
@@ -75,12 +76,17 @@ public abstract class rocaGigante <T>implements  roca <T>{
 
 
         uno = new Thread(()->{
+
             int direccionRoca= GameValues.direccion;
             //int tiempoExplosion=1;
             //boolean explosion=true;
             int dimension=GameValues.dimension[0] - dimensione[1];
             //int cambiardireccion=1;
-            while(roca!=null && vida){
+
+            while (vida){
+                while(stop){
+            while(roca!=null && vida && stop){
+
                 Gravedad.sleeping(15);
 
             if(dimension > roca.getLayoutX() && roca.getLayoutX()>0 && vida ){
@@ -133,6 +139,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
 
 
             }
+        }Gravedad.sleeping(1000);
+            }
         });
         Thread dos=new Thread(()->{
 
@@ -181,6 +189,15 @@ public abstract class rocaGigante <T>implements  roca <T>{
         vida=false;
         roca.setImage(null);
         Player.enemigos++;
+    }
+
+    @Override
+    public  void pausar(){
+        stop=false;
+    }
+    @Override
+    public  void resume(){
+        stop=true;
     }
 
 

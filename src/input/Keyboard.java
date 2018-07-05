@@ -25,10 +25,13 @@ public class Keyboard {
 	private BooleanProperty spacePressed = new SimpleBooleanProperty();
 	private BooleanProperty xPressed = new SimpleBooleanProperty();
 	private BooleanProperty zPressed = new SimpleBooleanProperty();
+	private BooleanProperty escPressed = new SimpleBooleanProperty();
 	private boolean limitarZ,limitarX,limitarSpace;
 	private boolean pussh=true,presing=true;
 
-	private BooleanBinding anyPressed = upPressed.or(wPressed).or(downPressed).or(sPressed).or(rightPressed).or(dPressed).or(leftPressed).or(aPressed).or(spacePressed).or(zPressed).or(xPressed);
+	private BooleanBinding anyPressed = upPressed.or(wPressed).or(downPressed).or
+			(sPressed).or(rightPressed).or(dPressed).or(leftPressed).or(aPressed).or(spacePressed).
+			or(zPressed).or(xPressed).or(escPressed);
 
 
 
@@ -92,22 +95,20 @@ public class Keyboard {
 			aPressed.set(true);
 		}
 		if (event.getCode() == KeyCode.SPACE) {
-			//Gravedad.sleeping(15);
 			spacePressed.set(true);
-			//presing=false;
 		}
 		if (event.getCode() == KeyCode.Z ) {
 
 			zPressed.set(true);
-			//presing=false;
 		}
 		if (event.getCode() == KeyCode.X ) {
-			//presing=false;
-			//Gravedad.sleeping(15);
 			xPressed.set(true);
 
 		}
-		//pussh=true;
+		if (event.getCode() == KeyCode.ESCAPE ) {
+			escPressed.set(true);
+
+		}
 
 	}
 
@@ -146,8 +147,10 @@ public class Keyboard {
 		if (event.getCode() == KeyCode.X) {
 			xPressed.set(false);
 		}
-		//pussh=false;
-		//presing=false;
+		if (event.getCode() == KeyCode.ESCAPE ) {
+			escPressed.set(false);
+
+		}
 	}
 
 
@@ -203,5 +206,7 @@ public class Keyboard {
 	public boolean iszPressed() {
 		return zPressed.get();
 	}
+
+	public boolean isEscPressed() {		return escPressed.get();	}
 
 }

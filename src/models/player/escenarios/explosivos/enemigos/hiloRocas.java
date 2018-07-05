@@ -9,16 +9,17 @@ import models.player.escenarios.playScene;
  * Created by LuisT23 on 2/7/2018.
  */
 public class hiloRocas extends Thread {
+    private boolean stop=true;
 
 
     public void run(){
     while (true) {
+        while(stop){
 
         if(true){
             for (roca r : playScene.getRocas()) {
                 if(r.getRoca()==null){
                     Gravedad.sleeping(25);
-                    //playScene.getRocas().remove(r);
                     System.out.println("removido nullo");
                     break;
                 }
@@ -26,13 +27,9 @@ public class hiloRocas extends Thread {
 
 
                     playScene.getRocas().remove(r);
-
-                    //System.out.println("contacto");
                     Gravedad.sleeping(15);
-                    //r.getUno().interrupt();
                     r.explosion();
                     Player.setDaño(5);
-                    //System.out.println("next element");
                     System.out.println(Player.getVida());
                     Player.enemigos++;
                     break;
@@ -43,7 +40,23 @@ public class hiloRocas extends Thread {
         }
     Gravedad.sleeping(25);
     }
-    }
+    Gravedad.sleeping(1000);
+    }}
 
+    public boolean isStop() {
+        return stop;
     }
+    public void pausar(){
+        stop=false;
+        for(roca r:playScene.getRocas()){
+            r.pausar();
+        }
+    }
+    public void resumir(){
+        stop=true;
+        for(roca r:playScene.getRocas()){
+            r.resume();
+        }
+    }
+}
 

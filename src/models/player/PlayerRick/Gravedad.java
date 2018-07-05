@@ -10,7 +10,7 @@ import models.player.peldannos.Peldanno;
 
 import java.util.ArrayList;
 
-public class Gravedad <PlayerValuesRick>extends Thread {
+public class Gravedad <PlayerValuesRick> extends Thread {
     private ImageView player;
     private ArrayList<ImageView> bombas;
     private ArrayList<ImageView> peldanho;
@@ -18,6 +18,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
     private PlayerValuesRick values;
     private String[] posicionFinal;
     private static boolean stop=true;
+    private boolean pausar=true;
 
     public Gravedad(ImageView player,PlayerValuesRick values){
 
@@ -62,6 +63,10 @@ public class Gravedad <PlayerValuesRick>extends Thread {
 
 
         int i=1;
+        while(true){
+
+            //System.out.println("pausado");
+
         while(stop){
 
         while(efectoGravedad(Player.getPlayer()) && stop){
@@ -71,9 +76,7 @@ public class Gravedad <PlayerValuesRick>extends Thread {
             Platform.runLater(() -> player.setLayoutY(player.getLayoutY() +
                    5));
 
-        }else {
-                break;
-            }
+        }
 
 
             sleeping(25);
@@ -92,12 +95,11 @@ public class Gravedad <PlayerValuesRick>extends Thread {
 
 
         }
-    }
+            sleeping(1000);
+    }}
 
     public static boolean efectoGravedad(ImageView elemento){
-        //sleeping(25);
-        //boolean efecto=true;
-        //buscandoRocas();
+
         for (Peldanno p: playScene.getPeldannos()){
             if(overlapingPeldanno(p,elemento)){
                 GameValues.permitirSalto=true;
@@ -125,6 +127,18 @@ public class Gravedad <PlayerValuesRick>extends Thread {
 
     public static void setStop(boolean stope){
         stop=stope;
+    }
+
+    public void pausar(){
+        stop=false;
+
+    }
+
+    public void resumir(){
+        stop=true;
+    }
+    public Boolean getStop(){
+        return stop;
     }
 
 

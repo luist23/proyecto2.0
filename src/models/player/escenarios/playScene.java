@@ -114,6 +114,8 @@ public class playScene extends Scene {
                 if(input.isSpacePressed()) {
                     //System.out.println("brincando");
                     //input.update();
+                    //g.stop();
+                    //g.pausar();
                     Gravedad.sleeping(15);
                     salto(values.saltoDerecha, 1, values.derecha);
 
@@ -124,13 +126,27 @@ public class playScene extends Scene {
                 }*/
 
                 if(input.iszPressed()) {
+
                     Gravedad.sleeping(25);
+                    //g.resumir();
+
+                    //System.out.println("resume");
                     if(player.granadasEnPocesion>0) {
                         player.granadasEnPocesion--;
                         new holyGranade(new granadaUno());
 
                     }
 
+                }
+                if (input.isEscPressed()){
+                    Gravedad.sleeping(50);
+                    if(g.getStop()){
+                        g.pausar();
+                        rocashilo.pausar();
+                    }else{
+                        g.resumir();
+                        rocashilo.resumir();
+                    }
                 }
                 if(input.isxPressed()) {
                     Gravedad.sleeping(50);
@@ -139,15 +155,7 @@ public class playScene extends Scene {
                     rocas.add(new bombaOMB(new rocaUno()));}
 
                 }
-                /*
-                else if(ke.getCode()==KeyCode.E) {
 
-                    slash(1);
-                }
-                else if(ke.getCode()==KeyCode.Q) {
-
-                    slash(-1);
-                }*/
 
 
             }

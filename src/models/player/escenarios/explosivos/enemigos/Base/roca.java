@@ -13,6 +13,8 @@ public interface roca <T> {
     Thread getUno();
     void setDaño(int daño);
     void setPausa(boolean pause);
+    void pausar();
+    void resume();
     //void desactivar();
 
 }
