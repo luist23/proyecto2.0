@@ -162,6 +162,7 @@ public abstract class granada1 <T>implements granada <T>{
         finally {
             Gravedad.sleeping(1100);
             granada.setImage(null);
+            granada.setLayoutY(-100);
         }
     }
 

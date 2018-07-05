@@ -112,9 +112,11 @@ public class playScene extends Scene {
                     player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
                 }
                 if(input.isSpacePressed()) {
+                    //System.out.println("brincando");
                     //input.update();
-                    salto(values.saltoDerecha, 1, values.derecha);
                     Gravedad.sleeping(15);
+                    salto(values.saltoDerecha, 1, values.derecha);
+
                 }
 
                 /*else if(ke.getCode()==KeyCode.N){
