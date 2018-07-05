@@ -131,7 +131,7 @@ public abstract class granada1 <T>implements granada <T>{
             for (roca r : playScene.getRocas()) {
                 if (Gravedad.overlapingImageView(r.getRoca(), granada)) {
                     r.setDaño(daño);
-                    Gravedad.sleeping(15);
+                    //Gravedad.sleeping(15);
                 }
             }
             if (Gravedad.overlapingImageView(granada, Player.getPlayer())) {

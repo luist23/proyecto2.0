@@ -17,7 +17,8 @@ public class hiloRocas extends Thread {
         if(true){
             for (roca r : playScene.getRocas()) {
                 if(r.getRoca()==null){
-                    playScene.getRocas().remove(r);
+                    Gravedad.sleeping(25);
+                    //playScene.getRocas().remove(r);
                     System.out.println("removido nullo");
                     break;
                 }
@@ -33,6 +34,7 @@ public class hiloRocas extends Thread {
                     Player.setDaño(5);
                     //System.out.println("next element");
                     System.out.println(Player.getVida());
+                    Player.enemigos++;
                     break;
 
 

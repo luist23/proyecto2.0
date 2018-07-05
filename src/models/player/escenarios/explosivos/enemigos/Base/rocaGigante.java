@@ -169,6 +169,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
     @Override
     public void setDaño(int daño){
         totalVida-=daño;
+
         if(totalVida<0){
             desactivar();
 
@@ -179,10 +180,12 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected void desactivar(){
         vida=false;
         roca.setImage(null);
+        Gravedad.sleeping(1000);
         try{
         for (roca r:playScene.getRocas()){
             if(r==this){
                 playScene.getRocas().remove(this);
+                Player.enemigos++;
                 break;
             }
         }}catch (Exception e){

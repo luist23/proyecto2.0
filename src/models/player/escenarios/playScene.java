@@ -123,12 +123,18 @@ public class playScene extends Scene {
 
                 if(input.iszPressed()) {
                     Gravedad.sleeping(25);
-                    new holyGranade(new granadaUno());
+                    if(player.granadasEnPocesion>0) {
+                        player.granadasEnPocesion--;
+                        new holyGranade(new granadaUno());
+
+                    }
 
                 }
                 if(input.isxPressed()) {
                     Gravedad.sleeping(50);
-                    rocas.add(new bombaOMB(new rocaUno()));
+                    if(player.enemigos>1){
+                        player.enemigos--;
+                    rocas.add(new bombaOMB(new rocaUno()));}
 
                 }
                 /*
