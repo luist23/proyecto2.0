@@ -180,8 +180,9 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected void desactivar(){
         vida=false;
         roca.setImage(null);
-        Gravedad.sleeping(1000);
-        try{
+        //Gravedad.sleeping(1000);
+        Player.enemigos++;
+        /*try{
         for (roca r:playScene.getRocas()){
             if(r==this){
                 playScene.getRocas().remove(this);
@@ -190,7 +191,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
             }
         }}catch (Exception e){
             System.out.println("error en desactivacion");
-        }
+        }*/
 
 
     }

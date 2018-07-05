@@ -11,6 +11,8 @@ import models.player.PlayerRick.Player;
 import models.player.escenarios.explosivos.enemigos.Base.roca;
 import models.player.escenarios.playScene;
 
+import java.util.ArrayList;
+
 public abstract class granada1 <T>implements granada <T>{
     protected String[] granadaEfecto;
     protected ImageView granada;
@@ -127,13 +129,29 @@ public abstract class granada1 <T>implements granada <T>{
 
     @Override
     public void destruir() {
+        granada.setFitHeight(dimensione[0]*3);
+        granada.setLayoutY(granada.getLayoutY()-dimensione[0]*2);
+        granada.setLayoutX(granada.getLayoutX()-dimensione[0]);
+        ArrayList<roca> destruidos=new ArrayList<>();
         try {
             for (roca r : playScene.getRocas()) {
                 if (Gravedad.overlapingImageView(r.getRoca(), granada)) {
-                    r.setDaño(daño);
+                    destruidos.add(r);
+                    r.getRoca().setLayoutY(-75);
+                    //r.setDaño(daño);
                     //Gravedad.sleeping(15);
                 }
+
             }
+
+            for(roca d:destruidos){
+                //System.out.printf("por aqui");
+                playScene.getRocas().remove(d);
+
+                d.setDaño(daño);
+
+            }
+            destruidos.clear();
             if (Gravedad.overlapingImageView(granada, Player.getPlayer())) {
                 Player.setDaño(daño);
             }
