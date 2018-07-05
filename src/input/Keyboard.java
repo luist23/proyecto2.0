@@ -92,8 +92,8 @@ public class Keyboard {
 			aPressed.set(true);
 		}
 		if (event.getCode() == KeyCode.SPACE) {
-			Gravedad.sleeping(15);
-			//spacePressed.set(true);
+			//Gravedad.sleeping(15);
+			spacePressed.set(true);
 			//presing=false;
 		}
 		if (event.getCode() == KeyCode.Z ) {

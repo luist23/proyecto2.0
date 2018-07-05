@@ -159,7 +159,11 @@ public abstract class granada1 <T>implements granada <T>{
             System.out.println("error en revision de enemigos");
 
         }
-
+        finally {
+            Gravedad.sleeping(1100);
+            granada.setImage(null);
+            granada.setLayoutY(-100);
+        }
     }
 
 
