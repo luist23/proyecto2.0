@@ -15,11 +15,9 @@ public class holyGranade  extends granada1<granadaUno> {
         granadaBase=granda;
         granadaEfecto=granadaBase.getVisual();
         dimensione=granadaBase.getDimension();
-        implosion=new Media(this.getClass().getResource(granadaBase.getAudio()[1]).toExternalForm());
-        implosionFinal=new Media(this.getClass().getResource(granadaBase.getAudio()[0]).toExternalForm());
+        implosion=new Media(this.getClass().getResource(granadaBase.getAudio()[0]).toExternalForm());
+        implosionFinal=new Media(this.getClass().getResource(granadaBase.getAudio()[1]).toExternalForm());
         daño=granadaBase.getDaño();
-
-
         inicializar();
     }
     @Override

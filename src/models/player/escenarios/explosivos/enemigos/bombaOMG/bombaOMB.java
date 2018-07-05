@@ -1,6 +1,7 @@
 package models.player.escenarios.explosivos.enemigos.bombaOMG;
 
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
 import models.player.escenarios.explosivos.enemigos.Base.rocaGigante;
 
 /**
@@ -23,6 +24,7 @@ public class bombaOMB extends rocaGigante <rocaUno> {
         rocaEfecto =gran.getVisual();
         roca.setFitHeight(gran.getDimension()[0]);
         dimensione=gran.getDimension();
+        implosionFinal=new Media(this.getClass().getResource(gran.getAudio()[0]).toExternalForm());
     }
 
 }

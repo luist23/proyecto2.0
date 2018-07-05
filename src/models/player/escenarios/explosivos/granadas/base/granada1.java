@@ -34,6 +34,8 @@ public abstract class granada1 <T>implements granada <T>{
         granada.setLayoutY(Player.getPlayer().getLayoutY());
         granada.setFitHeight(dimensione[0]);
         granada.setPreserveRatio(true);
+        playerFinal=new MediaPlayer(implosionFinal);
+        player=new MediaPlayer(implosion);
         activar();
 
 
@@ -121,7 +123,6 @@ public abstract class granada1 <T>implements granada <T>{
 
     @Override
     public boolean explosion(int i){
-        //System.out.println(i);
        return explotar(i);
     }
 
@@ -138,16 +139,12 @@ public abstract class granada1 <T>implements granada <T>{
                 if (Gravedad.overlapingImageView(r.getRoca(), granada)) {
                     destruidos.add(r);
                     r.getRoca().setLayoutY(-75);
-                    //r.setDaño(daño);
-                    //Gravedad.sleeping(15);
                 }
 
             }
 
             for(roca d:destruidos){
-                //System.out.printf("por aqui");
                 playScene.getRocas().remove(d);
-
                 d.setDaño(daño);
 
             }

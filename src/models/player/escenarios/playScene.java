@@ -57,7 +57,7 @@ public class playScene extends Scene {
         a.setImage(new Image(GameValues.getInstance().getClass().getResource("fondoPrueba.jpg").toExternalForm()));
         a.setFitHeight(GameValues.dimension[1]);
         a.setFitWidth(GameValues.dimension[0]);
-        a.setPreserveRatio(true);
+        a.setPreserveRatio(false);
         a.setLayoutX(0);a.setLayoutY(0);
 
 

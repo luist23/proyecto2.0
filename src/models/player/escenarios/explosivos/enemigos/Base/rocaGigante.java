@@ -22,8 +22,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected T gran;
     protected ImageView roca;
     protected int[] dimensione;
-    protected Media implosionFinal=new Media(this.getClass().getResource("explosion3.WAV").toExternalForm());
-    protected MediaPlayer playerFinal=new MediaPlayer(implosionFinal);
+    protected Media implosionFinal;
+    protected MediaPlayer playerFinal;
     protected int iterador=1;
     private int[] azar={1,-1,1,-1,-1};
 
@@ -49,7 +49,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
 
         roca.setLayoutX(20);
         roca.setLayoutY(23);
-
+        playerFinal=new MediaPlayer(implosionFinal);
 
         roca.setPreserveRatio(true);
         activar();
@@ -76,10 +76,10 @@ public abstract class rocaGigante <T>implements  roca <T>{
 
         uno = new Thread(()->{
             int direccionRoca= GameValues.direccion;
-            int tiempoExplosion=1;
-            boolean explosion=true;
+            //int tiempoExplosion=1;
+            //boolean explosion=true;
             int dimension=GameValues.dimension[0] - dimensione[1];
-            int cambiardireccion=1;
+            //int cambiardireccion=1;
             while(roca!=null && vida){
                 Gravedad.sleeping(15);
 
@@ -136,9 +136,6 @@ public abstract class rocaGigante <T>implements  roca <T>{
         });
         Thread dos=new Thread(()->{
 
-
-
-
         });
         uno.setDaemon(true);
         //thread.start();
@@ -157,9 +154,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
         Gravedad.sleeping(10);
         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[2]).toExternalForm()));
             playerFinal.play();
-
         Gravedad.sleeping(1400);
-
         roca.setImage(null);
     });
     explosion.setDaemon(true);
@@ -176,10 +171,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
     @Override
     public void setDaño(int daño){
         totalVida-=daño;
-
         if(totalVida<0){
             desactivar();
-
         }
     }
 
@@ -187,20 +180,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected void desactivar(){
         vida=false;
         roca.setImage(null);
-        //Gravedad.sleeping(1000);
         Player.enemigos++;
-        /*try{
-        for (roca r:playScene.getRocas()){
-            if(r==this){
-                playScene.getRocas().remove(this);
-                Player.enemigos++;
-                break;
-            }
-        }}catch (Exception e){
-            System.out.println("error en desactivacion");
-        }*/
-
-
     }
 
 

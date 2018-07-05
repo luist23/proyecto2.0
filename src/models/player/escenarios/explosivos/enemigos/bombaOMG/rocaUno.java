@@ -7,6 +7,7 @@ public class rocaUno {
     public static String[] fases;
     private int[] dimension={50,50};
     private String[] visual={"bombaOmbDerecha.gif","bombaOmb.gif","granadaDivinaExplocion.gif"};
+    private String[] audio={"explosion3.WAV"};
 
 
     public String[] getVisual() {
@@ -16,4 +17,6 @@ public class rocaUno {
     public int[] getDimension() {
         return dimension;
     }
+
+    public String[] getAudio() {  return audio;    }
 }
