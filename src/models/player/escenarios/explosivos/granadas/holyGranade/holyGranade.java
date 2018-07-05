@@ -37,8 +37,6 @@ public class holyGranade  extends granada1<granadaUno> {
             playerFinal.play();
             granada.setImage(new Image(this.getClass().getResource(granadaEfecto[2]).toExternalForm()));
             destruir();
-            Gravedad.sleeping(1100);
-            granada.setImage(null);
             return false;
         }
         return true;

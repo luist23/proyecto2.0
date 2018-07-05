@@ -12,6 +12,8 @@ public class Player {
     private static Pane root;
     public static boolean salto=true;
     private static int vida;
+    public static int enemigos=15;
+    public static int granadasEnPocesion=5;
 
 
 
