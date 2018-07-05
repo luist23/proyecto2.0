@@ -14,7 +14,7 @@ public class hiloRocas extends Thread {
 
     public void run(){
     while (true) {
-        while(stop){
+        while(Gravedad.stop){
 
         if(true){
             for (roca r : playScene.getRocas()) {
@@ -43,6 +43,7 @@ public class hiloRocas extends Thread {
     Gravedad.sleeping(1000);
     }}
 
+    /*
     public boolean isStop() {
         return stop;
     }
@@ -57,6 +58,6 @@ public class hiloRocas extends Thread {
         for(roca r:playScene.getRocas()){
             r.resume();
         }
-    }
+    }*/
 }
 

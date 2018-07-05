@@ -60,7 +60,9 @@ public abstract class granada1 <T>implements granada <T>{
             }
             int tiempoExplosion=1;
             boolean explosion=true;
-            while(Gravedad.efectoGravedad(granada)){
+
+            while(explosion){
+            while(Gravedad.efectoGravedad(granada) && Gravedad.stop){
 
                 if((GameValues.dimension[1] - dimensione[1]-5) > granada.getLayoutY() || Gravedad.efectoGravedad(granada)){
 
@@ -95,12 +97,18 @@ public abstract class granada1 <T>implements granada <T>{
         }
 
 
-            while (explosion) {
+            while (explosion && Gravedad.stop) {
                 Gravedad.sleeping(25);
+
                 tiempoExplosion++;
                 if (tiempoExplosion>40){
                     if(!explosion(tiempoExplosion))
+                        explosion=false;
                         break;}
+
+            }
+            if(!Gravedad.stop){
+            Gravedad.sleeping(1000);}
 
             }
 

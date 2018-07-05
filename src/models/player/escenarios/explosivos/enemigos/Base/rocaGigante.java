@@ -84,8 +84,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
             //int cambiardireccion=1;
 
             while (vida){
-                while(stop){
-            while(roca!=null && vida && stop){
+                while(Gravedad.stop && vida){
+            while(roca!=null && vida && Gravedad.stop){
 
                 Gravedad.sleeping(15);
 
@@ -191,6 +191,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
         Player.enemigos++;
     }
 
+    /*
     @Override
     public  void pausar(){
         stop=false;
@@ -198,7 +199,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
     @Override
     public  void resume(){
         stop=true;
-    }
+    }*/
 
 
 }

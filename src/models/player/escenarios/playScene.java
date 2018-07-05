@@ -140,12 +140,10 @@ public class playScene extends Scene {
                 }
                 if (input.isEscPressed()){
                     Gravedad.sleeping(50);
-                    if(g.getStop()){
-                        g.pausar();
-                        rocashilo.pausar();
+                    if(Gravedad.stop){
+                        Gravedad.stop=false;
                     }else{
-                        g.resumir();
-                        rocashilo.resumir();
+                        Gravedad.stop=true;
                     }
                 }
                 if(input.isxPressed()) {

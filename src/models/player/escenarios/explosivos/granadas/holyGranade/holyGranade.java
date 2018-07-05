@@ -26,6 +26,7 @@ public class holyGranade  extends granada1<granadaUno> {
 
     @Override
     protected boolean explotar(int i) {
+        //System.out.println(i);
         if(i==41){
             granada.setImage(new Image(this.getClass().getResource(granadaEfecto[1]).toExternalForm()));}
         if(i==120)

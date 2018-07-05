@@ -17,7 +17,7 @@ public class Gravedad <PlayerValuesRick> extends Thread {
     private boolean efecto;
     private PlayerValuesRick values;
     private String[] posicionFinal;
-    private static boolean stop=true;
+    public static boolean stop=true;
     private boolean pausar=true;
 
     public Gravedad(ImageView player,PlayerValuesRick values){
@@ -129,6 +129,7 @@ public class Gravedad <PlayerValuesRick> extends Thread {
         stop=stope;
     }
 
+    /*
     public void pausar(){
         stop=false;
 
@@ -139,7 +140,7 @@ public class Gravedad <PlayerValuesRick> extends Thread {
     }
     public Boolean getStop(){
         return stop;
-    }
+    }*/
 
 
 }
