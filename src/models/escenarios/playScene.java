@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
+import models.players.Player1;
 import models.players.PlayerRick.Player;
 import models.players.PlayerRick.PlayerValuesRick;
 import models.controladores.gravedadAumentada;
@@ -22,12 +23,13 @@ import models.elementos.explosivos.enemigos.controlador.hiloRocas;
 import models.elementos.explosivos.granadas.holyGranade.holyGranadeDatos;
 import models.elementos.explosivos.granadas.holyGranade.holyGranade;
 import models.elementos.peldannos.Peldanno;
+import models.players.Players;
 
 import java.util.ArrayList;
 
 public class playScene extends Scene {
     private Player player;
-    private PlayerValuesRick values;
+    private Players values;
     private Gravedad g;
     private static ArrayList<Peldanno> peldannos;
     private static ArrayList<roca> rocas;
@@ -42,7 +44,7 @@ public class playScene extends Scene {
         peldannos=new ArrayList<>();
         rocas =new ArrayList<>();
         player=Player.getInstance();
-        values=PlayerValuesRick.getInstance();
+        values= Player.getPlayerBase();
 
         primaryStage.setScene(this);
         content();
@@ -100,11 +102,11 @@ public class playScene extends Scene {
             @Override
             public void handle(long timestamp) {
                 if (input.isaPressed()){
-                    pasoIzquierda(values.pasoIzquierda,values.izquierda);
+                    pasoIzquierda(values.getPasoIzquierda(),values.getIzquierda());
                 }
                 if(input.isdPressed()) {
                     //input.update();
-                    pasoderecha(values.pasoDerecha, values.derecha);
+                    pasoderecha(values.getPasoDerecha(), values.getDerecha());
                 }
                 if(input.iswPressed()){
                     player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()-10);
@@ -114,7 +116,7 @@ public class playScene extends Scene {
                 }
                 if(input.isSpacePressed()) {
                     Gravedad.sleeping(25);
-                    salto(values.saltoDerecha, 1, values.derecha);
+                    salto(values.getSaltoDerecha(), 1, values.getDerecha());
 
                 }
 
@@ -166,7 +168,7 @@ public class playScene extends Scene {
             input.keyPressed(event);
         });
 
-        if(false){
+        /*if(false){
         //----------------------Definiendo eventos-----------------------
         this.addEventFilter(KeyEvent.KEY_PRESSED,new EventHandler<KeyEvent>(){
             public void handle(KeyEvent ke){
@@ -191,17 +193,7 @@ public class playScene extends Scene {
                 else if(ke.getCode()==KeyCode.N){
                     salto(values.saltoIzquierda,-1,values.izquierda);
                 }
-                /*else if(ke.getCode()==KeyCode.E) {
-                    salto(values.saltoDerecha, 1, values.derecha);
-                    pasoderecha(values.pasoDerecha, values.derecha);
-                }*/
-                /*else if(ke.getCode()==KeyCode.SPACE) {
-                    if (playering.getStatus().equals(PLAYING))
-                    playering.pause();
-                    else
-                        playering.play();
 
-                }*/
                 else if(ke.getCode()==KeyCode.Z) {
                     new holyGranade(new holyGranadeDatos());
                 }
@@ -218,7 +210,7 @@ public class playScene extends Scene {
                 }
             }
 
-        });}
+        });}*/
         setGravedad();//------------inicienado efecto de gravedad------------
 
     }
@@ -299,7 +291,7 @@ public class playScene extends Scene {
             }
         }else{
             if(player.getPlayer().getLayoutX()>GameValues.dimension[0]){
-                Platform.runLater(() -> player.getPlayer().setLayoutX(GameValues.dimension[0]-values.sizePlayer[0]));
+                Platform.runLater(() -> player.getPlayer().setLayoutX(GameValues.dimension[0]-values.getSizePlayer()[0]));
             }else{
                 Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() +
                         (PlayerValuesRick.distanciaPaso*discriminante)));
@@ -311,11 +303,11 @@ public class playScene extends Scene {
         GameValues.direccion=1;
         player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
 
-        if(player.getPlayer().getLayoutX()>GameValues.dimension[0]-values.sizePlayer[0]){
-            Platform.runLater(() -> player.getPlayer().setLayoutX(GameValues.dimension[0]-values.sizePlayer[0]));
+        if(player.getPlayer().getLayoutX()>GameValues.dimension[0]-values.getSizePlayer()[0]){
+            Platform.runLater(() -> player.getPlayer().setLayoutX(GameValues.dimension[0]-values.getSizePlayer()[0]));
         }else{
             Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() +
-                    values.distanciaPaso));
+                    values.getDistanciaPaso()));
         }
         g.setPosicionFinal(posicionfinal);
 
@@ -329,7 +321,7 @@ public class playScene extends Scene {
             Platform.runLater(() -> player.getPlayer().setLayoutX(0));
         }else{
             Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() -
-                    values.distanciaPaso));
+                    values.getDistanciaPaso()));
         }
         g.setPosicionFinal(posicionfinal);
 
@@ -344,7 +336,7 @@ public class playScene extends Scene {
     public void setGravedad(){
         g=new Gravedad(player.getPlayer(),values);
         GameValues.setGravedadThread(g);
-        g.setPosicionFinal(values.derecha);
+        g.setPosicionFinal(values.getDerecha());
 
         g2=new gravedadAumentada();
         rocashilo=new hiloRocas();
@@ -376,8 +368,8 @@ public class playScene extends Scene {
             if (player.getPlayer().getLayoutX() < 0 ) {
                 player.getPlayer().setLayoutX(0);
                 break;
-            } else if (player.getPlayer().getLayoutX()>GameValues.dimension[0]-values.sizePlayer[0] ){
-                player.getPlayer().setLayoutX(GameValues.dimension[0]-values.sizePlayer[0]);
+            } else if (player.getPlayer().getLayoutX()>GameValues.dimension[0]-values.getSizePlayer()[0] ){
+                player.getPlayer().setLayoutX(GameValues.dimension[0]-values.getSizePlayer()[0]);
                 break;
 
             }
