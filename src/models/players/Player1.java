@@ -17,7 +17,7 @@ import models.escenarios.sceneFactory;
 import static java.lang.Thread.sleep;
 import static javafx.application.Application.launch;
 
-public class Player1  extends Application implements Players <PlayerValuesRick> {
+public class Player1  extends Application /*implements Players <PlayerValuesRick>*/ {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
