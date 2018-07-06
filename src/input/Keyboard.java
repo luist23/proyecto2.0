@@ -4,13 +4,8 @@ import javafx.animation.AnimationTimer;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.Event;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import models.player.PlayerRick.Gravedad;
-
-
-import java.awt.event.KeyListener;
 
 public class Keyboard {
 
