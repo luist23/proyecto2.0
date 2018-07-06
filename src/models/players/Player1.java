@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.players.PlayerRick.Player;
-import models.players.PlayerRick.PlayerValuesRick;
 import models.escenarios.ScenesType;
 import models.escenarios.scenariosValues;
 import models.escenarios.sceneFactory;

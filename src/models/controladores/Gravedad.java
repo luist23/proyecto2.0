@@ -6,21 +6,22 @@ import javafx.scene.image.ImageView;
 import models.players.PlayerRick.Player;
 import models.escenarios.playScene;
 import models.elementos.peldannos.Peldanno;
+import models.players.Players;
 
 
 import java.util.ArrayList;
 
-public class Gravedad <PlayerValuesRick> extends Thread {
+public class Gravedad  extends Thread {
     private ImageView player;
     private ArrayList<ImageView> bombas;
     private ArrayList<ImageView> peldanho;
     private boolean efecto;
-    private PlayerValuesRick values;
+    private Players values;
     private String[] posicionFinal;
     public static boolean stop=true;
     private boolean pausar=true;
 
-    public Gravedad(ImageView player,PlayerValuesRick values){
+    public Gravedad(ImageView player,Players values){
 
         this.player=player;
         this.values=values;
@@ -72,7 +73,7 @@ public class Gravedad <PlayerValuesRick> extends Thread {
         while(efectoGravedad(Player.getPlayer()) && stop){
 
 
-            if((GameValues.dimension[1] - models.players.PlayerRick.PlayerValuesRick.sizePlayer[1]) > player.getLayoutY()){
+            if((GameValues.dimension[1] - values.getSizePlayer()[1]) > player.getLayoutY()){
             Platform.runLater(() -> player.setLayoutY(player.getLayoutY() +
                    5));
 
@@ -122,6 +123,8 @@ public class Gravedad <PlayerValuesRick> extends Thread {
     }
 
     public static boolean overlapingImageView(ImageView imagen,ImageView elemento){
+
+        imagen.getBoundsInParent().intersects(elemento.getBoundsInParent());
         return imagen.getBoundsInParent().intersects(elemento.getBoundsInParent());
     }
 

@@ -15,6 +15,10 @@ public class Player {
     public static int enemigos=15;
     public static int granadasEnPocesion=5;
     private static Players playerBase;
+    public static boolean action=true;
+    public static int pasosTotales=4;
+    public static int tiempoPaso=300;
+    public static int distanciaPaso=5;
 
 
     private Player() {}

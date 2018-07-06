@@ -1,5 +1,6 @@
 package models.escenarios;
 
+import com.sun.javafx.geom.BoxBounds;
 import input.Keyboard;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -14,7 +15,6 @@ import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.players.Player1;
 import models.players.PlayerRick.Player;
-import models.players.PlayerRick.PlayerValuesRick;
 import models.controladores.gravedadAumentada;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMB;
@@ -62,6 +62,7 @@ public class playScene extends Scene {
         a.setFitWidth(GameValues.dimension[0]);
         a.setPreserveRatio(false);
         a.setLayoutX(0);a.setLayoutY(0);
+
 
 
         //VideoTrack videoprueba;
@@ -256,9 +257,9 @@ public class playScene extends Scene {
 
     public void avanzarJugador(String[] pasos, int discriminante, String[] posicionfinal) {
 
-        if (PlayerValuesRick.action) { PlayerValuesRick.action=false;
+        if (Player.action) { Player.action=false;
             Thread thread2 = new Thread(() -> {
-                for (int j = 0; j < PlayerValuesRick.pasosTotales; j++) {
+                for (int j = 0; j < Player.pasosTotales; j++) {
 
                     player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[j]).toExternalForm()));
 
@@ -266,11 +267,11 @@ public class playScene extends Scene {
                     paso(pasos,discriminante,posicionfinal);
 
 
-                    try { Thread.sleep(PlayerValuesRick.tiempoPaso / PlayerValuesRick.pasosTotales);} catch (InterruptedException e) {e.printStackTrace();}
+                    try { Thread.sleep(Player.tiempoPaso / Player.pasosTotales);} catch (InterruptedException e) {e.printStackTrace();}
                 }
                 //imageView.setImage(new Image(values.getClass().getResource(posicionfinal[0]).toExternalForm()));
                 g.setPosicionFinal(posicionfinal);
-                PlayerValuesRick.action=true;
+                Player.action=true;
             }); thread2.setDaemon(true); thread2.start();
         }else{
             paso(pasos,discriminante,posicionfinal);
@@ -287,14 +288,14 @@ public class playScene extends Scene {
                 Platform.runLater(() -> player.getPlayer().setLayoutX(0));
             }else{
                 Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() +
-                        (PlayerValuesRick.distanciaPaso*discriminante)));
+                        (Player.distanciaPaso*discriminante)));
             }
         }else{
             if(player.getPlayer().getLayoutX()>GameValues.dimension[0]){
                 Platform.runLater(() -> player.getPlayer().setLayoutX(GameValues.dimension[0]-values.getSizePlayer()[0]));
             }else{
                 Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() +
-                        (PlayerValuesRick.distanciaPaso*discriminante)));
+                        (Player.distanciaPaso*discriminante)));
             }
         }
     }

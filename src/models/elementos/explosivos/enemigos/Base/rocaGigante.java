@@ -1,13 +1,21 @@
 package models.elementos.explosivos.enemigos.Base;
 
 import javafx.application.Platform;
+import javafx.scene.control.Label;
+import javafx.scene.control.OverrunStyle;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Box;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.players.PlayerRick.Player;
+import sun.swing.plaf.synth.Paint9Painter;
 
 /**
  * Created by LuisT23 on 2/7/2018.
@@ -26,6 +34,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected int iterador=1;
     private int[] azar={1,-1,1,-1,-1};
     private  Boolean stop=true;
+    //private Label lebel=new Label();
+
 
 
     public int aleatorio(){
@@ -69,13 +79,31 @@ public abstract class rocaGigante <T>implements  roca <T>{
 
     @Override
     public void activar() {
+
+
+
         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[0]).toExternalForm()));
         Player.getRoot().getChildren().addAll(roca);
+
+        /*lebel.setPrefSize(25,25);
+        lebel.setText(String.valueOf(totalVida));
+        lebel.setLayoutX(20);
+
+        lebel.setLayoutY(23);
+        lebel.setTextFill(Paint.valueOf("RED"));
+        //lebel.setFont(Font);
+        lebel.setPrefSize(45,45);
+        */
+        //Player.getRoot().getChildren().add(lebel);
+
+
 
 
 
 
         uno = new Thread(()->{
+
+
 
             int direccionRoca= GameValues.direccion;
             //int tiempoExplosion=1;
@@ -93,8 +121,10 @@ public abstract class rocaGigante <T>implements  roca <T>{
                 int direccionRocafinal=direccionRoca;
                 Platform.runLater(() -> {
                     roca.setLayoutX(roca.getLayoutX() + (direccionRocafinal * 5));
-                    if(roca.getLayoutX()<0){roca.setLayoutX(5);}
-                    if(roca.getLayoutX()>dimension)roca.setLayoutX(dimension-5);
+                    if(roca.getLayoutX()<0){roca.setLayoutX(5);//;lebel.setLayoutX(roca.getLayoutX());
+                         }
+                    if(roca.getLayoutX()>dimension){roca.setLayoutX(dimension-5);//lebel.setLayoutX(roca.getLayoutX());
+                    }
                 });
 
                 //}
@@ -108,9 +138,14 @@ public abstract class rocaGigante <T>implements  roca <T>{
                     else{
                         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[1]).toExternalForm()));
                     }
-                roca.setLayoutX(roca.getLayoutX() + (direccionRoca * 5));
+                    roca.setLayoutX(roca.getLayoutX() + (direccionRoca * 5));
+
+                    //System.out.println(lebel.getLayoutX());
 
             }
+                //lebel.setLayoutY(roca.getLayoutY());
+                Gravedad.sleeping(5);
+                //lebel.setLayoutX(roca.getLayoutX());
                 Gravedad.sleeping(5);
 
             if(Gravedad.efectoGravedad(roca) && vida){
@@ -119,6 +154,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
 
                     Platform.runLater(() -> roca.setLayoutY(roca.getLayoutY() +
                             5));
+                    //lebel.setLayoutY(roca.getLayoutY());
                     //System.out.println(cambiardireccion);
                     iterador++;
                 }
@@ -135,6 +171,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
                         }
                     }
                 }
+                //lebel.setLayoutX(roca.getLayoutX());
+                //lebel.setLayoutY(roca.getLayoutY());
 
 
 
@@ -163,6 +201,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[2]).toExternalForm()));
             playerFinal.play();
         Gravedad.sleeping(1400);
+        //lebel.setText(String.valueOf(totalVida));
         roca.setImage(null);
     });
     explosion.setDaemon(true);
