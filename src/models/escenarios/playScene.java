@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
+import models.elementos.peldannos.controlador.peldannoMaster;
 import models.players.Player1;
 import models.players.PlayerRick.Player;
 import models.controladores.gravedadAumentada;
@@ -36,6 +37,7 @@ public class playScene extends Scene {
     private gravedadAumentada g2;
     private hiloRocas rocashilo;
     private Keyboard input;
+    private Boolean saltarin=true;
 
 
     public playScene( double width, double height, Stage primaryStage) {
@@ -85,16 +87,7 @@ public class playScene extends Scene {
         player.getRoot().getChildren().addAll(a,player.getPlayer());
 
 
-        peldannos.add(new Peldanno(0,300));
-        peldannos.add(new Peldanno(600,400));
-        peldannos.add(new Peldanno(230,500));
-        peldannos.add(new Peldanno(190,900));
-        peldannos.add(new Peldanno(700,600));
-        peldannos.add(new Peldanno(80,600));
-        peldannos.add(new Peldanno(290,500));
-        peldannos.add(new Peldanno(700,250));
-        peldannos.add(new Peldanno(600,200));
-        peldannos.add(new Peldanno(0,GameValues.dimension[1]-25));
+        peldannoMaster.iniciar();
 
         //input.update();
 
@@ -116,8 +109,8 @@ public class playScene extends Scene {
                     player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
                 }
                 if(input.isSpacePressed()) {
-                    Gravedad.sleeping(25);
-                    salto(values.getSaltoDerecha(), 1, values.getDerecha());
+                    //Gravedad.sleeping(50);
+                    saltin(values.getSaltoDerecha(), 1, values.getDerecha());
 
                 }
 
@@ -221,9 +214,6 @@ public class playScene extends Scene {
     private void salto(String[] pasos, int discriminante, String[] posicionFinal) {
         if (GameValues.permitirSalto){
             GameValues.permitirSalto=false;
-
-
-
                 //Movimiento en Y
                 Thread thread2 = new Thread(()->{
                     player.salto=false;
@@ -231,9 +221,17 @@ public class playScene extends Scene {
                     for (int j =1;j<13;j++){
                         GameValues.permitirSalto=false;
 
-                        Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));
+                        if(!Gravedad.efectoGravedad(Player.getPlayer())&& j>4){
+                            Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 35));
+                            break;
+                        }
+                        else{Platform.runLater(() -> player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 15));}
                         Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() + (5*GameValues.direccion)));
-                        Gravedad.sleeping(25);
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         //}
                     }//GameValues.gravedad=true;
 
@@ -254,7 +252,21 @@ public class playScene extends Scene {
     }
 
 
+    public void saltin(String[] pasos, int discriminante, String[] posicionFinal){
+        if(saltarin){
+            saltarin=false;
+            Thread temp=new Thread(()->{
+                try {
+                    salto(pasos,discriminante,posicionFinal);
+                    Thread.sleep(200);
+                    saltarin=true;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
+            });
+            temp.start();
+    }}
     public void avanzarJugador(String[] pasos, int discriminante, String[] posicionfinal) {
 
         if (Player.action) { Player.action=false;
@@ -279,7 +291,6 @@ public class playScene extends Scene {
         }
 
     }
-
     private void paso(String[] pasos, int discriminante, String[] posicionfinal){
 
         //moviendo jugador derecha o izquierda
@@ -299,7 +310,6 @@ public class playScene extends Scene {
             }
         }
     }
-
     public void pasoderecha(String[] pasos, String[] posicionfinal){
         GameValues.direccion=1;
         player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
@@ -313,7 +323,6 @@ public class playScene extends Scene {
         g.setPosicionFinal(posicionfinal);
 
     }
-
     public void pasoIzquierda(String[] pasos, String[] posicionfinal){
         GameValues.direccion=-1;
         player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
@@ -327,13 +336,10 @@ public class playScene extends Scene {
         g.setPosicionFinal(posicionfinal);
 
     }
-
-
     public void overlaping(){
         //if(imageView.getBoundsInParent().intersects(imageView2.getBoundsInParent()))
             System.out.println("overlapping :v");
     }
-
     public void setGravedad(){
         g=new Gravedad(player.getPlayer(),values);
         GameValues.setGravedadThread(g);
@@ -350,14 +356,12 @@ public class playScene extends Scene {
             e.printStackTrace();
         }
     }
-
     public static ArrayList<Peldanno> getPeldannos(){
         return peldannos;
     }
     public static ArrayList<roca> getRocas(){
         return rocas;
     }
-
     public void slash(int direccion){
         GameValues.direccion=1;
         //players.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
