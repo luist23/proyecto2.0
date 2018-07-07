@@ -55,6 +55,7 @@ public abstract class jefeBase implements Jefe {
                 habilidadAc++;
                 if(habilidadAc>7){
                     try {
+
                     habilidad.setLayoutX(jefe.getLayoutX()-250);
                         Thread.sleep(150);
                     if(habilidad.getBoundsInParent().intersects(Player.getPlayer().getBoundsInParent())){
