@@ -7,10 +7,10 @@ import models.elementos.explosivos.enemigos.Base.rocaGigante;
 /**
  * Created by LuisT23 on 4/7/2018.
  */
-public class bombaOMB extends rocaGigante <rocaUno> {
-    //private rocaUno gran;
+public class bombaOMB extends rocaGigante <bombaOMBdatos> {
+    //private bombaOMBdatos gran;
 
-    public bombaOMB(rocaUno roca){
+    public bombaOMB(bombaOMBdatos roca){
         //super();
         this.roca= new ImageView();
         gran=roca;

@@ -31,6 +31,7 @@ public class Player {
             player.setFitWidth(playerBase.getSizePlayer()[1]);
             player.setPreserveRatio(true);
             root=new Pane();
+            root.setMinSize(playerBase.getSizePlayer()[0],playerBase.getSizePlayer()[1]*5);
             vida=23;
             jugador();
 

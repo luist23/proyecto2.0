@@ -1,25 +1,22 @@
 package models.escenarios;
 
-import com.sun.javafx.geom.BoxBounds;
 import input.Keyboard;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
+import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
 import models.elementos.peldannos.controlador.peldannoMaster;
 import models.players.Player1;
 import models.players.PlayerRick.Player;
 import models.controladores.gravedadAumentada;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMB;
-import models.elementos.explosivos.enemigos.bombaOMG.rocaUno;
 import models.elementos.explosivos.enemigos.controlador.hiloRocas;
 import models.elementos.explosivos.granadas.holyGranade.holyGranadeDatos;
 import models.elementos.explosivos.granadas.holyGranade.holyGranade;
@@ -38,6 +35,8 @@ public class playScene extends Scene {
     private hiloRocas rocashilo;
     private Keyboard input;
     private Boolean saltarin=true;
+    private ImageView fondo=new ImageView();
+
 
 
     public playScene( double width, double height, Stage primaryStage) {
@@ -48,6 +47,7 @@ public class playScene extends Scene {
         player=Player.getInstance();
         values= Player.getPlayerBase();
 
+
         primaryStage.setScene(this);
         content();
 
@@ -56,14 +56,27 @@ public class playScene extends Scene {
     public void content(){
 
         //probando un fondo
-        ImageView a=new ImageView();
 
 
-        a.setImage(new Image(GameValues.getInstance().getClass().getResource("fondoPrueba.jpg").toExternalForm()));
-        a.setFitHeight(GameValues.dimension[1]);
-        a.setFitWidth(GameValues.dimension[0]);
-        a.setPreserveRatio(false);
-        a.setLayoutX(0);a.setLayoutY(0);
+
+        fondo.setImage(new Image(GameValues.getInstance().getClass().getResource("fondoPrueba.jpg").toExternalForm()));
+        fondo.setFitHeight(GameValues.dimension[1]);
+        fondo.setFitWidth(GameValues.dimension[0]);
+        fondo.setPreserveRatio(false);
+        fondo.setLayoutX(0);fondo.setLayoutY(0);
+        Thread centrarPantalla=new Thread(()->{
+            while(true){
+            while (Gravedad.stop){
+            Player.getRoot().setTranslateY(-player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);
+            fondo.setLayoutY(player.getPlayer().getLayoutY()-GameValues.dimension[1]/2);
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }}});
+        centrarPantalla.start();
 
 
 
@@ -84,7 +97,7 @@ public class playScene extends Scene {
 
 
 
-        player.getRoot().getChildren().addAll(a,player.getPlayer());
+        player.getRoot().getChildren().addAll(fondo,player.getPlayer());
 
 
         peldannoMaster.iniciar();
@@ -103,12 +116,15 @@ public class playScene extends Scene {
                     pasoderecha(values.getPasoDerecha(), values.getDerecha());
                 }
                 if(input.iswPressed()){
+
                     player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()-10);
                 }
                 if(input.issPressed()) {
+                    //Player.getRoot().setTranslateY(Player.getRoot().getTranslateY()+10);
                     player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
                 }
                 if(input.isSpacePressed()) {
+
                     //Gravedad.sleeping(50);
                     saltin(values.getSaltoDerecha(), 1, values.getDerecha());
 
@@ -143,7 +159,7 @@ public class playScene extends Scene {
                     Gravedad.sleeping(50);
                     if(player.enemigos>1){
                         player.enemigos--;
-                    rocas.add(new bombaOMB(new rocaUno()));}
+                    rocas.add(new bombaOMB(new bombaOMBdatos()));}
 
                 }
 
@@ -192,7 +208,7 @@ public class playScene extends Scene {
                     new holyGranade(new holyGranadeDatos());
                 }
                 else if(ke.getCode()==KeyCode.X) {
-                    rocas.add(new bombaOMB(new rocaUno()));
+                    rocas.add(new bombaOMB(new bombaOMBdatos()));
                 }
                 else if(ke.getCode()==KeyCode.E) {
 

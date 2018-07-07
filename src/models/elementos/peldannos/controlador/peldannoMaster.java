@@ -17,7 +17,6 @@ public class peldannoMaster {
     private peldannoMaster getInstance(){return this;}
     private static ArrayList<Peldanno> peldannos= playScene.getPeldannos();
     private static int[] posicionX={0,GameValues.dimension[0]/3,(2*GameValues.dimension[0])/3};
-
     public static int aleatorio(){
         return posicionX[(int)(Math.random()*3)];
     }
@@ -31,9 +30,16 @@ public class peldannoMaster {
 
 
         //int elseY=GameValues.dimension[1];
-        for (int i=GameValues.dimension[1];i>0;i-=120){
-            for(int k=0;k<peldan[(int)(Math.random()*11)];k++){
-                peldannos.add(new Peldanno(aleatorio(),i));
+        for (int i=GameValues.dimension[1];i>-1000;i-=120){
+            int total=peldan[(int)(Math.random()*11)];
+            for(int k=0;k<total;k++){
+                int suerte=aleatorio();
+                peldannos.add(new Peldanno(suerte,i));
+                if(total==1 && suerte==0 || total==1 && suerte==posicionX[2]){
+                    //System.out.println("rwllwnando");
+                    peldannos.add(new Peldanno(posicionX[1],i));
+                }
+
             }
 
         }

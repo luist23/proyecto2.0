@@ -17,7 +17,7 @@ import static java.lang.Thread.sleep;
 import static javafx.application.Application.launch;
 
 public class Player1  extends Application /*implements Players <PlayerValuesRick>*/ {
-    private Stage primaryStage;
+    private static Stage primaryStage;
     private BorderPane rootLayout;
 
     private ImageView imageView2;
@@ -77,6 +77,10 @@ public class Player1  extends Application /*implements Players <PlayerValuesRick
         primaryStage.show();
 
 
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 }
 
