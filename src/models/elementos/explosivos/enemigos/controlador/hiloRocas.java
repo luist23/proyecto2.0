@@ -28,6 +28,7 @@ public class hiloRocas extends Thread {
                     Gravedad.sleeping(15);
                     r.explosion();
                     Player.setDaño(5);
+
                     System.out.println(Player.getVida());
                     Player.enemigos++;
                     break;

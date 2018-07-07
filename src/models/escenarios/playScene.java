@@ -3,16 +3,18 @@ package models.escenarios;
 import input.Keyboard;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
 import models.elementos.peldannos.controlador.peldannoMaster;
-import models.players.Player1;
 import models.players.PlayerRick.Player;
 import models.controladores.gravedadAumentada;
 import models.elementos.explosivos.enemigos.Base.roca;
@@ -39,6 +41,8 @@ public class playScene extends Scene {
 
 
 
+
+
     public playScene( double width, double height, Stage primaryStage) {
 
         super(Player.getRoot(), width, height);
@@ -57,6 +61,13 @@ public class playScene extends Scene {
 
         //probando un fondo
 
+        //StringProperty a=new SimpleStringProperty(String.valueOf(player.getVida()));
+        player.textVida.setText("VIDA RESTANTE:  "+String.valueOf(player.getVida()));
+
+        player.box.getChildren().addAll(player.textVida);
+        player.box.setLayoutX(0);
+        player.box.setLayoutY(0);
+
 
 
         fondo.setImage(new Image(GameValues.getInstance().getClass().getResource("fondoPrueba.jpg").toExternalForm()));
@@ -64,11 +75,14 @@ public class playScene extends Scene {
         fondo.setFitWidth(GameValues.dimension[0]);
         fondo.setPreserveRatio(false);
         fondo.setLayoutX(0);fondo.setLayoutY(0);
+
+
         Thread centrarPantalla=new Thread(()->{
             while(true){
             while (Gravedad.stop){
             Player.getRoot().setTranslateY(-player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);
             fondo.setLayoutY(player.getPlayer().getLayoutY()-GameValues.dimension[1]/2);
+                player.box.setLayoutY(fondo.getLayoutY());
 
             try {
                 Thread.sleep(5000);
@@ -97,7 +111,7 @@ public class playScene extends Scene {
 
 
 
-        player.getRoot().getChildren().addAll(fondo,player.getPlayer());
+        player.getRoot().getChildren().addAll(fondo,player.getPlayer(),player.box);
 
 
         peldannoMaster.iniciar();

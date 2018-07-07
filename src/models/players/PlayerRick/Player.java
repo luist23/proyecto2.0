@@ -1,7 +1,12 @@
 package models.players.PlayerRick;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import models.players.Players;
 
@@ -19,12 +24,16 @@ public class Player {
     public static int pasosTotales=4;
     public static int tiempoPaso=300;
     public static int distanciaPaso=5;
+    public static TextField textVida =new TextField();
+    public static HBox box =new HBox();
 
 
     private Player() {}
     public static Player getInstance() {
         if(ourInstance==null){
             ourInstance= new Player();
+            textVida.autosize();
+            textVida.setDisable(true);
             player = new ImageView();
             playerBase=new Rick();
             player.setFitHeight(playerBase.getSizePlayer()[0]);
@@ -62,7 +71,12 @@ public class Player {
 
     public static void setDaño(int Daño) {
         System.out.println("me hirieron :´v");
-        Player.vida -= Daño;
+        vida -= Daño;
+        textVida.setText("VIDA RESTANTE:  "+String.valueOf(vida));
+       // StringProperty a=new SimpleStringProperty(String.valueOf(vida));
+        //textVida.textProperty().bind(a);
+
+
     }
 
 

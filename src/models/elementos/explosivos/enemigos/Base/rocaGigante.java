@@ -34,9 +34,9 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected int iterador=1;
     private int[] azar={1,-1,1,-1,-1};
     private  Boolean stop=true;
-    private static int[] posicionX={0, -150,-250,-350,-450,-700};
-    public static int aleatoriosY(){
-        return posicionX[(int)(Math.random()*6)];
+    private static int[] posicionX={25, GameValues.dimension[0]/3,GameValues.dimension[0]-75};
+    public static int aleatoriosX(){
+        return posicionX[(int)(Math.random()*3)];
     }
     //private Label lebel=new Label();
 
@@ -63,8 +63,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected void inicializar(){
 
 
-        roca.setLayoutX(20);
-        roca.setLayoutY(aleatoriosY());
+        roca.setLayoutX(aleatoriosX());
+        roca.setLayoutY(Player.box.getLayoutY());
         playerFinal=new MediaPlayer(implosionFinal);
 
         roca.setPreserveRatio(true);
