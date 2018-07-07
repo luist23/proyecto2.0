@@ -4,7 +4,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 
 
 /**

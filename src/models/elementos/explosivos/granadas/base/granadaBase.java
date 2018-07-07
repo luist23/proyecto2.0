@@ -8,7 +8,7 @@ import javafx.scene.media.MediaPlayer;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 import models.escenarios.playScene;
 
 import java.util.ArrayList;

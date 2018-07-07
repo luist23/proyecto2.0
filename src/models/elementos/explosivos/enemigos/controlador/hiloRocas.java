@@ -2,7 +2,7 @@ package models.elementos.explosivos.enemigos.controlador;
 
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 import models.escenarios.playScene;
 
 /**

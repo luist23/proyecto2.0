@@ -1,7 +1,7 @@
 package models.controladores;
 
 import javafx.scene.image.ImageView;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 
 import java.util.ArrayList;
 

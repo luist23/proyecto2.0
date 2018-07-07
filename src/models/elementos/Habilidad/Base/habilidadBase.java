@@ -5,7 +5,6 @@ import javafx.scene.image.ImageView;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.escenarios.playScene;
-import models.players.PlayerRick.Player;
 
 import java.util.ArrayList;
 

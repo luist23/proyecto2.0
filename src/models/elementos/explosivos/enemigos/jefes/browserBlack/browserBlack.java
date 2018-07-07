@@ -4,7 +4,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import models.controladores.GameValues;
 import models.elementos.explosivos.enemigos.jefes.jefeBase;
-import models.players.PlayerRick.Player;
 
 /**
  * Created by LuisT23 on 7/7/2018.

@@ -1,21 +1,13 @@
 package models.elementos.explosivos.enemigos.Base;
 
 import javafx.application.Platform;
-import javafx.scene.control.Label;
-import javafx.scene.control.OverrunStyle;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Box;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
-import models.players.PlayerRick.Player;
-import sun.swing.plaf.synth.Paint9Painter;
+import models.players.Player;
 
 /**
  * Created by LuisT23 on 2/7/2018.

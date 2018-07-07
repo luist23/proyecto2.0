@@ -5,9 +5,8 @@ import javafx.scene.media.Media;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.granadas.base.granadaBase;
-import models.elementos.explosivos.granadas.holyGranade.holyGranadeDatos;
 import models.escenarios.playScene;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 
 import java.util.ArrayList;
 

@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import models.players.PlayerRick.Player;
 import models.escenarios.ScenesType;
 import models.escenarios.scenariosValues;
 import models.escenarios.sceneFactory;
@@ -16,7 +15,7 @@ import models.escenarios.sceneFactory;
 import static java.lang.Thread.sleep;
 import static javafx.application.Application.launch;
 
-public class Player1  extends Application /*implements Players <PlayerValuesRick>*/ {
+public class Player1  extends Application  {
     private static Stage primaryStage;
     private BorderPane rootLayout;
 

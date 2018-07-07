@@ -3,7 +3,7 @@ package models.elementos.peldannos;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 
 public class Peldanno {
     private ImageView peldanno;

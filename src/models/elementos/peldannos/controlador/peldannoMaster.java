@@ -4,7 +4,7 @@ import models.controladores.GameValues;
 import models.elementos.explosivos.enemigos.jefes.browserBlack.browserBlack;
 import models.elementos.peldannos.Peldanno;
 import models.escenarios.playScene;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 
 import java.util.ArrayList;
 

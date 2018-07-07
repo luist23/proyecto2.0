@@ -1,16 +1,12 @@
-package models.players.PlayerRick;
+package models.players;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import models.elementos.explosivos.enemigos.jefes.Jefe;
-import models.elementos.explosivos.granadas.factory.granadaType;
-import models.players.Players;
+import models.players.PlayerMarco.Marco;
 
 public class Player {
 
@@ -39,7 +35,7 @@ public class Player {
             textVida.autosize();
             textVida.setDisable(true);
             player = new ImageView();
-            playerBase=new Rick();
+            playerBase=new Marco();
             player.setFitHeight(playerBase.getSizePlayer()[0]);
             player.setFitWidth(playerBase.getSizePlayer()[1]);
             player.setPreserveRatio(true);

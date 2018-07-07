@@ -3,7 +3,7 @@ package models.controladores;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import models.players.PlayerRick.Player;
+import models.players.Player;
 import models.escenarios.playScene;
 import models.elementos.peldannos.Peldanno;
 import models.players.Players;
@@ -91,7 +91,7 @@ public class Gravedad  extends Thread {
             sleeping(100);
             if(i>15 && !GameValues.gravedad && stop){
                 i=1;
-                //models.players.PlayerRick.PlayerValuesRick.action=true;
+
                 player.setImage(new Image(values.getClass().getResource(posicionFinal[0]).toExternalForm()));
             }
             //System.out.println("sigo aqui");
