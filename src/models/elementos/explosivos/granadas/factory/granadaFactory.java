@@ -2,6 +2,8 @@ package models.elementos.explosivos.granadas.factory;
 
 import models.elementos.explosivos.granadas.holyGranade.holyGranade;
 import models.elementos.explosivos.granadas.base.granada;
+import models.elementos.explosivos.granadas.blackHole.blackHole;
+import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
 import models.elementos.explosivos.granadas.holyGranade.holyGranadeDatos;
 import models.elementos.explosivos.granadas.veneno.veneno;
 import models.elementos.explosivos.granadas.veneno.venenoDatos;
@@ -21,6 +23,9 @@ public class granadaFactory {
                 return new veneno(new venenoDatos());
             case HOLYGRANADE:
                 return new holyGranade(new holyGranadeDatos());
+                case BLACKHOLE:
+                    return new blackHole(new blackHoleDatos());
+                    
         }
         return null;
     }

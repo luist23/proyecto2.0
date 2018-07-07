@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import models.elementos.explosivos.enemigos.jefes.Jefe;
+import models.elementos.explosivos.granadas.factory.granadaType;
 import models.players.Players;
 
 public class Player {
@@ -28,6 +29,7 @@ public class Player {
     public static TextField textVida =new TextField();
     public static HBox box =new HBox();
     public static Jefe enemigo;
+    public static int dinero=2300;
 
 
     private Player() {}
@@ -80,6 +82,12 @@ public class Player {
 
 
     }
+    public static void setVida(int vid){
+        vida+=vid;
+        
+    }
+    
+    
 
 
 }
