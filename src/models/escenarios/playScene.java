@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
+import models.elementos.explosivos.granadas.blackHole.blackHole;
+import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
 import models.elementos.peldannos.controlador.peldannoMaster;
 import models.players.PlayerRick.Player;
 import models.controladores.gravedadAumentada;
@@ -156,7 +158,7 @@ public class playScene extends Scene {
                     //System.out.println("resume");
                     if(player.granadasEnPocesion>0) {
                         player.granadasEnPocesion--;
-                        new holyGranade(new holyGranadeDatos());
+                        new blackHole(new blackHoleDatos());
 
                     }
 
