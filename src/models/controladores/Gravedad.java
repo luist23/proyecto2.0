@@ -20,6 +20,7 @@ public class Gravedad  extends Thread {
     private String[] posicionFinal;
     public static boolean stop=true;
     private boolean pausar=true;
+    public static boolean exit=true;
 
     public Gravedad(ImageView player,Players values){
 
@@ -64,11 +65,12 @@ public class Gravedad  extends Thread {
 
 
         int i=1;
-        while(true){
+        while(exit){
 
             //System.out.println("pausado");
 
-        while(stop){
+        while(stop && exit){
+            //System.out.println("sigovivoGravedad");
 
         while(efectoGravedad(Player.getPlayer()) && stop){
 
@@ -124,7 +126,7 @@ public class Gravedad  extends Thread {
 
     public static boolean overlapingImageView(ImageView imagen,ImageView elemento){
 
-        imagen.getBoundsInParent().intersects(elemento.getBoundsInParent());
+        //imagen.getBoundsInParent().intersects(elemento.getBoundsInParent());
         return imagen.getBoundsInParent().intersects(elemento.getBoundsInParent());
     }
 

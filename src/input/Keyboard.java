@@ -6,6 +6,8 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import models.controladores.GameValues;
+import models.controladores.Gravedad;
 
 public class Keyboard {
 
@@ -65,6 +67,7 @@ public class Keyboard {
 }
 
 	public void keyPressed(KeyEvent event){
+		if(Gravedad.stop){
 		if (event.getCode() == KeyCode.W) {
 			wPressed.set(true);
 		}
@@ -99,6 +102,7 @@ public class Keyboard {
 		if (event.getCode() == KeyCode.X ) {
 			xPressed.set(true);
 
+		}
 		}
 		if (event.getCode() == KeyCode.ESCAPE ) {
 			escPressed.set(true);

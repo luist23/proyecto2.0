@@ -10,11 +10,12 @@ import models.escenarios.playScene;
  */
 public class hiloRocas extends Thread {
     private boolean stop=true;
+    public static boolean exit=true;
 
 
     public void run(){
-    while (true) {
-        while(Gravedad.stop){
+    while (exit) {
+        while(Gravedad.stop && exit){
 
         if(true){
             for (roca r : playScene.getRocas()) {

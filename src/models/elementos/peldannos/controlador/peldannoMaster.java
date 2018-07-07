@@ -1,8 +1,10 @@
 package models.elementos.peldannos.controlador;
 
 import models.controladores.GameValues;
+import models.elementos.explosivos.enemigos.jefes.browserBlack.browserBlack;
 import models.elementos.peldannos.Peldanno;
 import models.escenarios.playScene;
+import models.players.PlayerRick.Player;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,7 @@ public class peldannoMaster {
 
     public static void iniciar(){
         int[] peldan={1,2,1,2,2,1,1,1,2,2,1};
+        int i;
 
         peldannos.add(new Peldanno(0, GameValues.dimension[1]-15));
         peldannos.add(new Peldanno(posicionX[1], GameValues.dimension[1]-15));
@@ -30,7 +33,7 @@ public class peldannoMaster {
 
 
         //int elseY=GameValues.dimension[1];
-        for (int i=GameValues.dimension[1];i>-1000;i-=120){
+        for (i=GameValues.dimension[1];i>-1000;i-=120){
             int total=peldan[(int)(Math.random()*11)];
             for(int k=0;k<total;k++){
                 int suerte=aleatorio();
@@ -43,6 +46,9 @@ public class peldannoMaster {
             }
 
         }
+
+        peldannos.add(new Peldanno(posicionX[1], i));
+        Player.enemigo=new browserBlack( posicionX[1]+200,i-100);
 
 
         /*peldannos.add(new Peldanno(0,300));

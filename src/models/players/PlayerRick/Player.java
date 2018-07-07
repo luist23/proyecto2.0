@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import models.elementos.explosivos.enemigos.jefes.Jefe;
 import models.players.Players;
 
 public class Player {
@@ -26,6 +27,7 @@ public class Player {
     public static int distanciaPaso=5;
     public static TextField textVida =new TextField();
     public static HBox box =new HBox();
+    public static Jefe enemigo;
 
 
     private Player() {}

@@ -11,12 +11,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
+import models.controladores.hiloVentana;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
+import models.elementos.explosivos.enemigos.jefes.jefeBase;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
 import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
 import models.elementos.peldannos.controlador.peldannoMaster;
+import models.players.Player1;
 import models.players.PlayerRick.Player;
 import models.controladores.gravedadAumentada;
 import models.elementos.explosivos.enemigos.Base.roca;
@@ -27,6 +31,10 @@ import models.elementos.explosivos.granadas.holyGranade.holyGranade;
 import models.elementos.peldannos.Peldanno;
 import models.players.Players;
 
+import java.awt.*;
+//import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.beans.EventHandler;
 import java.util.ArrayList;
 
 public class playScene extends Scene {
@@ -66,7 +74,8 @@ public class playScene extends Scene {
         //StringProperty a=new SimpleStringProperty(String.valueOf(player.getVida()));
         player.textVida.setText("VIDA RESTANTE:  "+String.valueOf(player.getVida()));
 
-        player.box.getChildren().addAll(player.textVida);
+
+
         player.box.setLayoutX(0);
         player.box.setLayoutY(0);
 
@@ -79,20 +88,8 @@ public class playScene extends Scene {
         fondo.setLayoutX(0);fondo.setLayoutY(0);
 
 
-        Thread centrarPantalla=new Thread(()->{
-            while(true){
-            while (Gravedad.stop){
-            Player.getRoot().setTranslateY(-player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);
-            fondo.setLayoutY(player.getPlayer().getLayoutY()-GameValues.dimension[1]/2);
-                player.box.setLayoutY(fondo.getLayoutY());
 
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }}});
-        centrarPantalla.start();
+        new hiloVentana(fondo);
 
 
 
@@ -109,14 +106,16 @@ public class playScene extends Scene {
         view.setLayoutY(0);*/
         //playering.play();//--reproducir
 
+        Player.box.getChildren().addAll(Player.textVida);
 
-
-
-
-        player.getRoot().getChildren().addAll(fondo,player.getPlayer(),player.box);
-
-
+        player.getRoot().getChildren().addAll(fondo,player.getPlayer(),Player.box);
         peldannoMaster.iniciar();
+
+
+
+
+
+
 
         //input.update();
 
@@ -192,6 +191,13 @@ public class playScene extends Scene {
 
         setOnKeyPressed(event -> {
             input.keyPressed(event);
+        });
+        Player1.getPrimaryStage().setOnCloseRequest(new javafx.event.EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Gravedad.exit=false;
+                hiloRocas.exit=false;
+            }
         });
 
         /*if(false){

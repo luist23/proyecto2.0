@@ -160,6 +160,9 @@ public abstract class granadaBase<T>implements granada <T>{
             if (Gravedad.overlapingImageView(granada, Player.getPlayer())) {
                 Player.setDaño(daño);
             }
+            if (Gravedad.overlapingImageView(Player.enemigo.getJefe(), Player.getPlayer())) {
+                Player.enemigo.setDaño(daño);
+            }
         } catch (Exception e) {
             System.out.println("error en revision de enemigos");
 
