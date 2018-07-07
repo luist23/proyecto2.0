@@ -15,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,6 +25,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import models.controladores.GameValues;
+import models.players.Player1;
 
 /**
  *
@@ -37,10 +40,13 @@ public class Tienda extends Application {
     private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3;
     private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3;
     private int altoventana,anchoVentana;
+    public static TextField infoVida;
+    public static Stage Ventana;
     
     @Override
     public void start(Stage Ventana) {
-         
+        this.Ventana= Ventana;
+        
         anchoVentana=1010;
         altoventana=650;
         
@@ -101,8 +107,8 @@ public class Tienda extends Application {
         imgViewM2.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                
-                System.out.println("btn2");
+                //****INFORMACION ****
+                //infoVida=new TextField();
             }
         });
         
@@ -124,6 +130,14 @@ public class Tienda extends Application {
         
         
         //*** RECURSOS .......R ***
+        
+         
+        //****INFORMACION ****
+        infoVida=new TextField();
+        infoVida.setText("Holi");
+        infoVida.setDisable(true);
+       
+        
         imgR1 = new Image (TiendaM.getInstance().getClass()
                 .getResource("Dinero.gif").toExternalForm());
         imgViewR1 =new ImageView(imgR1);
@@ -147,13 +161,15 @@ public class Tienda extends Application {
         
         boxRecursos=new HBox();
         boxRecursos.setSpacing(5);
-        boxRecursos.getChildren().addAll(imgViewR1, imgViewR2,imgViewR3);
+        boxRecursos.getChildren().addAll(imgViewR1, imgViewR2,imgViewR3,infoVida);
   
         vboxRecursos= new VBox();
         vboxRecursos.setSpacing(10);
-        vboxRecursos.setLayoutX(anchoVentana-450);
+        vboxRecursos.setLayoutX(anchoVentana-600);
         vboxRecursos.setLayoutY(altoventana- 630);
         vboxRecursos.getChildren().addAll(boxRecursos);
+        
+        
        
         //ventana
         root = new Pane(imgViewF);
@@ -163,6 +179,8 @@ public class Tienda extends Application {
         Ventana.setScene(s);
         Ventana.setTitle("Tienda");
         Ventana.show();
+       
+        
         
     }
 
