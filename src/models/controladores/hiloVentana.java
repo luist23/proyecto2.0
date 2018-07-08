@@ -13,13 +13,13 @@ public class hiloVentana {
 
         Thread centrarPantalla=new Thread(()->{
             while(Gravedad.exit){
+
                 while (Gravedad.stop && Gravedad.exit){
                     System.out.println("controlo la ventana :v");
-                    Player.getRoot().setTranslateY(-Player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);
-                    fondo.setLayoutY(Player.getPlayer().getLayoutY()-GameValues.dimension[1]/2);
-                    Player.box.setLayoutY(fondo.getLayoutY());
-
                     try {
+                        Player.getRoot().setTranslateY(-Player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);
+                        fondo.setLayoutY(Player.getPlayer().getLayoutY()-GameValues.dimension[1]/2);
+                        Player.box.setLayoutY(fondo.getLayoutY());
                         Thread.sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();

@@ -1,5 +1,6 @@
 package models.elementos.jefes;
 
+import javafx.application.Platform;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import models.controladores.GameValues;
@@ -16,6 +17,7 @@ public abstract class jefeBase implements Jefe {
     protected int vida;
     protected int daño;
     public static  TextField textVida =new TextField();
+    private static int direccionRocafinal=1;
 
     @Override
     public ImageView getJefe() {
@@ -39,6 +41,7 @@ public abstract class jefeBase implements Jefe {
         Player.getRoot().getChildren().addAll(habilidad);
 
         Thread jefet = new Thread(()->{
+
             int habilidadAc=1;
             while (vida>0 && Gravedad.exit){
                 //System.out.println("sigo vivojefe");
@@ -47,12 +50,25 @@ public abstract class jefeBase implements Jefe {
                     //textVida.setText("VIDA JEFE:  "+String.valueOf(vida));
                     Player.getPlayer().setLayoutX(Player.getPlayer().getLayoutX()+300);
                 }
+
+                Platform.runLater(() -> {
+
+                    jefe.setLayoutX(jefe.getLayoutX() + (direccionRocafinal * 25));
+                });
+                if(Gravedad.efectoGravedad(jefe)){
+                    direccionRocafinal*=-1;
+                }
+
+
+
+
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(400);
+                    //habilidad.setLayoutX(GameValues.dimension[0]+25);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                habilidadAc++;
+                /*habilidadAc++;
                 if(habilidadAc>7){
                     try {
 
@@ -67,7 +83,7 @@ public abstract class jefeBase implements Jefe {
                         Player.setDaño(daño+15);
                             Player.getPlayer().setLayoutX(jefe.getLayoutX()-300);
                         Thread.sleep(150);
-                            habilidad.setLayoutX(GameValues.dimension[0]+25);
+                            //habilidad.setLayoutX(GameValues.dimension[0]+25);
                             Thread.sleep(150);
 
 
@@ -77,7 +93,7 @@ public abstract class jefeBase implements Jefe {
                     }
 
                     habilidadAc=0;
-                }
+                }*/
 
 
             }

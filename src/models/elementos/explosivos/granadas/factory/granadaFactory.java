@@ -1,5 +1,7 @@
 package models.elementos.explosivos.granadas.factory;
 
+import javafx.scene.image.Image;
+import models.controladores.GameValues;
 import models.elementos.explosivos.granadas.holyGranade.holyGranade;
 import models.elementos.explosivos.granadas.base.granada;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
@@ -23,9 +25,24 @@ public class granadaFactory {
                 return new veneno(new venenoDatos());
             case HOLYGRANADE:
                 return new holyGranade(new holyGranadeDatos());
-                case BLACKHOLE:
-                    return new blackHole(new blackHoleDatos());
+            case BLACKHOLE:
+                return new blackHole(new blackHoleDatos());
                     
+        }
+        return null;
+    }
+    public static Image getGranadaImagen(granadaType type){
+        switch (type){
+            case VENENO:
+                return new Image(new venenoDatos().getClass().getResource("fondoPrueba.jpg").toExternalForm());
+
+            case HOLYGRANADE:
+                return new Image(new holyGranadeDatos().getClass().getResource("granadaDivina.gif").toExternalForm());
+
+            case BLACKHOLE:
+                return new Image(new blackHoleDatos().getClass().getResource("blackHoleLanzar.gif").toExternalForm());
+
+
         }
         return null;
     }

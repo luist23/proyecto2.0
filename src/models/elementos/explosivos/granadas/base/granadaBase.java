@@ -49,12 +49,12 @@ public abstract class granadaBase<T>implements granada <T>{
         Thread uno = new Thread(()->{
             int direccion=GameValues.direccion;
 
-            for (int i=1 ; i<15;i++){
+            for (int i=1 ; i<7;i++){
                 //GameValues.permitirSalto=false;
 
                 Platform.runLater(() -> granada.setLayoutY(granada.getLayoutY() - 10));
-                if((granada.getLayoutX() + (5*direccion))>0 && (granada.getLayoutX() + (5*direccion))< GameValues.dimension[0])
-                Platform.runLater(() -> granada.setLayoutX(granada.getLayoutX() + (5*direccion)));
+                if((granada.getLayoutX() + (25*direccion))>0 && (granada.getLayoutX() + (25*direccion))< GameValues.dimension[0])
+                Platform.runLater(() -> granada.setLayoutX(granada.getLayoutX() + (25*direccion)));
                 Gravedad.sleeping(25);
                 //}
             }

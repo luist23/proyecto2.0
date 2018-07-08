@@ -3,6 +3,7 @@ package models.escenarios.pantallaJuego;
 import input.Keyboard;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +15,8 @@ import models.controladores.hiloVentana;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
 import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
+import models.elementos.explosivos.granadas.factory.granadaFactory;
+import models.elementos.explosivos.granadas.factory.granadaType;
 import models.elementos.peldannos.controlador.peldannoMaster;
 import models.escenarios.controlador.scenariosValues;
 import models.players.Player;
@@ -49,6 +52,21 @@ public class playScene extends Scene {
         player=Player.getInstance();
         values= Player.getPlayerBase();
 
+        player.granadasDisponibles=new ArrayList<>();
+
+
+        player.granadasDisponibles.add(granadaType.HOLYGRANADE);
+        player.granadasDisponibles.add(granadaType.BLACKHOLE);
+        player.granadasDisponibles.add(granadaType.HOLYGRANADE);
+        player.granadasDisponibles.add(granadaType.BLACKHOLE);
+        player.granadasDisponibles.add(granadaType.HOLYGRANADE);
+        player.granadasDisponibles.add(granadaType.HOLYGRANADE);
+        player.granadasDisponibles.add(granadaType.BLACKHOLE);
+        player.granadasDisponibles.add(granadaType.HOLYGRANADE);
+        player.granadasDisponibles.add(granadaType.BLACKHOLE);
+        player.granadasDisponibles.add(granadaType.HOLYGRANADE);
+
+
 
         scenariosValues.primaryStage.setScene(this);
         content();
@@ -61,11 +79,16 @@ public class playScene extends Scene {
 
         //StringProperty a=new SimpleStringProperty(String.valueOf(player.getVida()));
         player.textVida.setText("VIDA RESTANTE:  "+String.valueOf(player.getVida()));
+        ImageView granadaActual=new ImageView(granadaFactory.getGranadaImagen(player.granadasDisponibles.get(0)));
+        granadaActual.setFitWidth(50);
+        granadaActual.setPreserveRatio(true);
 
 
 
         player.box.setLayoutX(0);
         player.box.setLayoutY(0);
+        player.box.setAlignment(Pos.CENTER);
+
 
 
 
@@ -94,10 +117,11 @@ public class playScene extends Scene {
         view.setLayoutY(0);*/
         //playering.play();//--reproducir
 
-        Player.box.getChildren().addAll(Player.textVida);
+        Player.box.getChildren().addAll(Player.textVida,granadaActual);
 
-        player.getRoot().getChildren().addAll(fondo,player.getPlayer(),Player.box);
+        player.getRoot().getChildren().addAll(fondo,player.getPlayer());
         peldannoMaster.iniciar();
+        player.getRoot().getChildren().addAll(Player.box);
 
 
 
@@ -133,23 +157,25 @@ public class playScene extends Scene {
 
                 }
 
-                /*else if(ke.getCode()==KeyCode.N){
-                    salto(values.saltoIzquierda,-1,values.izquierda);
-                }*/
-
                 if(input.iszPressed()) {
 
                     Gravedad.sleeping(25);
-                    //g.resumir();
+                        try {
+                            if(player.granadasDisponibles.size()>0){
+                            granadaFactory.getGranada(player.granadasDisponibles.remove(0));
+                                if(player.granadasDisponibles.size()>0){
+                                    granadaActual.setImage(granadaFactory.getGranadaImagen(player.granadasDisponibles.get(0)));
+                                }else{
+                                    granadaActual.setImage(null);
+                                }
 
-                    //System.out.println("resume");
-                    if(player.granadasEnPocesion>0) {
-                        player.granadasEnPocesion--;
-                        new blackHole(new blackHoleDatos());
-
-                    }
-
+                            }
+                        }
+                        catch (Exception e){
+                            System.out.println("sin granadas");
+                        }
                 }
+
                 if (input.isEscPressed()){
                     Gravedad.sleeping(50);
                     if(Gravedad.stop){

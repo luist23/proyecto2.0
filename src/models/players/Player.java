@@ -5,8 +5,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import models.elementos.explosivos.granadas.factory.granadaType;
 import models.elementos.jefes.Jefe;
 import models.players.Base.Players;
+
+import java.util.ArrayList;
 
 public class Player {
 
@@ -26,6 +29,7 @@ public class Player {
     public static HBox box =new HBox();
     public static Jefe enemigo;
     public static int dinero=2300;
+    public static ArrayList<granadaType> granadasDisponibles;
 
 
     private Player() {}
