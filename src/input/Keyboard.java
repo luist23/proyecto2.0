@@ -23,12 +23,13 @@ public class Keyboard {
 	private BooleanProperty xPressed = new SimpleBooleanProperty();
 	private BooleanProperty zPressed = new SimpleBooleanProperty();
 	private BooleanProperty escPressed = new SimpleBooleanProperty();
+	private BooleanProperty cPressed = new SimpleBooleanProperty();
 	private boolean limitarZ,limitarX,limitarSpace;
 	private boolean pussh=true,presing=true;
 
 	private BooleanBinding anyPressed = upPressed.or(wPressed).or(downPressed).or
 			(sPressed).or(rightPressed).or(dPressed).or(leftPressed).or(aPressed).or(spacePressed).
-			or(zPressed).or(xPressed).or(escPressed);
+			or(zPressed).or(xPressed).or(escPressed).or(cPressed);
 
 
 
@@ -71,6 +72,11 @@ public class Keyboard {
 		if (event.getCode() == KeyCode.W) {
 			wPressed.set(true);
 		}
+
+			if (event.getCode() == KeyCode.C) {
+				cPressed.set(true);
+			}
+
 		if (event.getCode() == KeyCode.UP) {
 			upPressed.set(true);
 		}
@@ -114,6 +120,9 @@ public class Keyboard {
 	public void keyRealssed(KeyEvent event){
 		if (event.getCode() == KeyCode.W) {
 			wPressed.set(false);
+		}
+		if (event.getCode() == KeyCode.C) {
+			cPressed.set(false);
 		}
 		if (event.getCode() == KeyCode.UP) {
 			upPressed.set(false);
@@ -207,5 +216,9 @@ public class Keyboard {
 	}
 
 	public boolean isEscPressed() {		return escPressed.get();	}
+
+	public boolean iscPressed() {
+		return cPressed.get();
+	}
 
 }

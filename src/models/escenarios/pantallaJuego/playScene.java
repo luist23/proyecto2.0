@@ -12,6 +12,7 @@ import javafx.stage.WindowEvent;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.controladores.hiloVentana;
+import models.elementos.Habilidad.Rick.habilidadRick;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
 import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
@@ -84,6 +85,10 @@ public class playScene extends Scene {
         granadaActual.setFitWidth(50);
         granadaActual.setPreserveRatio(true);
 
+        ImageView cannon=new ImageView(new Image(this.getClass().getResource("cannon.gif").toExternalForm()));
+        cannon.setFitWidth(50);
+        cannon.setPreserveRatio(true);
+
 
 
         player.box.setLayoutX(0);
@@ -118,7 +123,7 @@ public class playScene extends Scene {
         view.setLayoutY(0);*/
         //playering.play();//--reproducir
 
-        Player.box.getChildren().addAll(Player.textVida,granadaActual);
+        Player.box.getChildren().addAll(cannon,Player.textVida,granadaActual);
 
         player.getRoot().getChildren().addAll(fondo,player.getPlayer());
         peldannoMaster.iniciar();
@@ -136,45 +141,58 @@ public class playScene extends Scene {
 
             @Override
             public void handle(long timestamp) {
-                if (input.isaPressed()){
-                    pasoIzquierda(values.getPasoIzquierda(),values.getIzquierda());
-                }
-                if(input.isdPressed()) {
-                    //input.update();
-                    pasoderecha(values.getPasoDerecha(), values.getDerecha());
-                }
-                if(input.iswPressed()){
+                if(Gravedad.stop) {
 
-                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()-10);
-                }
-                if(input.issPressed()) {
-                    //Player.getRoot().setTranslateY(Player.getRoot().getTranslateY()+10);
-                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
-                }
-                if(input.isSpacePressed()) {
+                    if (input.iscPressed()) {
+                        new habilidadRick();
+                    }
+                    if (input.isaPressed()) {
+                        pasoIzquierda(values.getPasoIzquierda(), values.getIzquierda());
+                    }
+                    if (input.isdPressed()) {
+                        //input.update();
+                        pasoderecha(values.getPasoDerecha(), values.getDerecha());
+                    }
+                    if (input.iswPressed()) {
 
-                    //Gravedad.sleeping(50);
-                    saltin(values.getSaltoDerecha(), 1, values.getDerecha());
+                        player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 10);
+                    }
+                    if (input.issPressed()) {
+                        //Player.getRoot().setTranslateY(Player.getRoot().getTranslateY()+10);
+                        player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
+                    }
+                    if (input.isSpacePressed()) {
 
-                }
+                        //Gravedad.sleeping(50);
+                        saltin(values.getSaltoDerecha(), 1, values.getDerecha());
 
-                if(input.iszPressed()) {
+                    }
 
-                    Gravedad.sleeping(25);
+                    if (input.iszPressed()) {
+
+                        Gravedad.sleeping(25);
                         try {
-                            if(player.granadasDisponibles.size()>0){
-                            granadaFactory.getGranada(player.granadasDisponibles.remove(0));
-                                if(player.granadasDisponibles.size()>0){
+                            if (player.granadasDisponibles.size() > 0) {
+                                granadaFactory.getGranada(player.granadasDisponibles.remove(0));
+                                if (player.granadasDisponibles.size() > 0) {
                                     granadaActual.setImage(granadaFactory.getGranadaImagen(player.granadasDisponibles.get(0)));
-                                }else{
+                                } else {
                                     granadaActual.setImage(null);
                                 }
 
                             }
-                        }
-                        catch (Exception e){
+                        } catch (Exception e) {
                             System.out.println("sin granadas");
                         }
+                    }
+
+                    if(input.isxPressed()) {
+                        Gravedad.sleeping(50);
+                        if(player.enemigos>1){
+                            player.enemigos--;
+                            rocas.add(new bombaOMB(new bombaOMBdatos()));}
+
+                    }
                 }
 
                 if (input.isEscPressed()){
@@ -185,13 +203,7 @@ public class playScene extends Scene {
                         Gravedad.stop=true;
                     }
                 }
-                if(input.isxPressed()) {
-                    Gravedad.sleeping(50);
-                    if(player.enemigos>1){
-                        player.enemigos--;
-                    rocas.add(new bombaOMB(new bombaOMBdatos()));}
 
-                }
 
 
 
