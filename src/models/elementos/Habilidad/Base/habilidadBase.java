@@ -4,7 +4,7 @@ package models.elementos.Habilidad.Base;
 import javafx.scene.image.ImageView;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
-import models.escenarios.playScene;
+import models.escenarios.pantallaJuego.playScene;
 
 import java.util.ArrayList;
 

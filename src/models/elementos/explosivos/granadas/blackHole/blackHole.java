@@ -5,7 +5,7 @@ import javafx.scene.media.Media;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.granadas.base.granadaBase;
-import models.escenarios.playScene;
+import models.escenarios.pantallaJuego.playScene;
 import models.players.Player;
 
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package models.elementos.explosivos.enemigos.controlador;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.players.Player;
-import models.escenarios.playScene;
+import models.escenarios.pantallaJuego.playScene;
 
 /**
  * Created by LuisT23 on 2/7/2018.

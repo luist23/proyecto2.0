@@ -1,4 +1,4 @@
-package models.elementos.explosivos.enemigos.jefes;
+package models.elementos.jefes;
 
 /**
  * Created by LuisT23 on 7/7/2018.

@@ -14,6 +14,7 @@ public class hiloVentana {
         Thread centrarPantalla=new Thread(()->{
             while(Gravedad.exit){
                 while (Gravedad.stop && Gravedad.exit){
+                    System.out.println("controlo la ventana :v");
                     Player.getRoot().setTranslateY(-Player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);
                     fondo.setLayoutY(Player.getPlayer().getLayoutY()-GameValues.dimension[1]/2);
                     Player.box.setLayoutY(fondo.getLayoutY());

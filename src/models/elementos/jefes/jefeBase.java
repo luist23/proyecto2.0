@@ -1,4 +1,4 @@
-package models.elementos.explosivos.enemigos.jefes;
+package models.elementos.jefes;
 
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -56,12 +56,15 @@ public abstract class jefeBase implements Jefe {
                 if(habilidadAc>7){
                     try {
 
-                    habilidad.setLayoutX(jefe.getLayoutX()-250);
+
                         Thread.sleep(150);
+                        habilidad.setLayoutX(jefe.getLayoutX()-250);
+                        Thread.sleep(20);
                     if(habilidad.getBoundsInParent().intersects(Player.getPlayer().getBoundsInParent())){
 
-                            Player.setDaño(daño+15);
-                            Thread.sleep(300);
+
+                            Thread.sleep(100);
+                        Player.setDaño(daño+15);
                             Player.getPlayer().setLayoutX(jefe.getLayoutX()-300);
                         Thread.sleep(150);
                             habilidad.setLayoutX(GameValues.dimension[0]+25);

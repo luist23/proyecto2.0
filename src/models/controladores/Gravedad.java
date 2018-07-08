@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import models.players.Player;
-import models.escenarios.playScene;
+import models.escenarios.pantallaJuego.playScene;
 import models.elementos.peldannos.Peldanno;
 import models.players.Base.Players;
 

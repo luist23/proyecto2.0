@@ -1,9 +1,9 @@
 package models.elementos.peldannos.controlador;
 
 import models.controladores.GameValues;
-import models.elementos.explosivos.enemigos.jefes.browserBlack.browserBlack;
+import models.elementos.jefes.browserBlack.browserBlack;
 import models.elementos.peldannos.Peldanno;
-import models.escenarios.playScene;
+import models.escenarios.pantallaJuego.playScene;
 import models.players.Player;
 
 import java.util.ArrayList;

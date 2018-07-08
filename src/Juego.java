@@ -3,7 +3,7 @@ import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.escenarios.factory.ScenesType;
 import models.escenarios.factory.sceneFactory;
-import models.escenarios.scenariosValues;
+import models.escenarios.controlador.scenariosValues;
 import models.players.Player;
 import models.players.factory.playerFactory;
 import models.players.factory.playerType;
@@ -20,7 +20,7 @@ public class Juego extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         GameValues gameValues=GameValues.getInstance();
-        scenariosValues scenariosValue= models.escenarios.scenariosValues.getInstance();
+        scenariosValues scenariosValue= scenariosValues.getInstance();
         playerFactory.getPlayer(playerType.RICK);//escogiendoJugador
         Player player= Player.getInstance();
         scenariosValue.primaryStage=primaryStage;

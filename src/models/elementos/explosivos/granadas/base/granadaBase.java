@@ -9,7 +9,7 @@ import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.players.Player;
-import models.escenarios.playScene;
+import models.escenarios.pantallaJuego.playScene;
 
 import java.util.ArrayList;
 

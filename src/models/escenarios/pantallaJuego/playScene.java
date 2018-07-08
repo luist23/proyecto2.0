@@ -1,4 +1,4 @@
-package models.escenarios;
+package models.escenarios.pantallaJuego;
 
 import input.Keyboard;
 import javafx.animation.AnimationTimer;
@@ -15,8 +15,8 @@ import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
 import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
 import models.elementos.peldannos.controlador.peldannoMaster;
+import models.escenarios.controlador.scenariosValues;
 import models.players.Player;
-import models.controladores.gravedadAumentada;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMB;
 import models.elementos.explosivos.enemigos.controlador.hiloRocas;
@@ -32,7 +32,6 @@ public class playScene extends Scene {
     private Gravedad g;
     private static ArrayList<Peldanno> peldannos;
     private static ArrayList<roca> rocas;
-    private gravedadAumentada g2;
     private hiloRocas rocashilo;
     private Keyboard input;
     private Boolean saltarin=true;
@@ -372,7 +371,7 @@ public class playScene extends Scene {
         GameValues.setGravedadThread(g);
         g.setPosicionFinal(values.getDerecha());
 
-        g2=new gravedadAumentada();
+
         rocashilo=new hiloRocas();
         rocashilo.start();
 

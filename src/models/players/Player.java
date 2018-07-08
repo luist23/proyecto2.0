@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import models.elementos.explosivos.enemigos.jefes.Jefe;
+import models.elementos.jefes.Jefe;
 import models.players.Base.Players;
 
 public class Player {
@@ -35,7 +35,6 @@ public class Player {
             textVida.autosize();
             textVida.setDisable(true);
             player = new ImageView();
-            //playerBase=new Rick();
             player.setFitHeight(playerBase.getSizePlayer()[0]);
             player.setFitWidth(playerBase.getSizePlayer()[1]);
             player.setPreserveRatio(true);
@@ -51,7 +50,6 @@ public class Player {
 
 
     public static void setPlayer(ImageView player) { Player.player = player;}
-    public static void setRoot(Pane root) { root = root;}
 
 
     public static ImageView getPlayer() {  return player;}
@@ -73,10 +71,6 @@ public class Player {
         System.out.println("me hirieron :´v");
         vida -= Daño;
         textVida.setText("VIDA RESTANTE:  "+vida);
-       // StringProperty a=new SimpleStringProperty(String.valueOf(vida));
-        //textVida.textProperty().bind(a);
-
-
     }
     public static void setVida(int vid){
         vida+=vid;
