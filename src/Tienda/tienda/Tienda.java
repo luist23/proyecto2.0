@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import static models.players.Player.dinero;
 
 /**
  *
@@ -25,12 +26,12 @@ import javafx.stage.Stage;
 public class Tienda extends Application {
     private Label btnVida,btnHabilidad, btnArma;
     private Pane root;
-    private HBox boxMenu, boxRecursos;
-    private VBox vboxMenu, vboxRecursos;
+    private HBox boxMenu, boxRecursos, boxInfoSuperior;
+    private VBox vboxMenu, vboxRecursos,vboxInfoSuperior;
     private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3;
     private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3;
     private int altoventana,anchoVentana;
-    public static TextField infoVida;
+    public static TextField infoDinero, infoArma, infoVida;
     public static Stage Ventana;
     
     @Override
@@ -90,7 +91,7 @@ public class Tienda extends Application {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
               
-                System.out.println("btn1");
+                
             }
         });
         
@@ -119,14 +120,34 @@ public class Tienda extends Application {
         });
         
         
-        //*** RECURSOS .......R ***
+         //****INFORMACION SUPERIOR****
+        infoDinero=new TextField();
+        infoDinero.setText(dinero);
+        infoDinero.setMaxWidth(70);
+        infoDinero.setDisable(true);
         
-         
-        //****INFORMACION ****
+        infoArma=new TextField();
+        infoArma.setText("Arma");
+        infoArma.setMaxWidth(70);
+        infoArma.setDisable(true);
+        
         infoVida=new TextField();
-        infoVida.setText("Holi");
+        infoVida.setText("Vida");
+        infoVida.setMaxWidth(70);
         infoVida.setDisable(true);
-       
+        
+        boxInfoSuperior=new HBox();
+        boxInfoSuperior.setSpacing(80);
+        boxInfoSuperior.getChildren().addAll(infoDinero, infoArma,infoVida);
+  
+        vboxInfoSuperior= new VBox();
+        vboxInfoSuperior.setSpacing(30);
+        vboxInfoSuperior.setLayoutX(anchoVentana-400);
+        vboxInfoSuperior.setLayoutY(altoventana- 620);
+        vboxInfoSuperior.getChildren().addAll(boxInfoSuperior);
+    
+        
+        //*** RECURSOS .......R ***
         
         imgR1 = new Image (TiendaM.getInstance().getClass()
                 .getResource("Dinero.gif").toExternalForm());
@@ -151,11 +172,11 @@ public class Tienda extends Application {
         
         boxRecursos=new HBox();
         boxRecursos.setSpacing(5);
-        boxRecursos.getChildren().addAll(imgViewR1, imgViewR2,imgViewR3,infoVida);
+        boxRecursos.getChildren().addAll(imgViewR1, imgViewR2,imgViewR3);
   
         vboxRecursos= new VBox();
         vboxRecursos.setSpacing(10);
-        vboxRecursos.setLayoutX(anchoVentana-600);
+        vboxRecursos.setLayoutX(anchoVentana-450);
         vboxRecursos.setLayoutY(altoventana- 630);
         vboxRecursos.getChildren().addAll(boxRecursos);
         
@@ -163,7 +184,7 @@ public class Tienda extends Application {
        
         //ventana
         root = new Pane(imgViewF);
-        root.getChildren().addAll(vboxMenu,vboxRecursos);
+        root.getChildren().addAll(vboxMenu,vboxRecursos,vboxInfoSuperior);
     
         Scene s = new Scene(root, anchoVentana, altoventana);
         Ventana.setScene(s);
