@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import models.elementos.explosivos.granadas.factory.granadaType;
 import models.elementos.jefes.Jefe;
 import models.players.Base.Players;
+import models.players.factory.playerType;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class Player {
     public static Jefe enemigo;
     public static int dinero=2300;
     public static ArrayList<granadaType> granadasDisponibles;
+    public static playerType personaje=playerType.GOKU;
+
 
 
     private Player() {}

@@ -21,7 +21,9 @@ public class Juego extends Application{
     public void start(Stage primaryStage) throws Exception {
         GameValues gameValues=GameValues.getInstance();
         scenariosValues scenariosValue= scenariosValues.getInstance();
-        playerFactory.getPlayer(playerType.RICK);//escogiendoJugador
+
+        playerFactory.getPlayer();//escogiendoJugador
+
         Player player= Player.getInstance();
         scenariosValue.primaryStage=primaryStage;
         scenariosValue.primaryStage.setTitle("JavaFx");

@@ -20,9 +20,9 @@ public class playerFactory {
 
     private playerFactory() {}
 
-    public static void getPlayer(playerType type){
+    public static void getPlayer(){
         Players player=new Goku();
-        switch (type){
+        switch (Player.personaje){
             case GOKU:
                 player=new Goku();
                 break;

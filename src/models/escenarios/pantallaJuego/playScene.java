@@ -13,6 +13,7 @@ import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.controladores.hiloVentana;
 import models.elementos.Habilidad.Rick.habilidadRick;
+import models.elementos.Habilidad.factory.habilidadFactory;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
 import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
@@ -144,7 +145,7 @@ public class playScene extends Scene {
                 if(Gravedad.stop) {
 
                     if (input.iscPressed()) {
-                        new habilidadRick();
+                        habilidadFactory.getHabilidad();
                     }
                     if (input.isaPressed()) {
                         pasoIzquierda(values.getPasoIzquierda(), values.getIzquierda());
