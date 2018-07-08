@@ -12,6 +12,7 @@ public class sceneFactory {
     private sceneFactory() {}
 
     public static Scene getScene(ScenesType type){
+        //System.out.println(Player.personaje);
         switch (type){
             case PLAYSCENE:
                 Player.playScene=new playScene();

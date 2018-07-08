@@ -21,6 +21,7 @@ public class playerFactory {
     private playerFactory() {}
 
     public static void getPlayer(){
+        System.out.println(Player.personaje);
         Players player=new Goku();
         switch (Player.personaje){
             case GOKU:

@@ -16,6 +16,7 @@ import models.controladores.scenariosValues;
 import models.escenarios.factory.ScenesType;
 import models.escenarios.factory.sceneFactory;
 import models.players.Player;
+import models.players.factory.playerFactory;
 import models.players.factory.playerType;
 
 
@@ -63,6 +64,9 @@ public class MenuSect extends Scene {
                 //seleccionado.setImage(new Image(this.getClass().getResource("play.png").toExternalForm()));
                 //seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
                 System.out.println("play");
+                //System.out.println(Player.personaje);
+
+                playerFactory.getPlayer();//escogiendoJugador
                 sceneFactory.getScene(ScenesType.PLAYSCENE);
 
 
@@ -122,7 +126,7 @@ public class MenuSect extends Scene {
         imagenGoku.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                Player.personaje= playerType.GOKU;
+                Player.personaje = playerType.GOKU;
                 seleccionado.setImage(new Image(this.getClass().getResource("goku2.png").toExternalForm()));
                 seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
                 //System.out.println("goku");
