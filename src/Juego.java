@@ -13,6 +13,7 @@ import models.players.factory.playerType;
  */
 public class Juego extends Application{
 
+
     public static void main(String... args){
         launch(args);
     }
@@ -29,6 +30,8 @@ public class Juego extends Application{
         scenariosValue.primaryStage=primaryStage;
         scenariosValue.primaryStage.setTitle("JavaFx");
         sceneFactory.getScene(ScenesType.PLAYSCENE);
+
+        //new scenaPausa();
 
         scenariosValue.primaryStage.show();
 

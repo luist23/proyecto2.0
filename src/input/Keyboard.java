@@ -221,4 +221,8 @@ public class Keyboard {
 		return cPressed.get();
 	}
 
+	public void setSceState(){
+		escPressed.set(false);
+	}
+
 }
