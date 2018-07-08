@@ -7,7 +7,7 @@ public class blackHoleDatos {
     //public static String[] fases;
     private int[] dimension={50,50};
     private String[] visual={"blackHoleLanzar.gif","blackHoleSuelo.gif","ejecucion.gif","caja02.gif"};
-    private String [] audio={"HOLYGRENADE.WAV","Explosion1.WAV"};
+    private String [] audio={"efectoSonido.mp3","Explosion1.WAV"};
     private int daño=50;
 
     public String[] getVisual() {

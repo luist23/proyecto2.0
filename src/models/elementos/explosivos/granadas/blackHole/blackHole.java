@@ -42,7 +42,7 @@ public class blackHole extends granadaBase<blackHoleDatos> {
             granada.setLayoutY(granada.getLayoutY()-dimensione[0]*2);
             granada.setLayoutX(granada.getLayoutX()-dimensione[0]);
             Gravedad.sleeping(200);
-            playerFinal.play();
+            //playerFinal.play();
             granada.setImage(new Image(this.getClass().getResource(granadaEfecto[2]).toExternalForm()));
             destruir();
             return false;
@@ -91,6 +91,7 @@ public class blackHole extends granadaBase<blackHoleDatos> {
         }
         finally {
             Gravedad.sleeping(1100);
+            player.stop();
             granada.setImage(null);
             granada.setLayoutX(-300);
         }

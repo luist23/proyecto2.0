@@ -17,7 +17,13 @@ public class habilidadBase implements Habilidades {
     public void ejecutar() {
         Gravedad.stop=false;
         Thread habi= new Thread(()->{
+            System.out.println("habimladj");
             ArrayList<roca> rocas=new ArrayList<>();
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             for (roca r: playScene.getRocas()){
                 if(habilidad.getBoundsInParent().intersects(r.getRoca().getBoundsInParent())){
                 rocas.add(r);}
@@ -25,13 +31,16 @@ public class habilidadBase implements Habilidades {
             for (roca r:rocas){
                 playScene.getRocas().remove(r);
                 r.setDaño(100);
+                r.getRoca().setLayoutX(-300);
             }
 
             rocas.clear();
+            Gravedad.stop=true;
 
 
         }
         );
+        habi.start();
 
     }
 }
