@@ -1,5 +1,7 @@
 import javafx.application.Application;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import menuSeleccion.MenuSect;
 import models.controladores.GameValues;
 import models.escenarios.factory.ScenesType;
 import models.escenarios.factory.sceneFactory;
@@ -29,8 +31,8 @@ public class Juego extends Application{
         Player player= Player.getInstance();
         scenariosValue.primaryStage=primaryStage;
         scenariosValue.primaryStage.setTitle("JavaFx");
-        sceneFactory.getScene(ScenesType.PLAYSCENE);
-
+        //sceneFactory.getScene(ScenesType.PLAYSCENE);
+        new MenuSect(new Pane());
         //new scenaPausa();
 
         scenariosValue.primaryStage.show();

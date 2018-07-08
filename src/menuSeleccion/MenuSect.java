@@ -1,7 +1,6 @@
 package menuSeleccion;
 
 import Tienda.tienda.Tienda;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,28 +11,36 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import models.controladores.GameValues;
+import models.controladores.scenariosValues;
+import models.escenarios.factory.ScenesType;
+import models.escenarios.factory.sceneFactory;
+import models.players.Player;
+import models.players.factory.playerType;
 
 
-public class MenuSect extends Application{
+public class MenuSect extends Scene {
     private int width =1080;int height =720; // se crean las dimensiones de la ventana
-    private static String[] argss;
+    private Pane root  = new Pane();
 
 
-    public static void main(String[] args){
-        argss=args;
+    public MenuSect(Pane root){
+    super(root, GameValues.dimension[0],GameValues.dimension[1]);
+    this.root=root;
+        scenariosValues.primaryStage.setScene(this);
 
-        launch(args);
-}
-    @Override
-    public void start(Stage primaryStage){
-        Pane root  = new Pane();
+        content();
+    }
 
-        Scene scene = new Scene(root,width,height);
+    public void content(){
+        //Pane root  = new Pane();
+
+        //Scene scene = new Scene(root,width,height);
         HBox contenedorPersonajes=new HBox(); // para colocar las imagenes en horizontal
         VBox boxVertica=new VBox(); // para colocar las imagenes  en vertical
         contenedorPersonajes.setSpacing(25);
         contenedorPersonajes.setAlignment(Pos.CENTER);
-        boxVertica.setLayoutX((width/2)-285);
+        boxVertica.setLayoutX((GameValues.dimension[0]/2)-285);
         boxVertica.setLayoutY((height/2)-280);
         boxVertica.setAlignment(Pos.CENTER);
         //boxVertica.setSpacing(0);
@@ -56,7 +63,10 @@ public class MenuSect extends Application{
                 //seleccionado.setImage(new Image(this.getClass().getResource("play.png").toExternalForm()));
                 //seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
                 System.out.println("play");
-                Tienda menu=new Tienda();
+                sceneFactory.getScene(ScenesType.PLAYSCENE);
+
+
+                //Tienda menu=new Tienda();
                 //ventanaP.menuP.main(primaryStage);
                 //primaryStage.close();
 
@@ -71,17 +81,18 @@ public class MenuSect extends Application{
         boxfinal.getChildren().addAll(tienda,siguiente);
         boxfinal.setLayoutX(45);
         boxfinal.setLayoutY(height-110);
-        boxfinal.setSpacing(width-270);
+        boxfinal.setSpacing(GameValues.dimension[0]-270);
 
 
-        primaryStage.setTitle("JavaFx");
+        //primaryStage.setTitle("JavaFx");
         ImageView imagenMario=new ImageView();
         imagenMario.setFitWidth(100);
         imagenMario.setPreserveRatio(true);
         imagenMario.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() { // cuando se le da clic a la imagen
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                System.out.println(";v");
+                Player.personaje= playerType.MARIO;
+                //System.out.println(";v");
                 seleccionado.setImage(new Image(this.getClass().getResource("mario1.png").toExternalForm())); // se coloca imagen que quiere que aparezca
                 seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
             }
@@ -95,9 +106,10 @@ public class MenuSect extends Application{
         imagenPeach.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
+                Player.personaje= playerType.PEACH;
                 seleccionado.setImage(new Image(this.getClass().getResource("peach.png").toExternalForm()));
                 seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
-                System.out.println("XD");
+                //System.out.println("XD");
             }
         });
 
@@ -110,9 +122,10 @@ public class MenuSect extends Application{
         imagenGoku.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
+                Player.personaje= playerType.GOKU;
                 seleccionado.setImage(new Image(this.getClass().getResource("goku2.png").toExternalForm()));
                 seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
-                System.out.println("goku");
+                //System.out.println("goku");
             }
         });
 
@@ -124,9 +137,10 @@ public class MenuSect extends Application{
         ImagenMarco.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
+                Player.personaje= playerType.MARCO;
                 seleccionado.setImage(new Image(this.getClass().getResource("marco1.png").toExternalForm()));
                 seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
-                System.out.println("XD");
+                //System.out.println("XD");
             }
         });
 
@@ -138,9 +152,10 @@ public class MenuSect extends Application{
         imagenRick.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
+                Player.personaje= playerType.RICK;
                 seleccionado.setImage(new Image(this.getClass().getResource("rick.png").toExternalForm()));
                 seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
-                System.out.println("XD");
+                //System.out.println("XD");
             }
         });
 
@@ -166,28 +181,9 @@ public class MenuSect extends Application{
         root.getChildren().addAll(fondo,boxVertica,boxfinal);
 
 
-        primaryStage.setTitle("java Fx");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //primaryStage.setTitle("java Fx");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //primaryStage.show();
 
     }
 }

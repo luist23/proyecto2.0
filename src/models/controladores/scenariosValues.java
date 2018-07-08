@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 public class scenariosValues {
     private static scenariosValues values;
-    public static Stage primaryStage;
+    public static Stage primaryStage=new Stage();
     //public static Group root;
     public static scenariosValues getInstance(){
         return values;
