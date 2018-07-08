@@ -18,6 +18,7 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import static models.players.Player.dinero;
 
@@ -26,10 +27,10 @@ import static models.players.Player.dinero;
  * @author marym
  */
 public class Tienda extends Application {
-    private Label btnVida,btnHabilidad, btnArma;
+    //private Label btnVida,btnHabilidad, btnArma;
     private Pane root;
-    private HBox boxMenu, boxRecursos, boxInfoSuperior;
-    private VBox vboxMenu, vboxRecursos,vboxInfoSuperior;
+    private HBox boxMenu, boxRecursos, boxInfoSuperior,boxInfoArma,boxInfoVida, boxInfoPoder, boxInfoEspecial;
+    private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial;
     private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3;
     private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3;
     private int altoventana,anchoVentana;
@@ -165,61 +166,109 @@ public class Tienda extends Application {
         infoV = new TextField();
         infoP = new TextField();
         infoE = new TextField();
-
+       
         //BTN 1
         imgViewM1.setOnMouseClicked((MouseEvent event) -> {
-            root.getChildren().remove(infoV);
-            root.getChildren().remove(infoP);
-            root.getChildren().remove(infoE);
+            root.getChildren().remove(vboxInfoVida);
+            root.getChildren().remove(vboxInfoPoder);
+            root.getChildren().remove(vboxInfoEspecial);
             
             //TEXTO
             infoA.setText("ARMA");
-            infoA.setMaxWidth(70);
+            infoA.setMaxWidth(80);
             infoA.setDisable(true);
             
-            root.getChildren().add(infoA);
+            boxInfoArma=new HBox();
+            boxInfoArma.setSpacing(8);
+            boxInfoArma.getChildren().addAll(infoA);
+
+            vboxInfoArma= new VBox();
+            vboxInfoArma.setSpacing(10);
+            vboxInfoArma.setLayoutX(anchoVentana-600);
+            vboxInfoArma.setLayoutY(altoventana-100);
+            vboxInfoArma.getChildren().addAll(boxInfoArma);
+            
+            root.getChildren().add(vboxInfoArma);
     
         });
         
         //BTN2
         imgViewM2.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
-            root.getChildren().remove(infoA);
-            root.getChildren().remove(infoP);
-            root.getChildren().remove(infoE);
+            root.getChildren().remove(vboxInfoArma);
+            root.getChildren().remove(vboxInfoPoder);
+            root.getChildren().remove(vboxInfoEspecial);
             
             //TEXTO
             infoV.setText("VIDA");
-            infoV.setMaxWidth(70);
+            infoV.setMaxWidth(80);
             infoV.setDisable(true);
+            
+            boxInfoVida=new HBox();
+            boxInfoVida.setSpacing(8);
+            boxInfoVida.getChildren().addAll(infoV);
+
+            vboxInfoVida= new VBox();
+            vboxInfoVida.setSpacing(10);
+            vboxInfoVida.setLayoutX(anchoVentana-600);
+            vboxInfoVida.setLayoutY(altoventana-100);
+            vboxInfoVida.getChildren().addAll(boxInfoVida);
+            
+            
       
-            root.getChildren().add(infoV);
+            root.getChildren().add(vboxInfoVida);
         });
         
         //BTN3
         imgViewM3.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
-            root.getChildren().remove(infoA);
-            root.getChildren().remove(infoV);
-            root.getChildren().remove(infoE);
+            root.getChildren().remove(vboxInfoArma);
+            root.getChildren().remove(vboxInfoVida);
+            root.getChildren().remove(vboxInfoEspecial);
             
             //TEXTO
             infoP.setText("PODER");
-            infoP.setMaxWidth(70);
+            infoP.setMaxWidth(100);
+            infoP.setMaxHeight(100);
             infoP.setDisable(true);
       
-            root.getChildren().add(infoP);
+            boxInfoPoder=new HBox();
+            boxInfoPoder.setSpacing(8);
+            boxInfoPoder.getChildren().addAll(infoP);
+
+            vboxInfoPoder= new VBox();
+            vboxInfoPoder.setSpacing(10);
+            vboxInfoPoder.setLayoutX(anchoVentana-600);
+            vboxInfoPoder.setLayoutY(altoventana-100);
+            vboxInfoPoder.getChildren().addAll(boxInfoPoder);
+            
+            root.getChildren().add(vboxInfoPoder);
         });
         
         //BTN4
         imgViewM4.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
-            root.getChildren().remove(infoA);
-            root.getChildren().remove(infoV);
-            root.getChildren().remove(infoP);
+            root.getChildren().remove(vboxInfoArma);
+            root.getChildren().remove(vboxInfoVida);
+            root.getChildren().remove(vboxInfoPoder);
             //TEXTO
             infoE.setText("ESPECIALIDAD");
-            infoE.setMaxWidth(70);
+            infoE.setMaxWidth(80);
             infoE.setDisable(true);
-      
-            root.getChildren().add(infoE);
+            
+            boxInfoEspecial=new HBox();
+            boxInfoEspecial.setSpacing(8);
+            boxInfoEspecial.getChildren().addAll(infoE);
+
+            vboxInfoEspecial= new VBox();
+            vboxInfoEspecial.setSpacing(10);
+            vboxInfoEspecial.setLayoutX(anchoVentana-600);
+            vboxInfoEspecial.setLayoutY(altoventana-100);
+            vboxInfoEspecial.getChildren().addAll(boxInfoEspecial);
+            
+            boxInfoEspecial=new HBox();
+            boxInfoEspecial.setSpacing(8);
+            boxInfoEspecial.getChildren().addAll(infoE);
+
+             
+            root.getChildren().add(vboxInfoEspecial);
             
         });
        
