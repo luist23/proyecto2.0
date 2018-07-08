@@ -18,7 +18,7 @@ import models.elementos.explosivos.granadas.factory.granadaFactory;
 import models.elementos.explosivos.granadas.factory.granadaType;
 import models.controladores.peldannoMaster;
 import models.controladores.scenariosValues;
-import models.escenarios.scenaPausa;
+import models.escenarios.pantallaPausa.scenaPausa;
 import models.players.Player;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMB;

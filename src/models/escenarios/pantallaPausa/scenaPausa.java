@@ -1,4 +1,4 @@
-package models.escenarios;
+package models.escenarios.pantallaPausa;
 
 import input.Keyboard;
 import javafx.animation.AnimationTimer;
