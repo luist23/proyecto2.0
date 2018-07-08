@@ -84,6 +84,7 @@ public class playScene extends Scene {
 
         //StringProperty a=new SimpleStringProperty(String.valueOf(player.getVida()));
         player.textVida.setText("VIDA RESTANTE:  "+String.valueOf(player.getVida()));
+        player.textDinero.setText("$$$:  "+player.dinero);
         ImageView granadaActual=new ImageView(granadaFactory.getGranadaImagen(player.granadasDisponibles.get(0)));
         granadaActual.setFitWidth(50);
         granadaActual.setPreserveRatio(true);
@@ -127,7 +128,7 @@ public class playScene extends Scene {
         view.setLayoutY(0);*/
         //playering.play();//--reproducir
 
-        Player.box.getChildren().addAll(cannon,Player.textVida,granadaActual);
+        Player.box.getChildren().addAll(cannon,Player.textVida,granadaActual,player.textDinero);
 
         player.getRoot().getChildren().addAll(fondo,player.getPlayer());
         peldannoMaster.iniciar();
@@ -277,6 +278,7 @@ public class playScene extends Scene {
         });}*/
         setGravedad();//------------inicienado efecto de gravedad------------
 
+
     }
 
 
@@ -421,6 +423,7 @@ public class playScene extends Scene {
 
         try {
             g.start();
+            hiloVentana.iterador=1;
             //g2.start();
         } catch (Exception e) {
             e.printStackTrace();

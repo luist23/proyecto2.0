@@ -16,6 +16,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
     public static String[] rocaEfecto;
 
     protected Thread uno;
+    protected int velocidad=5;
     protected boolean vida = true;
     protected int totalVida=10;
     protected T gran;
@@ -25,6 +26,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
     protected MediaPlayer playerFinal;
     protected int iterador=1;
     private int[] azar={1,-1,1,-1,-1};
+    protected int poder=5;
     private  Boolean stop=true;
     private static int[] posicionX={25, GameValues.dimension[0]/3,GameValues.dimension[0]-75};
     public static int aleatoriosX(){
@@ -117,10 +119,10 @@ public abstract class rocaGigante <T>implements  roca <T>{
             if(dimension > roca.getLayoutX() && roca.getLayoutX()>0 && vida ){
                 int direccionRocafinal=direccionRoca;
                 Platform.runLater(() -> {
-                    roca.setLayoutX(roca.getLayoutX() + (direccionRocafinal * 5));
-                    if(roca.getLayoutX()<0){roca.setLayoutX(5);//;lebel.setLayoutX(roca.getLayoutX());
+                    roca.setLayoutX(roca.getLayoutX() + (direccionRocafinal * velocidad));
+                    if(roca.getLayoutX()<0){roca.setLayoutX(velocidad);//;lebel.setLayoutX(roca.getLayoutX());
                          }
-                    if(roca.getLayoutX()>dimension){roca.setLayoutX(dimension-5);//lebel.setLayoutX(roca.getLayoutX());
+                    if(roca.getLayoutX()>dimension){roca.setLayoutX(dimension-velocidad);//lebel.setLayoutX(roca.getLayoutX());
                     }
                 });
 
@@ -135,7 +137,7 @@ public abstract class rocaGigante <T>implements  roca <T>{
                     else{
                         roca.setImage(new Image(this.getClass().getResource(rocaEfecto[1]).toExternalForm()));
                     }
-                    roca.setLayoutX(roca.getLayoutX() + (direccionRoca * 5));
+                    roca.setLayoutX(roca.getLayoutX() + (direccionRoca * velocidad));
 
                     //System.out.println(lebel.getLayoutX());
 
@@ -233,5 +235,8 @@ public abstract class rocaGigante <T>implements  roca <T>{
         stop=true;
     }*/
 
-
+    @Override
+    public int getDaño() {
+        return poder;
+    }
 }

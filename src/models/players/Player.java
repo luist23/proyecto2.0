@@ -27,6 +27,7 @@ public class Player {
     public static int tiempoPaso=300;
     public static int distanciaPaso=5;
     public static TextField textVida =new TextField();
+    public static TextField textDinero =new TextField();
     public static HBox box =new HBox();
     public static Jefe enemigo;
     public static int dinero=2300;
@@ -41,6 +42,8 @@ public class Player {
             ourInstance= new Player();
             textVida.autosize();
             textVida.setDisable(true);
+            textDinero.autosize();
+            textDinero.setDisable(true);
             player = new ImageView();
             player.setFitHeight(playerBase.getSizePlayer()[0]);
             player.setFitWidth(playerBase.getSizePlayer()[1]);

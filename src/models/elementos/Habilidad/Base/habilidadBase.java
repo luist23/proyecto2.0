@@ -40,8 +40,16 @@ public class habilidadBase implements Habilidades {
             }
 
             rocas.clear();
-            habilidad.setLayoutX(GameValues.dimension[0]+100);
-            Gravedad.stop=true;
+            try {
+                Thread.sleep(100);
+                habilidad.setLayoutX(GameValues.dimension[0]+100);
+                habilidad.setImage(null);
+                Gravedad.stop=true;
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
 
 
         }

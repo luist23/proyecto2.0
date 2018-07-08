@@ -1,6 +1,7 @@
 package models.elementos.peldannos.controlador;
 
 import models.controladores.GameValues;
+import models.elementos.explosivos.enemigos.controlador.hiloRocas;
 import models.elementos.jefes.browserBlack.browserBlack;
 import models.elementos.peldannos.Peldanno;
 import models.escenarios.pantallaJuego.playScene;
@@ -30,6 +31,7 @@ public class peldannoMaster {
         peldannos.add(new Peldanno(0, GameValues.dimension[1]-15));
         peldannos.add(new Peldanno(posicionX[1], GameValues.dimension[1]-15));
         peldannos.add(new Peldanno(posicionX[2], GameValues.dimension[1]-15));
+        hiloRocas.peldanos.addAll(peldannos);
 
 
         //int elseY=GameValues.dimension[1];

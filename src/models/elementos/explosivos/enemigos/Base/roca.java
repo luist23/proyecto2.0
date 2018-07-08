@@ -12,6 +12,7 @@ public interface roca <T> {
     void explosion();
     //Thread getUno();
     void setDaño(int daño);
+    int getDaño();
     void setPausa(boolean pause);
     /*void pausar();
     void resume();*/
