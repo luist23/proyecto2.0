@@ -23,6 +23,12 @@ public class habilidadFactory {
                 return new habilidadRick();
             case PEACH:
                 return new habilidadPeach();
+            case MARIO:
+                return new habilidadRick();
+            case MARCO:
+                return new habilidadRick();
+            case GOKU:
+                return new habilidadRick();
         }
 
 

@@ -46,7 +46,8 @@ public abstract class jefeBase implements Jefe {
             int habilidadAc=1;
             while (vida>0 && Gravedad.exit){
                 //System.out.println("congeladojefe");
-                while (vida>0 && Gravedad.exit && stop){
+                while (vida>0 && Gravedad.exit && stop && Gravedad.stop){
+                    //System.out.println("feje");
                 //System.out.println("sigo vivojefe");
                 if(jefe.getBoundsInParent().intersects(Player.getPlayer().getBoundsInParent())){
                     Player.setDaño(daño);

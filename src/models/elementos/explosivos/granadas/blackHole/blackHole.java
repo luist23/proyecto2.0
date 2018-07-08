@@ -57,6 +57,7 @@ public class blackHole extends granadaBase<blackHoleDatos> {
     public void destruir() {
 
         ArrayList<roca> destruidos=new ArrayList<>();
+        boolean enemigo=false;
 
 
         try {
@@ -69,20 +70,33 @@ public class blackHole extends granadaBase<blackHoleDatos> {
                     r.getRoca().setLayoutY(granada.getLayoutY()+50);
                 }
 
+
             }
             Thread.sleep(300);
                 for(roca d:destruidos){
                     d.getRoca().setLayoutX(-500);
                     playScene.getRocas().remove(d);
                     d.setDaño(daño);
-                    System.out.println("dañebombablckhole");
+                    //System.out.println("dañebombablckhole");
 
                 }
+                if (Gravedad.overlapingImageView(Player.enemigo.getJefe(), granada)) {
+                    if(!enemigo){
+                        enemigo=true;
+                        Player.enemigo.setPausa(true);
+                        Thread.sleep(10);
+                        Player.enemigo.getJefe().setLayoutX(granada.getLayoutX()+70);
+                        Player.enemigo.getJefe().setLayoutY(granada.getLayoutY()+50);
+                        Thread.sleep(10);
+                    }}Thread.sleep(10);
+
                 Thread.sleep(100);
                 destruidos.clear();
 
         }
-
+            Player.enemigo.setPausa(false);
+            if(enemigo){
+                Player.enemigo.setDaño(daño);}
 
             if (Gravedad.overlapingImageView(granada, Player.getPlayer())) {
                 Player.setDaño(daño);

@@ -21,6 +21,7 @@ public class Juego extends Application{
     public void start(Stage primaryStage) throws Exception {
         GameValues gameValues=GameValues.getInstance();
         scenariosValues scenariosValue= scenariosValues.getInstance();
+        Player.personaje=playerType.GOKU;
 
         playerFactory.getPlayer();//escogiendoJugador
 

@@ -2,9 +2,11 @@ package models.elementos.Habilidad.Base;
 
 
 import javafx.scene.image.ImageView;
+import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.escenarios.pantallaJuego.playScene;
+import models.players.Player;
 
 import java.util.ArrayList;
 
@@ -17,7 +19,7 @@ public class habilidadBase implements Habilidades {
     public void ejecutar() {
         Gravedad.stop=false;
         Thread habi= new Thread(()->{
-            System.out.println("habimladj");
+            //System.out.println("habimladj");
             ArrayList<roca> rocas=new ArrayList<>();
             try {
                 Thread.sleep(4000);
@@ -33,8 +35,12 @@ public class habilidadBase implements Habilidades {
                 r.setDaño(100);
                 r.getRoca().setLayoutX(-300);
             }
+            if(habilidad.getBoundsInParent().intersects(Player.enemigo.getJefe().getBoundsInParent())){
+                Player.enemigo.setDaño(100);
+            }
 
             rocas.clear();
+            habilidad.setLayoutX(GameValues.dimension[0]+100);
             Gravedad.stop=true;
 
 
