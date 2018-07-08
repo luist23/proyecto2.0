@@ -69,15 +69,19 @@ public class blackHole extends granadaBase<blackHoleDatos> {
 
             }
             Thread.sleep(300);
+                for(roca d:destruidos){
+                    d.getRoca().setLayoutX(-500);
+                    playScene.getRocas().remove(d);
+                    d.setDaño(daño);
+                    System.out.println("dañebombablckhole");
+
+                }
+                Thread.sleep(100);
+                destruidos.clear();
+
         }
 
-            for(roca d:destruidos){
-                d.getRoca().setLayoutX(-500);
-                playScene.getRocas().remove(d);
-                d.setDaño(daño);
 
-            }
-            destruidos.clear();
             if (Gravedad.overlapingImageView(granada, Player.getPlayer())) {
                 Player.setDaño(daño);
             }

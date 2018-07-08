@@ -10,6 +10,7 @@ public class GameValues {
     public static int direccion=1;
     private static Gravedad gravedadThread;
     //public  static Stage primaryStage;
+    public static int alturaNivel=0;
 
 
     private static GameValues ourInstance = new GameValues();

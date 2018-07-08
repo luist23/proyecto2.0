@@ -33,7 +33,7 @@ public class peldannoMaster {
 
 
         //int elseY=GameValues.dimension[1];
-        for (i=GameValues.dimension[1];i>-1000;i-=120){
+        for (i=GameValues.dimension[1]-130;i>GameValues.alturaNivel;i-=130){
             int total=peldan[(int)(Math.random()*11)];
             for(int k=0;k<total;k++){
                 int suerte=aleatorio();

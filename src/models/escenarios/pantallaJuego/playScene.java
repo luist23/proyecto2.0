@@ -191,6 +191,7 @@ public class playScene extends Scene {
                         Gravedad.sleeping(50);
                         if(player.enemigos>1){
                             player.enemigos--;
+                            System.out.println(player.enemigos);
                             rocas.add(new bombaOMB(new bombaOMBdatos()));}
 
                     }

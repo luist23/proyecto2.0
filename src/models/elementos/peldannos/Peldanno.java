@@ -3,6 +3,7 @@ package models.elementos.peldannos;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import models.controladores.GameValues;
 import models.players.Player;
 
 public class Peldanno {
@@ -11,7 +12,7 @@ public class Peldanno {
 
         peldanno=new ImageView();
         peldanno.setFitHeight(10);
-        peldanno.setFitWidth(900);
+        peldanno.setFitWidth(GameValues.dimension[0]/3);
         peldanno.setPreserveRatio(true);
         peldanno.setImage(new Image(this.getClass().getResource("Peldanno.png").toExternalForm()));
         peldanno.setLayoutX(X);

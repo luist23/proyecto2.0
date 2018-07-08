@@ -16,14 +16,26 @@ public class hiloVentana {
 
                 while (Gravedad.stop && Gravedad.exit){
                     System.out.println("controlo la ventana :v");
+                    if(Player.getPlayer().getLayoutY()<GameValues.dimension[1]/2){
                     try {
                         Player.getRoot().setTranslateY(-Player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);
                         fondo.setLayoutY(Player.getPlayer().getLayoutY()-GameValues.dimension[1]/2);
                         Player.box.setLayoutY(fondo.getLayoutY());
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    }}else{
+                        Player.getRoot().setTranslateY(0);
+                        fondo.setLayoutY(0);
+                        Player.box.setLayoutY(0);
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                     }
+
                 }}});
         centrarPantalla.start();
     }
