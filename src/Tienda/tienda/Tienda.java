@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -31,7 +33,7 @@ public class Tienda extends Application {
     private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3;
     private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3;
     private int altoventana,anchoVentana;
-    public static TextField infoDinero, infoArma, infoVida;
+    public static TextField infoDinero, infoArma, infoVida, infoA, infoV, infoP, infoE;
     public static Stage Ventana;
     
     @Override
@@ -40,87 +42,15 @@ public class Tienda extends Application {
         
         anchoVentana=1010;
         altoventana=650;
-        
+  
         imgF= new Image("Tienda/imagenes/imgF.png");
         imgViewF = new ImageView(imgF);
         imgViewF.setFitHeight(altoventana);
         imgViewF.setFitWidth(anchoVentana);
         
-         //***MENU......M ***
+        root = new Pane(imgViewF);    
         
-        imgM1 = new Image ("Tienda/imagenes/Arma_1.png");
-        imgViewM1 =new ImageView(imgM1);
-        imgViewM1.setFitHeight(70);
-        imgViewM1.setFitWidth(77);
-        imgViewM1.setPreserveRatio(false);
-        
-        imgM2= new Image(TiendaM.getInstance().getClass()
-                .getResource("c2.png").toExternalForm());
-        imgViewM2 =new ImageView(imgM2);
-        imgViewM2.setFitHeight(70);
-        imgViewM2.setFitWidth(60);
-        imgViewM2.setPreserveRatio(false);
-        
-        imgM3= new Image(TiendaM.getInstance().getClass()
-                .getResource("Estrella.png").toExternalForm());
-        imgViewM3 =new ImageView(imgM3);
-        imgViewM3.setFitHeight(63);
-        imgViewM3.setFitWidth(70);
-        imgViewM3.setPreserveRatio(false);
-        
-        imgM4= new Image(TiendaM.getInstance().getClass()
-                .getResource("fire.png").toExternalForm());
-        imgViewM4 =new ImageView(imgM4);
-        imgViewM4.setFitHeight(63);
-        imgViewM4.setFitWidth(80);
-        imgViewM4.setPreserveRatio(false);
-        
-        
-        boxMenu=new HBox();
-        boxMenu.setSpacing(8);
-        boxMenu.getChildren().addAll(imgViewM1,imgViewM2, imgViewM3, imgViewM4);
-  
-        vboxMenu= new VBox();
-        vboxMenu.setSpacing(10);
-        vboxMenu.setLayoutX(anchoVentana-345);
-        vboxMenu.setLayoutY(altoventana-268);
-        vboxMenu.getChildren().addAll(boxMenu);
-   
-        //Aciones del Boton
-        imgViewM1.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-              
-                
-            }
-        });
-        
-        imgViewM2.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                //****INFORMACION ****
-                //infoVida=new TextField();
-            }
-        });
-        
-        imgViewM3.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                
-                System.out.println("btn 3");
-            }
-        });
-        
-        imgViewM4.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                
-                System.out.println("btn 4");
-            }
-        });
-        
-        
-         //****INFORMACION SUPERIOR****
+         //*** INFORMACION SUPERIOR ***//
         infoDinero=new TextField();
         //infoDinero.setText(dinero);
         infoDinero.setMaxWidth(70);
@@ -147,8 +77,9 @@ public class Tienda extends Application {
         vboxInfoSuperior.getChildren().addAll(boxInfoSuperior);
     
         
-        //*** RECURSOS .......R ***
+        //*** RECURSOS .......R ***//
         
+        //DINERO
         imgR1 = new Image (TiendaM.getInstance().getClass()
                 .getResource("Dinero.gif").toExternalForm());
         imgViewR1 =new ImageView(imgR1);
@@ -156,6 +87,7 @@ public class Tienda extends Application {
         imgViewR1.setFitWidth(140);
         imgViewR1.setPreserveRatio(false);
         
+        //ARMAS
         imgR2 = new Image (TiendaM.getInstance().getClass()
                 .getResource("Granade.png").toExternalForm());
         imgViewR2 =new ImageView(imgR2);
@@ -163,6 +95,7 @@ public class Tienda extends Application {
         imgViewR2.setFitWidth(140);
         imgViewR2.setPreserveRatio(false);
         
+        //VIDA
         imgR3 = new Image (TiendaM.getInstance().getClass()
                 .getResource("life.png").toExternalForm());
         imgViewR3 =new ImageView(imgR3);
@@ -170,6 +103,7 @@ public class Tienda extends Application {
         imgViewR3.setFitWidth(140);
         imgViewR3.setPreserveRatio(false);
         
+        //VBOX AND HBOX ......RECURSOS
         boxRecursos=new HBox();
         boxRecursos.setSpacing(5);
         boxRecursos.getChildren().addAll(imgViewR1, imgViewR2,imgViewR3);
@@ -181,9 +115,115 @@ public class Tienda extends Application {
         vboxRecursos.getChildren().addAll(boxRecursos);
         
         
+         //***MENU......M ***//
+        
+        //ARMA
+        imgM1 = new Image ("Tienda/imagenes/Arma_1.png");
+        imgViewM1 =new ImageView(imgM1);
+        imgViewM1.setFitHeight(70);
+        imgViewM1.setFitWidth(77);
+        imgViewM1.setPreserveRatio(false);
+        
+        //VIDA
+        imgM2= new Image(TiendaM.getInstance().getClass()
+                .getResource("c2.png").toExternalForm());
+        imgViewM2 =new ImageView(imgM2);
+        imgViewM2.setFitHeight(70);
+        imgViewM2.setFitWidth(60);
+        imgViewM2.setPreserveRatio(false);
+        
+        //PODER
+        imgM3= new Image(TiendaM.getInstance().getClass()
+                .getResource("Estrella.png").toExternalForm());
+        imgViewM3 =new ImageView(imgM3);
+        imgViewM3.setFitHeight(63);
+        imgViewM3.setFitWidth(70);
+        imgViewM3.setPreserveRatio(false);
+        
+        //ESPECIALIDAD
+        imgM4= new Image(TiendaM.getInstance().getClass()
+                .getResource("fire.png").toExternalForm());
+        imgViewM4 =new ImageView(imgM4);
+        imgViewM4.setFitHeight(63);
+        imgViewM4.setFitWidth(80);
+        imgViewM4.setPreserveRatio(false);
+        
+        //VBOX AND HBOX.....MENU
+        boxMenu=new HBox();
+        boxMenu.setSpacing(8);
+        boxMenu.getChildren().addAll(imgViewM1,imgViewM2, imgViewM3, imgViewM4);
+  
+        vboxMenu= new VBox();
+        vboxMenu.setSpacing(10);
+        vboxMenu.setLayoutX(anchoVentana-345);
+        vboxMenu.setLayoutY(altoventana-268);
+        vboxMenu.getChildren().addAll(boxMenu);
+      
+        
+        //ACCIONES BOTON//
+        infoA = new TextField();
+        infoV = new TextField();
+        infoP = new TextField();
+        infoE = new TextField();
+
+        //BTN 1
+        imgViewM1.setOnMouseClicked((MouseEvent event) -> {
+            root.getChildren().remove(infoV);
+            root.getChildren().remove(infoP);
+            root.getChildren().remove(infoE);
+            
+            //TEXTO
+            infoA.setText("ARMA");
+            infoA.setMaxWidth(70);
+            infoA.setDisable(true);
+            
+            root.getChildren().add(infoA);
+    
+        });
+        
+        //BTN2
+        imgViewM2.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
+            root.getChildren().remove(infoA);
+            root.getChildren().remove(infoP);
+            root.getChildren().remove(infoE);
+            
+            //TEXTO
+            infoV.setText("VIDA");
+            infoV.setMaxWidth(70);
+            infoV.setDisable(true);
+      
+            root.getChildren().add(infoV);
+        });
+        
+        //BTN3
+        imgViewM3.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
+            root.getChildren().remove(infoA);
+            root.getChildren().remove(infoV);
+            root.getChildren().remove(infoE);
+            
+            //TEXTO
+            infoP.setText("PODER");
+            infoP.setMaxWidth(70);
+            infoP.setDisable(true);
+      
+            root.getChildren().add(infoP);
+        });
+        
+        //BTN4
+        imgViewM4.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
+            root.getChildren().remove(infoA);
+            root.getChildren().remove(infoV);
+            root.getChildren().remove(infoP);
+            //TEXTO
+            infoE.setText("ESPECIALIDAD");
+            infoE.setMaxWidth(70);
+            infoE.setDisable(true);
+      
+            root.getChildren().add(infoE);
+            
+        });
        
-        //ventana
-        root = new Pane(imgViewF);
+        //*** VENTANA **//
         root.getChildren().addAll(vboxMenu,vboxRecursos,vboxInfoSuperior);
     
         Scene s = new Scene(root, anchoVentana, altoventana);
