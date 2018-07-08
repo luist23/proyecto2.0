@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.escenarios.pantallaJuego.playScene;
+import models.players.Player;
 
 public class sceneFactory {
     private static sceneFactory ourInstance = new sceneFactory();
@@ -13,7 +14,8 @@ public class sceneFactory {
     public static Scene getScene(ScenesType type){
         switch (type){
             case PLAYSCENE:
-                return new playScene();
+                Player.playScene=new playScene();
+                return Player.playScene;
 
 
         }

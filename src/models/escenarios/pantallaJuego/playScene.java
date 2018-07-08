@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.WindowEvent;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
@@ -17,6 +18,7 @@ import models.elementos.explosivos.granadas.factory.granadaFactory;
 import models.elementos.explosivos.granadas.factory.granadaType;
 import models.controladores.peldannoMaster;
 import models.controladores.scenariosValues;
+import models.escenarios.scenaPausa;
 import models.players.Player;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMB;
@@ -174,12 +176,17 @@ public class playScene extends Scene {
                             System.out.println(player.enemigos);
                             rocas.add(new bombaOMB(new bombaOMBdatos()));}
                     }
+                    if (input.isEscPressed()){ Gravedad.sleeping(100);
+                        Gravedad.stop=false;
+                        input.setSceState();
+                        new scenaPausa(new Pane());
+                        Gravedad.sleeping(500);
+                    /*if(Gravedad.stop){ Gravedad.stop=false;
+                    }else{ Gravedad.stop=true;                    }*/
+                    }
                 }
 
-                if (input.isEscPressed()){ Gravedad.sleeping(50);
-                    if(Gravedad.stop){ Gravedad.stop=false;
-                    }else{ Gravedad.stop=true;                    }
-                }
+
 
             }
         };
@@ -323,7 +330,6 @@ public class playScene extends Scene {
         try {
             g.start();
             hiloVentana.iterador=1;
-            //g2.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
