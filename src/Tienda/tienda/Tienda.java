@@ -31,8 +31,8 @@ public class Tienda extends Application {
     private Pane root;
     private HBox boxMenu, boxRecursos, boxInfoSuperior,boxInfoArma,boxInfoVida, boxInfoPoder, boxInfoEspecial;
     private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial;
-    private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3;
-    private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3;
+    private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3, imgA1, imgA2, imgA3, imgA4, imgV1, imgV2, imgV3;
+    private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3, imgViewA1, imgViewA2, imgViewA3, imgViewA4, imgViewV1, imgViewV2, imgViewV3;
     private int altoventana,anchoVentana;
     public static TextField infoDinero, infoArma, infoVida, infoA, infoV, infoP, infoE;
     public static Stage Ventana;
@@ -173,20 +173,40 @@ public class Tienda extends Application {
             root.getChildren().remove(vboxInfoPoder);
             root.getChildren().remove(vboxInfoEspecial);
             
-            //TEXTO
-            infoA.setText("ARMA");
-            infoA.setMaxWidth(80);
-            infoA.setDisable(true);
+            imgA1= new Image(TiendaM.getInstance().getClass()
+                .getResource("Arma1.png").toExternalForm());
+            imgViewA1 =new ImageView(imgA1);
+            imgViewA1.setFitHeight(55);
+            imgViewA1.setFitWidth(350);
+            imgViewA1.setPreserveRatio(false);
             
-            boxInfoArma=new HBox();
-            boxInfoArma.setSpacing(8);
-            boxInfoArma.getChildren().addAll(infoA);
-
+            imgA2= new Image(TiendaM.getInstance().getClass()
+                .getResource("Arma2.png").toExternalForm());
+            imgViewA2 =new ImageView(imgA2);
+            imgViewA2.setFitHeight(55);
+            imgViewA2.setFitWidth(350);
+            imgViewA2.setPreserveRatio(false);
+            
+            imgA3= new Image(TiendaM.getInstance().getClass()
+                .getResource("Arma3.png").toExternalForm());
+            imgViewA3 =new ImageView(imgA3);
+            imgViewA3.setFitHeight(55);
+            imgViewA3.setFitWidth(350);
+            imgViewA3.setPreserveRatio(false);
+            
+            imgA4= new Image(TiendaM.getInstance().getClass()
+                .getResource("Arma4.png").toExternalForm());
+            imgViewA4 =new ImageView(imgA4);
+            imgViewA4.setFitHeight(55);
+            imgViewA4.setFitWidth(350);
+            imgViewA4.setPreserveRatio(false);
+     
+ 
             vboxInfoArma= new VBox();
-            vboxInfoArma.setSpacing(10);
-            vboxInfoArma.setLayoutX(anchoVentana-600);
-            vboxInfoArma.setLayoutY(altoventana-100);
-            vboxInfoArma.getChildren().addAll(boxInfoArma);
+            vboxInfoArma.setSpacing(20);
+            vboxInfoArma.setLayoutX(anchoVentana-920);
+            vboxInfoArma.setLayoutY(altoventana-500);
+            vboxInfoArma.getChildren().addAll(imgViewA1, imgViewA2, imgViewA3, imgViewA4);
             
             root.getChildren().add(vboxInfoArma);
     
@@ -198,23 +218,34 @@ public class Tienda extends Application {
             root.getChildren().remove(vboxInfoPoder);
             root.getChildren().remove(vboxInfoEspecial);
             
-            //TEXTO
-            infoV.setText("VIDA");
-            infoV.setMaxWidth(80);
-            infoV.setDisable(true);
+            imgV1= new Image(TiendaM.getInstance().getClass()
+                .getResource("Vida50.png").toExternalForm());
+            imgViewV1 =new ImageView(imgV1);
+            imgViewV1.setFitHeight(55);
+            imgViewV1.setFitWidth(350);
+            imgViewV1.setPreserveRatio(false);
             
-            boxInfoVida=new HBox();
-            boxInfoVida.setSpacing(8);
-            boxInfoVida.getChildren().addAll(infoV);
-
+            imgV2= new Image(TiendaM.getInstance().getClass()
+                .getResource("Vida100.png").toExternalForm());
+            imgViewV2 =new ImageView(imgV2);
+            imgViewV2.setFitHeight(55);
+            imgViewV2.setFitWidth(350);
+            imgViewV2.setPreserveRatio(false);
+            
+            imgV3= new Image(TiendaM.getInstance().getClass()
+                .getResource("Vida200.png").toExternalForm());
+            imgViewV3 =new ImageView(imgV3);
+            imgViewV3.setFitHeight(55);
+            imgViewV3.setFitWidth(350);
+            imgViewV3.setPreserveRatio(false);
+          
+            
             vboxInfoVida= new VBox();
-            vboxInfoVida.setSpacing(10);
-            vboxInfoVida.setLayoutX(anchoVentana-600);
-            vboxInfoVida.setLayoutY(altoventana-100);
-            vboxInfoVida.getChildren().addAll(boxInfoVida);
-            
-            
-      
+            vboxInfoVida.setSpacing(20);
+            vboxInfoVida.setLayoutX(anchoVentana-920);
+            vboxInfoVida.setLayoutY(altoventana-500);
+            vboxInfoVida.getChildren().addAll(imgViewV1, imgViewV2, imgViewV3);
+        
             root.getChildren().add(vboxInfoVida);
         });
         
@@ -224,16 +255,6 @@ public class Tienda extends Application {
             root.getChildren().remove(vboxInfoVida);
             root.getChildren().remove(vboxInfoEspecial);
             
-            //TEXTO
-            infoP.setText("PODER");
-            infoP.setMaxWidth(100);
-            infoP.setMaxHeight(100);
-            infoP.setDisable(true);
-      
-            boxInfoPoder=new HBox();
-            boxInfoPoder.setSpacing(8);
-            boxInfoPoder.getChildren().addAll(infoP);
-
             vboxInfoPoder= new VBox();
             vboxInfoPoder.setSpacing(10);
             vboxInfoPoder.setLayoutX(anchoVentana-600);
@@ -248,11 +269,7 @@ public class Tienda extends Application {
             root.getChildren().remove(vboxInfoArma);
             root.getChildren().remove(vboxInfoVida);
             root.getChildren().remove(vboxInfoPoder);
-            //TEXTO
-            infoE.setText("ESPECIALIDAD");
-            infoE.setMaxWidth(80);
-            infoE.setDisable(true);
-            
+         
             boxInfoEspecial=new HBox();
             boxInfoEspecial.setSpacing(8);
             boxInfoEspecial.getChildren().addAll(infoE);
