@@ -6,8 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import models.elementos.explosivos.enemigos.jefes.Jefe;
-import models.players.PlayerMarco.Marco;
-import models.players.PlayerRick.Rick;
+import models.players.Base.Players;
 
 public class Player {
 
@@ -18,7 +17,7 @@ public class Player {
     private static int vida;
     public static int enemigos=15;
     public static int granadasEnPocesion=5;
-    private static Players playerBase;
+    public static Players playerBase;
     public static boolean action=true;
     public static int pasosTotales=4;
     public static int tiempoPaso=300;
@@ -36,7 +35,7 @@ public class Player {
             textVida.autosize();
             textVida.setDisable(true);
             player = new ImageView();
-            playerBase=new Rick();
+            //playerBase=new Rick();
             player.setFitHeight(playerBase.getSizePlayer()[0]);
             player.setFitWidth(playerBase.getSizePlayer()[1]);
             player.setPreserveRatio(true);
@@ -73,7 +72,7 @@ public class Player {
     public static void setDaño(int Daño) {
         System.out.println("me hirieron :´v");
         vida -= Daño;
-        textVida.setText("VIDA RESTANTE:  "+String.valueOf(vida));
+        textVida.setText("VIDA RESTANTE:  "+vida);
        // StringProperty a=new SimpleStringProperty(String.valueOf(vida));
         //textVida.textProperty().bind(a);
 

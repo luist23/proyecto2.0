@@ -1,4 +1,4 @@
-package models.players;
+package models.players.Base;
 
 public interface Players{
     int[] getSizePlayer();

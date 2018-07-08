@@ -15,14 +15,13 @@ import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
 import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
 import models.elementos.peldannos.controlador.peldannoMaster;
-import models.players.Player1;
 import models.players.Player;
 import models.controladores.gravedadAumentada;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMB;
 import models.elementos.explosivos.enemigos.controlador.hiloRocas;
 import models.elementos.peldannos.Peldanno;
-import models.players.Players;
+import models.players.Base.Players;
 
 //import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class playScene extends Scene {
         values= Player.getPlayerBase();
 
 
-        primaryStage.setScene(this);
+        scenariosValues.primaryStage.setScene(this);
         content();
 
     }
@@ -182,7 +181,7 @@ public class playScene extends Scene {
         setOnKeyPressed(event -> {
             input.keyPressed(event);
         });
-        Player1.getPrimaryStage().setOnCloseRequest(new javafx.event.EventHandler<WindowEvent>() {
+        scenariosValues.primaryStage.setOnCloseRequest(new javafx.event.EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
                 Gravedad.exit=false;

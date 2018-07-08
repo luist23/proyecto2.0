@@ -1,6 +1,6 @@
 package models.players.PlayerRick;
 
-import models.players.Players;
+import models.players.Base.Players;
 
 /**
  * Created by LuisT23 on 6/7/2018.

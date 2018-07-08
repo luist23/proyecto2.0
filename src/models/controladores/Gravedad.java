@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import models.players.Player;
 import models.escenarios.playScene;
 import models.elementos.peldannos.Peldanno;
-import models.players.Players;
+import models.players.Base.Players;
 
 
 import java.util.ArrayList;

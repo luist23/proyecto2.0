@@ -1,5 +1,7 @@
 package models.controladores;
 
+import javafx.stage.Stage;
+
 public class GameValues {
 
     public static int[] dimension={1280,720};
@@ -7,6 +9,7 @@ public class GameValues {
     public static boolean permitirSalto =true;
     public static int direccion=1;
     private static Gravedad gravedadThread;
+    //public  static Stage primaryStage;
 
 
     private static GameValues ourInstance = new GameValues();

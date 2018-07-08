@@ -1,6 +1,6 @@
 package models.players.PlayerPeach;
 
-import models.players.Players;
+import models.players.Base.Players;
 
 /**
  * Created by LuisT23 on 7/7/2018.
