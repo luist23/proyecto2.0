@@ -32,7 +32,7 @@ public class Juego extends Application{
         scenariosValue.primaryStage=primaryStage;
         scenariosValue.primaryStage.setTitle("JavaFx");
         //sceneFactory.getScene(ScenesType.PLAYSCENE);
-        new MenuSect(new Pane());
+        sceneFactory.getScene(ScenesType.MENUSELECCION);
         //new scenaPausa();
 
         scenariosValue.primaryStage.show();

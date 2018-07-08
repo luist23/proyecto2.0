@@ -21,12 +21,12 @@ import models.players.factory.playerType;
 
 
 public class MenuSect extends Scene {
-    private int width =1080;int height =720; // se crean las dimensiones de la ventana
+    private static int width =1080;private static int height =720; // se crean las dimensiones de la ventana
     private Pane root  = new Pane();
 
 
     public MenuSect(Pane root){
-    super(root, GameValues.dimension[0],GameValues.dimension[1]);
+    super(root, width,height);
     this.root=root;
         scenariosValues.primaryStage.setScene(this);
 
@@ -41,7 +41,7 @@ public class MenuSect extends Scene {
         VBox boxVertica=new VBox(); // para colocar las imagenes  en vertical
         contenedorPersonajes.setSpacing(25);
         contenedorPersonajes.setAlignment(Pos.CENTER);
-        boxVertica.setLayoutX((GameValues.dimension[0]/2)-285);
+        boxVertica.setLayoutX((width/2)-285);
         boxVertica.setLayoutY((height/2)-280);
         boxVertica.setAlignment(Pos.CENTER);
         //boxVertica.setSpacing(0);
@@ -85,7 +85,7 @@ public class MenuSect extends Scene {
         boxfinal.getChildren().addAll(tienda,siguiente);
         boxfinal.setLayoutX(45);
         boxfinal.setLayoutY(height-110);
-        boxfinal.setSpacing(GameValues.dimension[0]-270);
+        boxfinal.setSpacing(width-270);
 
 
         //primaryStage.setTitle("JavaFx");

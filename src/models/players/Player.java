@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import models.controladores.GameValues;
 import models.elementos.explosivos.granadas.factory.granadaType;
 import models.elementos.jefes.Jefe;
 import models.players.Base.Players;
@@ -75,8 +76,8 @@ public class Player {
 
     private static void jugador(){
         player.setImage(new Image(playerBase.getClass().getResource(playerBase.getDerecha()[0]).toExternalForm()));
-        player.setLayoutX(10);
-        player.setLayoutY(103);
+        player.setLayoutX(70);
+        player.setLayoutY(GameValues.dimension[1]-125);
     }
 
     public static void setDaño(int Daño) {
