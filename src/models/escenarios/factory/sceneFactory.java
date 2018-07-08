@@ -1,8 +1,9 @@
-package models.escenarios;
+package models.escenarios.factory;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
+import models.escenarios.playScene;
 
 public class sceneFactory {
     private static sceneFactory ourInstance = new sceneFactory();

@@ -7,6 +7,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import models.elementos.explosivos.enemigos.jefes.Jefe;
 import models.players.PlayerMarco.Marco;
+import models.players.PlayerRick.Rick;
 
 public class Player {
 
@@ -35,7 +36,7 @@ public class Player {
             textVida.autosize();
             textVida.setDisable(true);
             player = new ImageView();
-            playerBase=new Marco();
+            playerBase=new Rick();
             player.setFitHeight(playerBase.getSizePlayer()[0]);
             player.setFitWidth(playerBase.getSizePlayer()[1]);
             player.setPreserveRatio(true);

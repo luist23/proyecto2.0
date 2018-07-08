@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import models.escenarios.ScenesType;
+import models.escenarios.factory.ScenesType;
 import models.escenarios.scenariosValues;
-import models.escenarios.sceneFactory;
+import models.escenarios.factory.sceneFactory;
 
 //import javax.swing.text.html.ImageView;
 
