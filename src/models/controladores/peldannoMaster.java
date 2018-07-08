@@ -1,6 +1,5 @@
-package models.elementos.peldannos.controlador;
+package models.controladores;
 
-import models.controladores.GameValues;
 import models.elementos.explosivos.enemigos.controlador.hiloRocas;
 import models.elementos.jefes.browserBlack.browserBlack;
 import models.elementos.peldannos.Peldanno;

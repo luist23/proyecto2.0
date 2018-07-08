@@ -1,4 +1,4 @@
-package models.escenarios.controlador;
+package models.controladores;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;

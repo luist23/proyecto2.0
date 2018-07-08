@@ -3,7 +3,7 @@ import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.escenarios.factory.ScenesType;
 import models.escenarios.factory.sceneFactory;
-import models.escenarios.controlador.scenariosValues;
+import models.controladores.scenariosValues;
 import models.players.Player;
 import models.players.factory.playerFactory;
 import models.players.factory.playerType;
@@ -28,7 +28,7 @@ public class Juego extends Application{
         Player player= Player.getInstance();
         scenariosValue.primaryStage=primaryStage;
         scenariosValue.primaryStage.setTitle("JavaFx");
-        sceneFactory.getScene(ScenesType.PLAYSCENE,scenariosValue.primaryStage);
+        sceneFactory.getScene(ScenesType.PLAYSCENE);
 
         scenariosValue.primaryStage.show();
 

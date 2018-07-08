@@ -7,20 +7,16 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import models.controladores.GameValues;
 import models.controladores.Gravedad;
 import models.controladores.hiloVentana;
-import models.elementos.Habilidad.Rick.habilidadRick;
 import models.elementos.Habilidad.factory.habilidadFactory;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMBdatos;
-import models.elementos.explosivos.granadas.blackHole.blackHole;
-import models.elementos.explosivos.granadas.blackHole.blackHoleDatos;
 import models.elementos.explosivos.granadas.factory.granadaFactory;
 import models.elementos.explosivos.granadas.factory.granadaType;
-import models.elementos.peldannos.controlador.peldannoMaster;
-import models.escenarios.controlador.scenariosValues;
+import models.controladores.peldannoMaster;
+import models.controladores.scenariosValues;
 import models.players.Player;
 import models.elementos.explosivos.enemigos.Base.roca;
 import models.elementos.explosivos.enemigos.bombaOMG.bombaOMB;
@@ -28,7 +24,7 @@ import models.elementos.explosivos.enemigos.controlador.hiloRocas;
 import models.elementos.peldannos.Peldanno;
 import models.players.Base.Players;
 
-//import java.awt.event.WindowEvent;
+
 import java.util.ArrayList;
 
 public class playScene extends Scene {
@@ -46,9 +42,9 @@ public class playScene extends Scene {
 
 
 
-    public playScene( double width, double height, Stage primaryStage) {
+    public playScene() {
 
-        super(Player.getRoot(), width, height);
+        super(Player.getRoot(), GameValues.dimension[0],GameValues.dimension[1]);
         peldannos=new ArrayList<>();
         rocas =new ArrayList<>();
         player=Player.getInstance();
@@ -80,28 +76,23 @@ public class playScene extends Scene {
 
     public void content(){
 
-        //probando un fondo
-
-        //StringProperty a=new SimpleStringProperty(String.valueOf(player.getVida()));
+        //-------------caja Superior---------------------------------------------------------------
         player.textVida.setText("VIDA RESTANTE:  "+String.valueOf(player.getVida()));
         player.textDinero.setText("$$$:  "+player.dinero);
         ImageView granadaActual=new ImageView(granadaFactory.getGranadaImagen(player.granadasDisponibles.get(0)));
+        ImageView cannon=new ImageView(new Image(this.getClass().getResource("cannon.gif").toExternalForm()));
+
         granadaActual.setFitWidth(50);
         granadaActual.setPreserveRatio(true);
-
-        ImageView cannon=new ImageView(new Image(this.getClass().getResource("cannon.gif").toExternalForm()));
         cannon.setFitWidth(50);
         cannon.setPreserveRatio(true);
-
-
 
         player.box.setLayoutX(0);
         player.box.setLayoutY(0);
         player.box.setAlignment(Pos.CENTER);
-        //player.box.setFillHeight(true);
 
 
-
+        //-----------------------------------------------------------------------------------------
 
         fondo.setImage(new Image(GameValues.getInstance().getClass().getResource("fondoPrueba.jpg").toExternalForm()));
         fondo.setFitHeight(GameValues.dimension[1]);
@@ -109,11 +100,7 @@ public class playScene extends Scene {
         fondo.setPreserveRatio(false);
         fondo.setLayoutX(0);fondo.setLayoutY(0);
 
-
-
         new hiloVentana(fondo);
-
-
 
         //VideoTrack videoprueba;
         /*Media media=new Media(this.getClass().getResource("videoPrueba.mp4").toExternalForm());
@@ -129,18 +116,10 @@ public class playScene extends Scene {
         //playering.play();//--reproducir
 
         Player.box.getChildren().addAll(cannon,Player.textVida,granadaActual,player.textDinero);
-
         player.getRoot().getChildren().addAll(fondo,player.getPlayer());
         peldannoMaster.iniciar();
         player.getRoot().getChildren().addAll(Player.box);
 
-
-
-
-
-
-
-        //input.update();
 
         AnimationTimer timer = new AnimationTimer() {
 
@@ -167,8 +146,7 @@ public class playScene extends Scene {
                         player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
                     }
                     if (input.isSpacePressed()) {
-
-                        //Gravedad.sleeping(50);
+                        Gravedad.sleeping(50);
                         saltin(values.getSaltoDerecha(), 1, values.getDerecha());
 
                     }
@@ -191,27 +169,17 @@ public class playScene extends Scene {
                         }
                     }
 
-                    if(input.isxPressed()) {
-                        Gravedad.sleeping(50);
-                        if(player.enemigos>1){
-                            player.enemigos--;
+                    if(input.isxPressed()) {     Gravedad.sleeping(50);
+                        if(player.enemigos>1){       player.enemigos--;
                             System.out.println(player.enemigos);
                             rocas.add(new bombaOMB(new bombaOMBdatos()));}
-
                     }
                 }
 
-                if (input.isEscPressed()){
-                    Gravedad.sleeping(50);
-                    if(Gravedad.stop){
-                        Gravedad.stop=false;
-                    }else{
-                        Gravedad.stop=true;
-                    }
+                if (input.isEscPressed()){ Gravedad.sleeping(50);
+                    if(Gravedad.stop){ Gravedad.stop=false;
+                    }else{ Gravedad.stop=true;                    }
                 }
-
-
-
 
             }
         };
@@ -233,49 +201,7 @@ public class playScene extends Scene {
             }
         });
 
-        /*if(false){
-        //----------------------Definiendo eventos-----------------------
-        this.addEventFilter(KeyEvent.KEY_PRESSED,new EventHandler<KeyEvent>(){
-            public void handle(KeyEvent ke){
-                if (ke.getCode()==KeyCode.A){
-                    pasoIzquierda(values.pasoIzquierda,values.izquierda);
-                }
-                else if(ke.getCode()==KeyCode.D) {
-                    //input.update();
-                    pasoderecha(values.pasoDerecha, values.derecha);
-                }
-                else if(ke.getCode()==KeyCode.W){
-                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY()-10);
-                }
-                else if(ke.getCode()==KeyCode.S) {
-                    player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
-                }
-                else if(ke.getCode()==KeyCode.M) {
-                    //input.update();
-                    salto(values.saltoDerecha, 1, values.derecha);
-                }
 
-                else if(ke.getCode()==KeyCode.N){
-                    salto(values.saltoIzquierda,-1,values.izquierda);
-                }
-
-                else if(ke.getCode()==KeyCode.Z) {
-                    new holyGranade(new holyGranadeDatos());
-                }
-                else if(ke.getCode()==KeyCode.X) {
-                    rocas.add(new bombaOMB(new bombaOMBdatos()));
-                }
-                else if(ke.getCode()==KeyCode.E) {
-
-                    slash(1);
-                }
-                else if(ke.getCode()==KeyCode.Q) {
-
-                    slash(-1);
-                }
-            }
-
-        });}*/
         setGravedad();//------------inicienado efecto de gravedad------------
 
 
@@ -304,20 +230,16 @@ public class playScene extends Scene {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        //}
-                    }//GameValues.gravedad=true;
+
+                    }
 
                     g.setPosicionFinal(posicionFinal);
 
                     player.salto=true;
 
-
-
-                    //imageView.setImage(new Image(values.getClass().getResource(posicionFinal[0]).toExternalForm()));
-
                 });
                 thread2.setDaemon(true);
-                //thread.start();
+
                 thread2.start();
 
             }
@@ -339,30 +261,7 @@ public class playScene extends Scene {
             });
             temp.start();
     }}
-    public void avanzarJugador(String[] pasos, int discriminante, String[] posicionfinal) {
 
-        if (Player.action) { Player.action=false;
-            Thread thread2 = new Thread(() -> {
-                for (int j = 0; j < Player.pasosTotales; j++) {
-
-                    player.getPlayer().setImage(new Image(values.getClass().getResource(pasos[j]).toExternalForm()));
-
-                    //moviendo jugador derecha o izquierda
-                    paso(pasos,discriminante,posicionfinal);
-
-
-                    try { Thread.sleep(Player.tiempoPaso / Player.pasosTotales);} catch (InterruptedException e) {e.printStackTrace();}
-                }
-                //imageView.setImage(new Image(values.getClass().getResource(posicionfinal[0]).toExternalForm()));
-                g.setPosicionFinal(posicionfinal);
-                Player.action=true;
-            }); thread2.setDaemon(true); thread2.start();
-        }else{
-            paso(pasos,discriminante,posicionfinal);
-
-        }
-
-    }
     private void paso(String[] pasos, int discriminante, String[] posicionfinal){
 
         //moviendo jugador derecha o izquierda
@@ -435,26 +334,6 @@ public class playScene extends Scene {
     public static ArrayList<roca> getRocas(){
         return rocas;
     }
-    public void slash(int direccion){
-        GameValues.direccion=1;
-        //players.getPlayer().setImage(new Image(values.getClass().getResource(pasos[0]).toExternalForm()));
-        for (int i=1;i<25;i++) {
-            {
-                Platform.runLater(() -> player.getPlayer().setLayoutX(player.getPlayer().getLayoutX() +
-                        5*direccion));
-            }
-            if (player.getPlayer().getLayoutX() < 0 ) {
-                player.getPlayer().setLayoutX(0);
-                break;
-            } else if (player.getPlayer().getLayoutX()>GameValues.dimension[0]-values.getSizePlayer()[0] ){
-                player.getPlayer().setLayoutX(GameValues.dimension[0]-values.getSizePlayer()[0]);
-                break;
 
-            }
-
-        }
-        //g.setPosicionFinal(posicionfinal);
-
-    }
 }
 

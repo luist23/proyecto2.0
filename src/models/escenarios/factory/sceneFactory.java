@@ -10,10 +10,10 @@ public class sceneFactory {
     public static sceneFactory getInstance() {return ourInstance;}
     private sceneFactory() {}
 
-    public static Scene getScene(ScenesType type, Stage primaryStage){
+    public static Scene getScene(ScenesType type){
         switch (type){
             case PLAYSCENE:
-                return new playScene(GameValues.dimension[0],GameValues.dimension[1],primaryStage);
+                return new playScene();
 
 
         }
