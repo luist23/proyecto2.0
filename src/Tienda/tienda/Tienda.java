@@ -269,6 +269,8 @@ public class Tienda extends Application {
             root.getChildren().remove(vboxInfoArma);
             root.getChildren().remove(vboxInfoVida);
             root.getChildren().remove(vboxInfoPoder);
+            
+            System.out.println("holi");
          
             boxInfoEspecial=new HBox();
             boxInfoEspecial.setSpacing(8);
