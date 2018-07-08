@@ -122,7 +122,7 @@ public class Tienda extends Application {
         
          //****INFORMACION SUPERIOR****
         infoDinero=new TextField();
-        infoDinero.setText(dinero);
+        //infoDinero.setText(dinero);
         infoDinero.setMaxWidth(70);
         infoDinero.setDisable(true);
         
