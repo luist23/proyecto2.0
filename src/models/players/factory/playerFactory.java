@@ -40,7 +40,7 @@ public class playerFactory {
                 break;
         }
         Player.playerBase=player;
-        System.out.println(player);
+        //System.out.println(player);
 
     }
 

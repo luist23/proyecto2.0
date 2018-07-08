@@ -12,4 +12,6 @@ public interface Jefe {
 
     void setDaño(int daño);
 
+    void setPausa(boolean pause);
+
 }

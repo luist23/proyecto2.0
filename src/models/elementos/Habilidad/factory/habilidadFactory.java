@@ -1,6 +1,7 @@
 package models.elementos.Habilidad.factory;
 
 import models.elementos.Habilidad.Base.Habilidades;
+import models.elementos.Habilidad.Peach.habilidadPeach;
 import models.elementos.Habilidad.Rick.habilidadRick;
 import models.players.Player;
 
@@ -20,7 +21,8 @@ public class habilidadFactory {
         switch (Player.personaje){
             case RICK:
                 return new habilidadRick();
-            //case PEACH:
+            case PEACH:
+                return new habilidadPeach();
         }
 
 

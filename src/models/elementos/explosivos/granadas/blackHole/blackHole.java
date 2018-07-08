@@ -37,8 +37,10 @@ public class blackHole extends granadaBase<blackHoleDatos> {
         if(i==120)
             player.play();
         if(i==130){
+            Gravedad.sleeping(10);
             granada.setImage(new Image(this.getClass().getResource(granadaEfecto[3]).toExternalForm()));
             granada.setFitHeight(dimensione[0]*3);
+            Gravedad.sleeping(10);
             granada.setLayoutY(granada.getLayoutY()-dimensione[0]*2);
             granada.setLayoutX(granada.getLayoutX()-dimensione[0]);
             Gravedad.sleeping(200);

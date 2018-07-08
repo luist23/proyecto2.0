@@ -15,7 +15,7 @@ public class hiloVentana {
             while(Gravedad.exit){
 
                 while (Gravedad.stop && Gravedad.exit){
-                    System.out.println("controlo la ventana :v");
+                    //System.out.println("controlo la ventana :v");
                     if(Player.getPlayer().getLayoutY()<GameValues.dimension[1]/2){
                     try {
                         Player.getRoot().setTranslateY(-Player.getPlayer().getLayoutY()+GameValues.dimension[1]/2);

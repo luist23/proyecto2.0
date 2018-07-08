@@ -18,6 +18,7 @@ public abstract class jefeBase implements Jefe {
     protected int daño;
     public static  TextField textVida =new TextField();
     private static int direccionRocafinal=1;
+    private boolean stop=true;
 
     @Override
     public ImageView getJefe() {
@@ -44,6 +45,8 @@ public abstract class jefeBase implements Jefe {
 
             int habilidadAc=1;
             while (vida>0 && Gravedad.exit){
+                //System.out.println("congeladojefe");
+                while (vida>0 && Gravedad.exit && stop){
                 //System.out.println("sigo vivojefe");
                 if(jefe.getBoundsInParent().intersects(Player.getPlayer().getBoundsInParent())){
                     Player.setDaño(daño);
@@ -97,6 +100,11 @@ public abstract class jefeBase implements Jefe {
 
 
             }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }}
         });
         jefet.start();
     }
@@ -105,5 +113,17 @@ public abstract class jefeBase implements Jefe {
     public void  setDaño(int daño) {
         vida-=daño;
         textVida.setText("VIDA JEFE:  "+String.valueOf(vida));
+    }
+
+    @Override
+    public void setPausa(boolean pause) {
+        Gravedad.sleeping(10);
+        if (pause){
+            //System.out.println("congelado");
+            stop=false;
+        }
+        else{stop=true;
+            //System.out.println("descongelado");
+        }
     }
 }

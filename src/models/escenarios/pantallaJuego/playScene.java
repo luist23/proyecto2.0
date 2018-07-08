@@ -57,6 +57,8 @@ public class playScene extends Scene {
         player.granadasDisponibles=new ArrayList<>();
 
         //-------------comprando granadas iniciales--------------
+        player.granadasDisponibles.add(granadaType.VENENO);
+        player.granadasDisponibles.add(granadaType.CONGELACION);
         player.granadasDisponibles.add(granadaType.HOLYGRANADE);
         player.granadasDisponibles.add(granadaType.BLACKHOLE);
         player.granadasDisponibles.add(granadaType.HOLYGRANADE);
@@ -95,6 +97,7 @@ public class playScene extends Scene {
         player.box.setLayoutX(0);
         player.box.setLayoutY(0);
         player.box.setAlignment(Pos.CENTER);
+        //player.box.setFillHeight(true);
 
 
 

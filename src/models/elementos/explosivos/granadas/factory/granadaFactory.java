@@ -2,6 +2,8 @@ package models.elementos.explosivos.granadas.factory;
 
 import javafx.scene.image.Image;
 import models.controladores.GameValues;
+import models.elementos.explosivos.granadas.congelacion.Congelacion;
+import models.elementos.explosivos.granadas.congelacion.congelacionDatos;
 import models.elementos.explosivos.granadas.holyGranade.holyGranade;
 import models.elementos.explosivos.granadas.base.granada;
 import models.elementos.explosivos.granadas.blackHole.blackHole;
@@ -27,6 +29,8 @@ public class granadaFactory {
                 return new holyGranade(new holyGranadeDatos());
             case BLACKHOLE:
                 return new blackHole(new blackHoleDatos());
+            case CONGELACION:
+                return new Congelacion(new congelacionDatos());
                     
         }
         return null;
@@ -34,13 +38,15 @@ public class granadaFactory {
     public static Image getGranadaImagen(granadaType type){
         switch (type){
             case VENENO:
-                return new Image(new venenoDatos().getClass().getResource("fondoPrueba.jpg").toExternalForm());
+                return new Image(new venenoDatos().getClass().getResource("veneno.gif").toExternalForm());
 
             case HOLYGRANADE:
                 return new Image(new holyGranadeDatos().getClass().getResource("granadaDivina.gif").toExternalForm());
 
             case BLACKHOLE:
                 return new Image(new blackHoleDatos().getClass().getResource("blackHoleLanzar.gif").toExternalForm());
+            case CONGELACION:
+                return new Image(new congelacionDatos().getClass().getResource("hielo.gif").toExternalForm());
 
 
         }
