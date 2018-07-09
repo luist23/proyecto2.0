@@ -89,6 +89,9 @@ public class Player {
         vida+=vid;
         
     }
+    public static void setRoot(){
+        root=new Pane();
+    }
     
     
 

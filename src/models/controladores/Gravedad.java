@@ -72,7 +72,7 @@ public class Gravedad  extends Thread {
         while(stop && exit){
             //System.out.println("sigovivoGravedad");
 
-        while(efectoGravedad(Player.getPlayer()) && stop){
+        while(efectoGravedad(Player.getPlayer()) && stop && exit){
 
 
             if((GameValues.dimension[1] - values.getSizePlayer()[1]) > player.getLayoutY()){

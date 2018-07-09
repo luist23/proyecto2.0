@@ -17,6 +17,7 @@ public class sceneFactory {
         //System.out.println(Player.personaje);
         switch (type){
             case PLAYSCENE:
+                Player.setRoot();
                 Player.playScene=new playScene();
                 return Player.playScene;
             case MENUSELECCION:

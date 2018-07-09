@@ -5,8 +5,10 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.WindowEvent;
 import models.controladores.GameValues;
@@ -47,12 +49,17 @@ public class playScene extends Scene {
     public playScene() {
 
         super(Player.getRoot(), GameValues.dimension[0],GameValues.dimension[1]);
+        Gravedad.stop=true;
+        Player.box=new HBox();
         peldannos=new ArrayList<>();
         rocas =new ArrayList<>();
+        player.granadasDisponibles=new ArrayList<>();
+
+        peldannoMaster.peldannos=peldannos;
         player=Player.getInstance();
         values= Player.getPlayerBase();
 
-        player.granadasDisponibles=new ArrayList<>();
+
 
         //-------------comprando granadas iniciales--------------
         player.granadasDisponibles.add(granadaType.VENENO);

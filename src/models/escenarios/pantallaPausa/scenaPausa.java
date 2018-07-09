@@ -21,6 +21,8 @@ import models.elementos.explosivos.enemigos.controlador.hiloRocas;
 import models.elementos.explosivos.granadas.factory.granadaFactory;
 import models.elementos.explosivos.granadas.factory.granadaType;
 import models.elementos.peldannos.Peldanno;
+import models.escenarios.factory.ScenesType;
+import models.escenarios.factory.sceneFactory;
 import models.players.Base.Players;
 import models.players.Player;
 
@@ -85,7 +87,20 @@ public class scenaPausa extends Scene {
         shop.setFitWidth(200);
         shop.setPreserveRatio(true);
         shop.setOnMouseClicked((MouseEvent event) -> {
-            System.out.println(shop);
+            /*try {
+                Thread.sleep(100);
+                if(cambiandoVentana){
+                    Gravedad.stop=false;
+                    Thread.sleep(3000);
+                    sceneFactory.getScene(ScenesType.PLAYSCENE);
+                    Gravedad.stop=true;
+                    cambiandoVentana=false;
+                }
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }*/
+            System.out.println("tienda");
         });
 
         hbox.getChildren().addAll(continuar,shop);

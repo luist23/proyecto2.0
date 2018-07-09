@@ -19,8 +19,8 @@ public class hiloRocas extends Thread {
 
     public void run(){
         boolean flag=true;
-    while (exit) {
-        while(Gravedad.stop && exit){
+    while (exit && Gravedad.exit) {
+        while(Gravedad.stop && exit && Gravedad.exit){
 
         if(true){
             for (roca r : playScene.getRocas()) {

@@ -17,7 +17,7 @@ public class peldannoMaster {
 
     private peldannoMaster() {}
     private peldannoMaster getInstance(){return this;}
-    private static ArrayList<Peldanno> peldannos= playScene.getPeldannos();
+    public static ArrayList<Peldanno> peldannos= playScene.getPeldannos();
     private static int[] posicionX={0,GameValues.dimension[0]/3,(2*GameValues.dimension[0])/3};
     public static int aleatorio(){
         return posicionX[(int)(Math.random()*3)];
