@@ -67,6 +67,7 @@ public class Tienda extends Scene {
         
         this.Ventana= scenariosValues.primaryStage;
         
+        int Arma =0;
         
         imgF= new Image("Tienda/imagenes/imgF.png");
         imgViewF = new ImageView(imgF);
@@ -82,7 +83,7 @@ public class Tienda extends Scene {
         infoDinero.setDisable(true);
         
         infoArma=new TextField();
-        infoArma.setText("Arma");
+        infoArma.setText(" "+ Arma);
         infoArma.setMaxWidth(70);
         infoArma.setDisable(true);
         
@@ -316,7 +317,10 @@ public class Tienda extends Scene {
             imgViewP1.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
                 @Override
                 public void handle(javafx.scene.input.MouseEvent event) {
-               
+                    int DineroT= Compra(300,dinero);
+                    infoDinero.setText("" + DineroT);
+                    int LaserT = Arma +200;
+                    infoVida.setText(""+LaserT);
                 }
             });
             
