@@ -157,11 +157,11 @@ public class playScene extends Scene {
                     }
                     if (input.iswPressed()) {
 
-                        player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 10);
+                       // player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() - 10);
                     }
                     if (input.issPressed()) {
                         //Player.getRoot().setTranslateY(Player.getRoot().getTranslateY()+10);
-                        player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
+                        //player.getPlayer().setLayoutY(player.getPlayer().getLayoutY() + 10);
                     }
                     if (input.isSpacePressed()) {
                         Gravedad.sleeping(50);
@@ -187,10 +187,8 @@ public class playScene extends Scene {
                         }
                     }
 
-                    if(input.isxPressed()) {     Gravedad.sleeping(50);
-                        if(player.enemigos>1){       player.enemigos--;
-                            System.out.println(player.enemigos);
-                            rocas.add(new bombaOMB(new bombaOMBdatos()));}
+                    if(input.isxPressed()) {     //Gravedad.sleeping(50);
+                        ///if(player.enemigos>1){       player.enemigos--;    System.out.println(player.enemigos);  rocas.add(new bombaOMB(new bombaOMBdatos()));}
                     }
                     if (input.isEscPressed()){ Gravedad.sleeping(100);
                         Gravedad.stop=false;
