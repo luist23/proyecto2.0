@@ -37,6 +37,7 @@ public class hiloVentana {
                         Player.box.setLayoutY(0);
                         try {
                             Thread.sleep(3000);
+                            Player.dinero+=50;
 
                         } catch (InterruptedException e) {
                             e.printStackTrace();
