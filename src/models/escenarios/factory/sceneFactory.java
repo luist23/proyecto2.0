@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import menuSeleccion.MenuSect;
 import models.controladores.GameValues;
+import models.escenarios.pantallaGameOver.scenaGO;
 import models.escenarios.pantallaGano.scenaGano;
 import models.escenarios.pantallaJuego.playScene;
 import models.players.Player;
@@ -29,6 +30,8 @@ public class sceneFactory {
                 return new Tienda(new Pane());
             case PANTALLAGANO:
                 return new scenaGano(new Pane());
+            case PANTALLAGAMEOVER:
+                return new scenaGO(new Pane());
 
         }
         return null;

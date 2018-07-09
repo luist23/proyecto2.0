@@ -24,6 +24,7 @@ import models.elementos.jefes.Jefe;
 import models.elementos.jefes.browserBlack.browserBlack;
 import models.elementos.jefes.jefeBase;
 import models.escenarios.factory.ScenesType;
+import models.escenarios.pantallaGameOver.scenaGO;
 import models.escenarios.pantallaGano.scenaGano;
 import models.escenarios.pantallaPausa.scenaPausa;
 import models.players.Player;
@@ -199,9 +200,9 @@ public class playScene extends Scene {
                     /*if(Gravedad.stop){ Gravedad.stop=false;
                     }else{ Gravedad.stop=true;                    }*/
                     }
-                    /*if (player.getVida()<=0){
-                        new scenaGano(new Pane());//-----------------para perder
-                    }*/
+                    if (player.getVida()<=0){
+                        new scenaGO(new Pane());//-----------------para perder
+                    }
                     if (jefeBase.vida<=0){
                         new scenaGano(new Pane());
                     }

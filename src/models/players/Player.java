@@ -54,7 +54,7 @@ public class Player {
             player.setPreserveRatio(true);
             root=new Pane();
             root.setMinSize(playerBase.getSizePlayer()[0],playerBase.getSizePlayer()[1]*5);
-            vida=23;
+            vida=50;
             jugador();
 
 
