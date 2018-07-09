@@ -22,9 +22,12 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.scenariosValues;
+import models.escenarios.factory.ScenesType;
+import models.escenarios.factory.sceneFactory;
 import models.players.Player;
 import static models.players.Player.dinero;
 import static models.players.Player.vida;
+import models.players.factory.playerFactory;
 
 /**
  *
@@ -179,8 +182,7 @@ public class Tienda extends Scene {
         vboxMenu.setLayoutX(anchoVentana-345);
         vboxMenu.setLayoutY(altoventana-268);
         vboxMenu.getChildren().addAll(boxMenu);
-      
-        
+              
         //ACCIONES BOTON//
         infoA = new TextField();
         infoV = new TextField();
@@ -382,13 +384,13 @@ public class Tienda extends Scene {
         //Accion de los botones de regreso y continuar
         //btn Regreso
         imgViewRegreso.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
-
+            sceneFactory.getScene(ScenesType.MENUSELECCION);
         });
         
 
         //btn Continuar
         imgViewContinuar.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
-
+            sceneFactory.getScene(ScenesType.PLAYSCENE);
         });
         
    
