@@ -35,6 +35,7 @@ import models.players.factory.playerFactory;
  */
 public class Tienda extends Scene {
     //private Label btnVida,btnHabilidad, btnArma;
+    private static boolean juego=true;
     private Pane root;
     private HBox boxMenu, boxRecursos, boxInfoSuperior,boxInfoArma,boxInfoVida, boxInfoPoder, boxInfoEspecial, boxOpcion;
     private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial, vboxOpcion;
@@ -52,9 +53,9 @@ public class Tienda extends Scene {
     }
     
     public int Compra (int Precio,int Dinero){
-        Dinero = Player.dinero;
-        if (Dinero>=Precio){
-            Dinero= Dinero -Precio;
+
+        if (Player.dinero>=Precio){
+            Player.dinero-= Precio;
         }
         else{
             System.out.println(" no tienes dinero :(");

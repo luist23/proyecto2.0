@@ -99,7 +99,7 @@ public class scenaPausa extends Scene {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }*/
+            }
             //sceneFactory.getScene(ScenesType.MENUSELECCION);
             //System.out.println("tienda");
         });
