@@ -26,6 +26,7 @@ public class hiloRocas extends Thread {
             for (roca r : playScene.getRocas()) {
                 for(Peldanno p:peldanos){
                     if(p.getPeldanno().getBoundsInParent().intersects(r.getRoca().getBoundsInParent())){
+                        System.out.println("roca");
                         try {
                             r.getRoca().setLayoutX(-500);
                             Thread.sleep(10);

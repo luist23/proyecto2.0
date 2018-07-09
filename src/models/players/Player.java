@@ -20,7 +20,7 @@ public class Player {
     private static ImageView player;
     private static Pane root;
     public static boolean salto=true;
-    private static int vida;
+    public static int vida=100;
     public static int enemigos=15;
     public static int granadasEnPocesion=5;
     public static Players playerBase;
@@ -54,7 +54,7 @@ public class Player {
             player.setPreserveRatio(true);
             root=new Pane();
             root.setMinSize(playerBase.getSizePlayer()[0],playerBase.getSizePlayer()[1]*5);
-            vida=23;
+
             jugador();
 
 

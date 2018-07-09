@@ -87,19 +87,19 @@ public class scenaPausa extends Scene {
         shop.setFitWidth(200);
         shop.setPreserveRatio(true);
         shop.setOnMouseClicked((MouseEvent event) -> {
-            /*try {
+            try {
                 Thread.sleep(100);
                 if(cambiandoVentana){
-                    Gravedad.stop=false;
-                    Thread.sleep(3000);
-                    sceneFactory.getScene(ScenesType.PLAYSCENE);
+                    //Gravedad.stop=false;
+                    //Thread.sleep(3000);
+                    sceneFactory.getScene(ScenesType.TIENDA);
                     Gravedad.stop=true;
                     cambiandoVentana=false;
                 }
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }*/
+            }
             System.out.println("tienda");
         });
 
