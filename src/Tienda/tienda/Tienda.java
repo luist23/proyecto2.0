@@ -22,8 +22,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.scenariosValues;
-
 import static models.players.Player.dinero;
+import static models.players.Player.vida;
 
 /**
  *
@@ -32,10 +32,10 @@ import static models.players.Player.dinero;
 public class Tienda extends Scene {
     //private Label btnVida,btnHabilidad, btnArma;
     private Pane root;
-    private HBox boxMenu, boxRecursos, boxInfoSuperior,boxInfoArma,boxInfoVida, boxInfoPoder, boxInfoEspecial;
-    private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial;
-    private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3, imgA1, imgA2, imgA3, imgA4, imgV1, imgV2, imgV3;
-    private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3, imgViewA1, imgViewA2, imgViewA3, imgViewA4, imgViewV1, imgViewV2, imgViewV3;
+    private HBox boxMenu, boxRecursos, boxInfoSuperior,boxInfoArma,boxInfoVida, boxInfoPoder, boxInfoEspecial, boxOpcion;
+    private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial, vboxOpcion;
+    private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3, imgA1, imgA2, imgA3, imgA4, imgV1, imgV2, imgV3, imgContinuar, imgRegreso;
+    private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3, imgViewA1, imgViewA2, imgViewA3, imgViewA4, imgViewV1, imgViewV2, imgViewV3, imgViewContinuar, imgViewRegreso;
     private static int altoventana=650,anchoVentana=1010;
     public static TextField infoDinero, infoArma, infoVida, infoA, infoV, infoP, infoE;
     public static Stage Ventana;
@@ -49,10 +49,7 @@ public class Tienda extends Scene {
 
     public void start() {
         this.Ventana= scenariosValues.primaryStage;
-        
-        //anchoVentana=1010;
-        //altoventana=650;
-  
+      
         imgF= new Image("Tienda/imagenes/imgF.png");
         imgViewF = new ImageView(imgF);
         imgViewF.setFitHeight(altoventana);
@@ -62,7 +59,7 @@ public class Tienda extends Scene {
         
          //*** INFORMACION SUPERIOR ***//
         infoDinero=new TextField();
-        //infoDinero.setText(dinero);
+        infoDinero.setText(" "+dinero);
         infoDinero.setMaxWidth(70);
         infoDinero.setDisable(true);
         
@@ -72,7 +69,7 @@ public class Tienda extends Scene {
         infoArma.setDisable(true);
         
         infoVida=new TextField();
-        infoVida.setText("Vida");
+        infoVida.setText(""+vida);
         infoVida.setMaxWidth(70);
         infoVida.setDisable(true);
         
@@ -279,7 +276,7 @@ public class Tienda extends Scene {
             root.getChildren().remove(vboxInfoVida);
             root.getChildren().remove(vboxInfoPoder);
             
-            System.out.println("holi");
+           
          
             boxInfoEspecial=new HBox();
             boxInfoEspecial.setSpacing(8);
@@ -299,17 +296,52 @@ public class Tienda extends Scene {
             root.getChildren().add(vboxInfoEspecial);
             
         });
-       
+        
+        //Botones de Regresar y continuar
+                    
+        imgRegreso= new Image(TiendaM.getInstance().getClass()
+            .getResource("no.png").toExternalForm());
+        imgViewRegreso =new ImageView(imgRegreso);
+        imgViewRegreso.setFitHeight(80);
+        imgViewRegreso.setFitWidth(80);
+        imgViewRegreso.setPreserveRatio(false);
+        
+        imgContinuar= new Image(TiendaM.getInstance().getClass()
+            .getResource("si.png").toExternalForm());
+        imgViewContinuar =new ImageView(imgContinuar);
+        imgViewContinuar.setFitHeight(80);
+        imgViewContinuar.setFitWidth(80);
+        imgViewContinuar.setPreserveRatio(false);
+        
+        boxOpcion=new HBox();
+        boxOpcion.setSpacing(750);
+        boxOpcion.getChildren().addAll(imgViewRegreso, imgViewContinuar);
+
+        vboxOpcion= new VBox();
+        vboxOpcion.setSpacing(10);
+        vboxOpcion.setLayoutX(anchoVentana-950);
+        vboxOpcion.setLayoutY(altoventana-100);
+        vboxOpcion.getChildren().addAll(boxOpcion);
+        
+        //Accion de los botones de regreso y continuar
+        //btn Regreso
+        imgViewRegreso.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
+
+        });
+        
+
+        //btn Continuar
+        imgViewContinuar.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
+
+        });
+        
+  
         //*** VENTANA **//
-        root.getChildren().addAll(vboxMenu,vboxRecursos,vboxInfoSuperior);
+        root.getChildren().addAll(vboxMenu,vboxRecursos,vboxInfoSuperior,vboxOpcion);
     
         Scene s = new Scene(root, anchoVentana, altoventana);
         scenariosValues.primaryStage.setScene(s);
-        //scenariosValues.primaryStage..setTitle("Tienda");
-        //Ventana.show();
-       
-        
-        
+    
     }
 
     //public static void main(String[] args) {        launch(args);    }
