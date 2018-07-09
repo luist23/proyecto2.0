@@ -100,7 +100,6 @@ public class Tienda extends Scene {
         vboxInfoSuperior.setLayoutY(altoventana- 620);
         vboxInfoSuperior.getChildren().addAll(boxInfoSuperior);
     
-        
         //*** RECURSOS .......R ***//
         
         //DINERO
@@ -230,7 +229,6 @@ public class Tienda extends Scene {
             vboxInfoArma.setLayoutY(altoventana-500);
             vboxInfoArma.getChildren().addAll(imgViewA1, imgViewA2, imgViewA3, imgViewA4);
             
-           
             root.getChildren().add(vboxInfoArma);
     
         });
