@@ -22,6 +22,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import models.controladores.GameValues;
 import models.controladores.scenariosValues;
+import models.players.Player;
 import static models.players.Player.dinero;
 import static models.players.Player.vida;
 
@@ -46,10 +47,23 @@ public class Tienda extends Scene {
         start();
 
     }
+    
+    public int Compra (int Precio,int Dinero){
+        Dinero = Player.dinero;
+        if (Dinero>=Precio){
+            Dinero= Dinero -Precio;
+        }
+        else{
+            System.out.println(" no tienes dinero :(");
+        }
+        return Dinero; 
+    }
 
     public void start() {
+        
         this.Ventana= scenariosValues.primaryStage;
-      
+        
+        
         imgF= new Image("Tienda/imagenes/imgF.png");
         imgViewF = new ImageView(imgF);
         imgViewF.setFitHeight(altoventana);
@@ -214,6 +228,7 @@ public class Tienda extends Scene {
             vboxInfoArma.setLayoutY(altoventana-500);
             vboxInfoArma.getChildren().addAll(imgViewA1, imgViewA2, imgViewA3, imgViewA4);
             
+           
             root.getChildren().add(vboxInfoArma);
     
         });
@@ -230,13 +245,32 @@ public class Tienda extends Scene {
             imgViewV1.setFitHeight(55);
             imgViewV1.setFitWidth(350);
             imgViewV1.setPreserveRatio(false);
-            
+            imgViewV1.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent event) {
+                    int DineroT= Compra(100, dinero);
+                    System.out.println(DineroT);
+                    infoDinero.setText("" + DineroT);
+                    int VidaT =vida +50;
+                    infoVida.setText(""+VidaT);
+                    
+              
+                }
+            });
+  
             imgV2= new Image(TiendaM.getInstance().getClass()
                 .getResource("Vida100.png").toExternalForm());
             imgViewV2 =new ImageView(imgV2);
             imgViewV2.setFitHeight(55);
             imgViewV2.setFitWidth(350);
             imgViewV2.setPreserveRatio(false);
+            imgViewV2.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent event) {
+                
+                    System.out.println("holii");
+                }
+            });
             
             imgV3= new Image(TiendaM.getInstance().getClass()
                 .getResource("Vida200.png").toExternalForm());
@@ -244,14 +278,13 @@ public class Tienda extends Scene {
             imgViewV3.setFitHeight(55);
             imgViewV3.setFitWidth(350);
             imgViewV3.setPreserveRatio(false);
-          
-            
+           
             vboxInfoVida= new VBox();
             vboxInfoVida.setSpacing(20);
             vboxInfoVida.setLayoutX(anchoVentana-920);
             vboxInfoVida.setLayoutY(altoventana-500);
             vboxInfoVida.getChildren().addAll(imgViewV1, imgViewV2, imgViewV3);
-        
+           
             root.getChildren().add(vboxInfoVida);
         });
         
@@ -275,9 +308,7 @@ public class Tienda extends Scene {
             root.getChildren().remove(vboxInfoArma);
             root.getChildren().remove(vboxInfoVida);
             root.getChildren().remove(vboxInfoPoder);
-            
-           
-         
+        
             boxInfoEspecial=new HBox();
             boxInfoEspecial.setSpacing(8);
             boxInfoEspecial.getChildren().addAll(infoE);
@@ -335,7 +366,7 @@ public class Tienda extends Scene {
 
         });
         
-  
+   
         //*** VENTANA **//
         root.getChildren().addAll(vboxMenu,vboxRecursos,vboxInfoSuperior,vboxOpcion);
     
