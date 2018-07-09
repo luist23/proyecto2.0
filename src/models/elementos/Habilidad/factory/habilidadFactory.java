@@ -1,6 +1,8 @@
 package models.elementos.Habilidad.factory;
 
 import models.elementos.Habilidad.Base.Habilidades;
+import models.elementos.Habilidad.Goku.habilidadGoku;
+import models.elementos.Habilidad.Mario.habilidadMario;
 import models.elementos.Habilidad.Peach.habilidadPeach;
 import models.elementos.Habilidad.Rick.habilidadRick;
 import models.players.Player;
@@ -24,11 +26,11 @@ public class habilidadFactory {
             case PEACH:
                 return new habilidadPeach();
             case MARIO:
-                return new habilidadRick();
+                return new habilidadMario();
             case MARCO:
                 return new habilidadRick();
             case GOKU:
-                return new habilidadRick();
+                return new habilidadGoku();
         }
 
 

@@ -18,7 +18,9 @@ public class habilidadBase implements Habilidades {
     @Override
     public void ejecutar() {
         Gravedad.stop=false;
+
         Thread habi= new Thread(()->{
+            //int direcccion=GameValues.direccion;
             //System.out.println("habimladj");
             ArrayList<roca> rocas=new ArrayList<>();
             try {
