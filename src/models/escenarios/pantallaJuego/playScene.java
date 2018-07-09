@@ -53,7 +53,7 @@ public class playScene extends Scene {
         Player.box=new HBox();
         peldannos=new ArrayList<>();
         rocas =new ArrayList<>();
-        player.granadasDisponibles=new ArrayList<>();
+        //player.granadasDisponibles=new ArrayList<>();
 
         peldannoMaster.peldannos=peldannos;
         player=Player.getInstance();
@@ -137,7 +137,9 @@ public class playScene extends Scene {
                 if(Gravedad.stop) {
 
                     if (input.iscPressed()) {
-                        habilidadFactory.getHabilidad();
+                        if(Player.especial>0){
+                            Player.especial--;
+                        habilidadFactory.getHabilidad();}
                     }
                     if (input.isaPressed()) {
                         pasoIzquierda(values.getPasoIzquierda(), values.getIzquierda());

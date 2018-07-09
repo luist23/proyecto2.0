@@ -33,9 +33,10 @@ public class Player {
     public static HBox box =new HBox();
     public static Jefe enemigo;
     public static int dinero=2300;
-    public static ArrayList<granadaType> granadasDisponibles;
+    public static ArrayList<granadaType> granadasDisponibles=new ArrayList<>();
     public static playerType personaje=playerType.GOKU;
     public static Scene playScene;
+    public static int especial=3;
 
 
 

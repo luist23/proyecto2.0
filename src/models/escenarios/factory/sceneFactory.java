@@ -1,5 +1,6 @@
 package models.escenarios.factory;
 
+import Tienda.tienda.Tienda;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -22,6 +23,9 @@ public class sceneFactory {
                 return Player.playScene;
             case MENUSELECCION:
                 return new MenuSect(new Pane());
+            case TIENDA:
+                return new Tienda(new Pane());
+
 
 
         }

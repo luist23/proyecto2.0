@@ -20,29 +20,38 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import models.controladores.GameValues;
+import models.controladores.scenariosValues;
+
 import static models.players.Player.dinero;
 
 /**
  *
  * @author marym
  */
-public class Tienda extends Application {
+public class Tienda extends Scene {
     //private Label btnVida,btnHabilidad, btnArma;
     private Pane root;
     private HBox boxMenu, boxRecursos, boxInfoSuperior,boxInfoArma,boxInfoVida, boxInfoPoder, boxInfoEspecial;
     private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial;
     private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3, imgA1, imgA2, imgA3, imgA4, imgV1, imgV2, imgV3;
     private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3, imgViewA1, imgViewA2, imgViewA3, imgViewA4, imgViewV1, imgViewV2, imgViewV3;
-    private int altoventana,anchoVentana;
+    private static int altoventana=1010,anchoVentana=650;
     public static TextField infoDinero, infoArma, infoVida, infoA, infoV, infoP, infoE;
     public static Stage Ventana;
-    
-    @Override
-    public void start(Stage Ventana) {
-        this.Ventana= Ventana;
+
+    public Tienda(Pane root){
+        super(root, anchoVentana,altoventana);
+        this.root=root;
+        start();
+
+    }
+
+    public void start() {
+        this.Ventana= scenariosValues.primaryStage;
         
-        anchoVentana=1010;
-        altoventana=650;
+        //anchoVentana=1010;
+        //altoventana=650;
   
         imgF= new Image("Tienda/imagenes/imgF.png");
         imgViewF = new ImageView(imgF);
@@ -295,16 +304,14 @@ public class Tienda extends Application {
         root.getChildren().addAll(vboxMenu,vboxRecursos,vboxInfoSuperior);
     
         Scene s = new Scene(root, anchoVentana, altoventana);
-        Ventana.setScene(s);
-        Ventana.setTitle("Tienda");
-        Ventana.show();
+        scenariosValues.primaryStage.setScene(s);
+        //scenariosValues.primaryStage..setTitle("Tienda");
+        //Ventana.show();
        
         
         
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    //public static void main(String[] args) {        launch(args);    }
     
 }
