@@ -35,8 +35,8 @@ public class Tienda extends Scene {
     private Pane root;
     private HBox boxMenu, boxRecursos, boxInfoSuperior,boxInfoArma,boxInfoVida, boxInfoPoder, boxInfoEspecial, boxOpcion;
     private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial, vboxOpcion;
-    private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3, imgA1, imgA2, imgA3, imgA4, imgV1, imgV2, imgV3, imgContinuar, imgRegreso;
-    private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3, imgViewA1, imgViewA2, imgViewA3, imgViewA4, imgViewV1, imgViewV2, imgViewV3, imgViewContinuar, imgViewRegreso;
+    private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3, imgA1, imgA2, imgA3, imgA4, imgV1, imgV2, imgV3, imgContinuar, imgRegreso, imgP1;
+    private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3, imgViewA1, imgViewA2, imgViewA3, imgViewA4, imgViewV1, imgViewV2, imgViewV3, imgViewContinuar, imgViewRegreso, imgViewP1;
     private static int altoventana=650,anchoVentana=1010;
     public static TextField infoDinero, infoArma, infoVida, infoA, infoV, infoP, infoE;
     public static Stage Ventana;
@@ -239,6 +239,7 @@ public class Tienda extends Scene {
             root.getChildren().remove(vboxInfoPoder);
             root.getChildren().remove(vboxInfoEspecial);
             
+            
             imgV1= new Image(TiendaM.getInstance().getClass()
                 .getResource("Vida50.png").toExternalForm());
             imgViewV1 =new ImageView(imgV1);
@@ -248,9 +249,8 @@ public class Tienda extends Scene {
             imgViewV1.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
                 @Override
                 public void handle(javafx.scene.input.MouseEvent event) {
-                    int DineroT= Compra(100, dinero);
-                    System.out.println(DineroT);
-                    infoDinero.setText("" + DineroT);
+                    int DineroT= Compra(100,dinero);
+                    infoDinero.setText(" " + DineroT);
                     int VidaT =vida +50;
                     infoVida.setText(""+VidaT);
                     
@@ -267,8 +267,10 @@ public class Tienda extends Scene {
             imgViewV2.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
                 @Override
                 public void handle(javafx.scene.input.MouseEvent event) {
-                
-                    System.out.println("holii");
+                    int DineroT= Compra(200,dinero);
+                    infoDinero.setText("" + DineroT);
+                    int VidaT =vida +100;
+                    infoVida.setText(""+VidaT);
                 }
             });
             
@@ -278,6 +280,16 @@ public class Tienda extends Scene {
             imgViewV3.setFitHeight(55);
             imgViewV3.setFitWidth(350);
             imgViewV3.setPreserveRatio(false);
+            imgViewV3.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent event) {
+                    int DineroT= Compra(300,dinero);
+                    System.out.println(DineroT);
+                    infoDinero.setText("" + DineroT);
+                    int VidaT =vida +200;
+                    infoVida.setText(""+VidaT);
+                }
+            });
            
             vboxInfoVida= new VBox();
             vboxInfoVida.setSpacing(20);
@@ -294,12 +306,25 @@ public class Tienda extends Scene {
             root.getChildren().remove(vboxInfoVida);
             root.getChildren().remove(vboxInfoEspecial);
             
-            vboxInfoPoder= new VBox();
-            vboxInfoPoder.setSpacing(10);
-            vboxInfoPoder.setLayoutX(anchoVentana-600);
-            vboxInfoPoder.setLayoutY(altoventana-100);
-            vboxInfoPoder.getChildren().addAll(boxInfoPoder);
+            imgP1= new Image(TiendaM.getInstance().getClass()
+                .getResource("Laser.png").toExternalForm());
+            imgViewP1 =new ImageView(imgP1);
+            imgViewP1.setFitHeight(55);
+            imgViewP1.setFitWidth(350);
+            imgViewP1.setPreserveRatio(false);
+            imgViewP1.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent event) {
+               
+                }
+            });
             
+            vboxInfoPoder= new VBox();
+            vboxInfoPoder.setSpacing(20);
+            vboxInfoPoder.setLayoutX(anchoVentana-920);
+            vboxInfoPoder.setLayoutY(altoventana-500);
+            vboxInfoPoder.getChildren().addAll(imgViewP1);
+  
             root.getChildren().add(vboxInfoPoder);
         });
         
