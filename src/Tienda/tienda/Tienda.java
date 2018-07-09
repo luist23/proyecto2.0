@@ -36,7 +36,7 @@ public class Tienda extends Scene {
     private VBox vboxMenu, vboxRecursos,vboxInfoSuperior, vboxInfoArma, vboxInfoVida, vboxInfoPoder, vboxInfoEspecial;
     private Image imgF, imgM1, imgM2,imgM3, imgM4,imgR1, imgR2, imgR3, imgA1, imgA2, imgA3, imgA4, imgV1, imgV2, imgV3;
     private ImageView imgViewF,imgViewM1,imgViewM2,imgViewM3, imgViewM4,imgViewR1,imgViewR2,imgViewR3, imgViewA1, imgViewA2, imgViewA3, imgViewA4, imgViewV1, imgViewV2, imgViewV3;
-    private static int altoventana=1010,anchoVentana=650;
+    private static int altoventana=650,anchoVentana=1010;
     public static TextField infoDinero, infoArma, infoVida, infoA, infoV, infoP, infoE;
     public static Stage Ventana;
 
