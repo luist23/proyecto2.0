@@ -61,10 +61,10 @@ public class scenaPausa extends Scene {
         player.box.setLayoutY(0);
         player.box.setAlignment(Pos.CENTER);*/
         HBox hbox=new HBox();
-        hbox.setLayoutY(500);
-        hbox.setLayoutY(500);
+        hbox.setLayoutX(500);
+        hbox.setLayoutY(400);
 
-        ImageView continuar=new ImageView(new Image(this.getClass().getResource("continuar.jpg").toExternalForm()));
+        ImageView continuar=new ImageView(new Image(this.getClass().getResource("play.png").toExternalForm()));
         continuar.setFitWidth(200);
         continuar.setPreserveRatio(true);
         continuar.setOnMouseClicked((MouseEvent event) -> {
@@ -83,7 +83,7 @@ public class scenaPausa extends Scene {
 
         });
 
-        ImageView shop=new ImageView(new Image(this.getClass().getResource("shop.gif").toExternalForm()));
+        ImageView shop=new ImageView(new Image(this.getClass().getResource("tienda.png").toExternalForm()));
         shop.setFitWidth(200);
         shop.setPreserveRatio(true);
         shop.setOnMouseClicked((MouseEvent event) -> {
@@ -99,8 +99,9 @@ public class scenaPausa extends Scene {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
-            System.out.println("tienda");
+            }*/
+            //sceneFactory.getScene(ScenesType.MENUSELECCION);
+            //System.out.println("tienda");
         });
 
         hbox.getChildren().addAll(continuar,shop);
@@ -108,7 +109,7 @@ public class scenaPausa extends Scene {
 
         //-----------------------------------------------------------------------------------------
 
-        fondo.setImage(new Image(this.getClass().getResource("portada.jpg").toExternalForm()));
+        fondo.setImage(new Image(this.getClass().getResource("w.jpg").toExternalForm()));
         fondo.setFitHeight(GameValues.dimension[1]);
         fondo.setFitWidth(GameValues.dimension[0]);
         fondo.setPreserveRatio(false);

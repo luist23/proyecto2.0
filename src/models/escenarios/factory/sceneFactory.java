@@ -1,11 +1,14 @@
 package models.escenarios.factory;
 
 import Tienda.tienda.Tienda;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import menuSeleccion.MenuSect;
 import models.controladores.GameValues;
+import models.escenarios.pantallaGameOver.scenaGO;
+import models.escenarios.pantallaGano.scenaGano;
 import models.escenarios.pantallaJuego.playScene;
 import models.players.Player;
 
@@ -25,8 +28,10 @@ public class sceneFactory {
                 return new MenuSect(new Pane());
             case TIENDA:
                 return new Tienda(new Pane());
-
-
+            case PANTALLAGANO:
+                return new scenaGano(new Pane());
+            case PANTALLAGAMEOVER:
+                return new scenaGO(new Pane());
 
         }
         return null;

@@ -32,7 +32,7 @@ public class Player {
     public static TextField textDinero =new TextField();
     public static HBox box =new HBox();
     public static Jefe enemigo;
-    public static int dinero=2300;
+    public static int dinero=5000;
     public static ArrayList<granadaType> granadasDisponibles=new ArrayList<>();
     public static playerType personaje=playerType.GOKU;
     public static Scene playScene;
@@ -69,7 +69,8 @@ public class Player {
     public static ImageView getPlayer() {  return player;}
     public static Pane getRoot() { return root;}
     public static int getVida() {
-        return vida;
+
+       return vida;
     }
     public static Players getPlayerBase(){  return playerBase;   }
 
@@ -86,9 +87,9 @@ public class Player {
         vida -= Daño;
         textVida.setText("VIDA RESTANTE:  "+vida);
     }
-    public static void setVida(int vid){
+    public static int setVida(int vid){
         vida+=vid;
-        
+        return vida;
     }
     public static void setRoot(){
         root=new Pane();

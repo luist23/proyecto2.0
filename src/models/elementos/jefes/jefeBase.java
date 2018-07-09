@@ -14,7 +14,7 @@ import models.players.Player;
 public abstract class jefeBase implements Jefe {
     protected ImageView jefe;
     protected ImageView habilidad;
-    protected int vida;
+    public static int vida;
     protected int daño;
     public static  TextField textVida =new TextField();
     private static int direccionRocafinal=1;
