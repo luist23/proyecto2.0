@@ -61,18 +61,9 @@ public class MenuSect extends Scene {
         siguiente.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                //seleccionado.setImage(new Image(this.getClass().getResource("play.png").toExternalForm()));
-                //seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
                 System.out.println("play");
-                //System.out.println(Player.personaje);
-
                 playerFactory.getPlayer();//escogiendoJugador
                 sceneFactory.getScene(ScenesType.PLAYSCENE);
-
-
-                //Tienda menu=new Tienda();
-                //ventanaP.menuP.main(primaryStage);
-                //primaryStage.close();
 
             }
         });
@@ -83,19 +74,9 @@ public class MenuSect extends Scene {
         tienda.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                //seleccionado.setImage(new Image(this.getClass().getResource("play.png").toExternalForm()));
-                //seleccionadoFondo.setImage(new Image(this.getClass().getResource("select2.png").toExternalForm()));
                 System.out.println("Tienda");
-                //System.out.println(Player.personaje);
-
                 playerFactory.getPlayer();//escogiendoJugador
                 sceneFactory.getScene(ScenesType.TIENDA);
-
-
-                //Tienda menu=new Tienda();
-                //ventanaP.menuP.main(primaryStage);
-                //primaryStage.close();
-
             }
         });
 

@@ -23,7 +23,7 @@ public class browserBlack extends jefeBase {
         habilidad.setLayoutY(jefe.getLayoutY()+50);
         textVida.autosize();
         textVida.setDisable(true);
-        vida=1000;
+        vida=100;
         //textVida.setText("VIDA JEFE:  "+String.valueOf(Player.enemigo.getVida()));
         daño=23;
         iniciar();

@@ -20,6 +20,11 @@ import models.elementos.explosivos.granadas.factory.granadaFactory;
 import models.elementos.explosivos.granadas.factory.granadaType;
 import models.controladores.peldannoMaster;
 import models.controladores.scenariosValues;
+import models.elementos.jefes.Jefe;
+import models.elementos.jefes.browserBlack.browserBlack;
+import models.elementos.jefes.jefeBase;
+import models.escenarios.factory.ScenesType;
+import models.escenarios.pantallaGano.scenaGano;
 import models.escenarios.pantallaPausa.scenaPausa;
 import models.players.Player;
 import models.elementos.explosivos.enemigos.Base.roca;
@@ -30,6 +35,8 @@ import models.players.Base.Players;
 
 
 import java.util.ArrayList;
+
+import static models.players.Player.enemigo;
 
 public class playScene extends Scene {
     private Player player;
@@ -99,7 +106,6 @@ public class playScene extends Scene {
         player.box.setLayoutX(0);
         player.box.setLayoutY(0);
         player.box.setAlignment(Pos.CENTER);
-
 
         //-----------------------------------------------------------------------------------------
 
@@ -188,10 +194,16 @@ public class playScene extends Scene {
                     if (input.isEscPressed()){ Gravedad.sleeping(100);
                         Gravedad.stop=false;
                         input.setSceState();
-                        new scenaPausa(new Pane());
+                        new scenaPausa(new Pane());//--------------------------------ventana pausa
                         Gravedad.sleeping(500);
                     /*if(Gravedad.stop){ Gravedad.stop=false;
                     }else{ Gravedad.stop=true;                    }*/
+                    }
+                    /*if (player.getVida()<=0){
+                        new scenaGano(new Pane());//-----------------para perder
+                    }*/
+                    if (jefeBase.vida<=0){
+                        new scenaGano(new Pane());
                     }
                 }
 
